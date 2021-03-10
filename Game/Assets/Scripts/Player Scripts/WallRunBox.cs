@@ -15,23 +15,15 @@ public class WallRunBox : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (player.isGrounded)
+        if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject))
         {
-            player.getNextWall = true;
-            return;
-        }
-
-        if (player.getNextWall && other.CompareTag("WallRun"))
-        {
-            player.SetLastWalls(other.gameObject);
-            player.getNextWall = false;
-            player.rigRotation = transform.rotation;
-            player.wallRunVelocity = player.GetVelocity();
-
-        }
-
-        if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall1 != player.lastWall2)))
-        {
+            if (player.getNextWall)
+            {
+                player.SetLastWalls(other.gameObject);
+                player.getNextWall = false;
+                player.rigRotation = transform.rotation;
+                player.wallRunVelocity = player.GetVelocity();
+            }
             if (isRightBox)
             {
                 player.isWallRunning = true;

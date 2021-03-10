@@ -56,10 +56,9 @@ GameObject:
   - component: {fileID: 7543506823317197709}
   - component: {fileID: 7543506823317197706}
   - component: {fileID: 7543506823317197708}
-  - component: {fileID: 124960677}
   m_Layer: 9
   m_Name: Prism
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,8 +117,8 @@ MonoBehaviour:
   pyramidSpawn: {fileID: 4980230338603478670, guid: 1779525da5eb22649a9f7783da73c6d4, type: 3}
   triangleCollider: {fileID: 7543506823389141068}
   rotationSpeed: 70
-  spawnTime: 2
-  spawnVelocity: 10
+  spawnTime: 0.75
+  spawnVelocity: 20
 --- !u!114 &7543506823317197708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,20 +134,6 @@ MonoBehaviour:
   timeZone: 0
   active: {fileID: 2100000, guid: 8ea5fb190c7b3cf4a80b2105cabd7249, type: 2}
   stopped: {fileID: 2100000, guid: dfab4aa71db122e4db32940641466e26, type: 2}
---- !u!64 &124960677
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7543506823317197710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 738721038751157308, guid: cc719daef73e1154c92ce9e610be067c, type: 3}
 --- !u!1 &7543506823389141068
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7543506823784078540}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0.00000058114523}
-  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 7543506823303909003}

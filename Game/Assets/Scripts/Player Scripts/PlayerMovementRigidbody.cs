@@ -25,10 +25,13 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private bool canSlide = true;
     Vector3 move;
     private bool canJumpAgain = true;
+    private bool holdingSlideTriggerInAir = false;
+
 
     [Header("Parkour")]
-    public GameObject lastWall1;
-    public GameObject lastWall2;
+    //public GameObject lastWall1;
+    //public GameObject lastWall2;
+    public GameObject lastWall;
     public int oneOrTwoSwitchForWalls= 1;
     public int oneOrTwoSwitchForNormalVectors = 1;
     public bool isWallRunning;
@@ -86,7 +89,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
             headCamera.SetBool("Left", false);
         }
 
-        if ((Input.GetButtonDown("Jump") || Input.GetAxis("JumpController") > 0) && isGrounded && canJumpAgain)
+        if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && isGrounded && canJumpAgain)
         {
             rbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
             canJumpAgain = false;
@@ -95,7 +98,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
         if (isWallRunning && !isGrounded && !justJumpedOffWall)
         {
-            if ((Input.GetButtonDown("Jump") || Input.GetAxis("JumpController") > 0) && canJumpAgain)
+            if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && canJumpAgain)
             {
                 float x = Input.GetAxisRaw("Horizontal");
                 float z = Input.GetAxisRaw("Vertical");
@@ -125,7 +128,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
             }
         }
 
-        if ((isGrounded && (Input.GetButton("Slide") || Input.GetAxis("SlideController") > 0) && !isWallRunning && canSlide))
+        if ((isGrounded && (Input.GetButtonDown("Slide") || ((Input.GetAxis("SlideController") > 0) && !holdingSlideTriggerInAir)) && !isWallRunning && canSlide))
         {
             capsuleCollider.height = 0.5f;
             capsuleCollider.center = new Vector3(0, 0.25f, 0);
@@ -135,8 +138,12 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
         else if ((Input.GetButton("Slide") || Input.GetAxis("SlideController") > 0) && !isWallRunning && !isGrounded)
         {
-            rbody.velocity = new Vector3(rbody.velocity.x, rbody.velocity.y - 60f * Time.deltaTime, rbody.velocity.z);
+            rbody.velocity = new Vector3(rbody.velocity.x, rbody.velocity.y - 100f * Time.deltaTime, rbody.velocity.z);
+            holdingSlideTriggerInAir = Input.GetAxis("SlideController") > 0;
         }
+
+        if(Input.GetAxis("SlideController") <= 0 && isGrounded)
+                holdingSlideTriggerInAir = false;
 
         if (Input.GetButton("DashLeft") && canDash && !isWallRunning)
         {
@@ -152,7 +159,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
             StartCoroutine(Dashing("DashRight"));
         }
 
-        if (bulletEnemyJumpBox.canJumpOffEnemy && !isGrounded && !isWallRunning && (Input.GetButtonDown("Jump") || Input.GetAxis("JumpController") > 0) && !justJumpedOffEnemy && canJumpAgain)
+        if (bulletEnemyJumpBox.canJumpOffEnemy && !isGrounded && !isWallRunning && (Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && !justJumpedOffEnemy && canJumpAgain)
         {
             ResetWallRun();
             rbody.velocity = transform.up * jumpOffEnemyUpForce;
@@ -234,8 +241,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
         isWallRunning = false;
         isWallRunningLeft = false;
         isWallRunningRight = false;
-        lastWall1 = null;
-        lastWall2 = null;
+        SetLastWalls(null);
         justJumpedOffWall = false;
         getNextWall = true;
     }
@@ -300,16 +306,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     public void SetLastWalls(GameObject wall)
     {
-        if(oneOrTwoSwitchForWalls == 1)
-        {
-            lastWall1 = wall;
-            oneOrTwoSwitchForWalls = 2;
-        }
-        else if(oneOrTwoSwitchForWalls == 2)
-        {
-            lastWall2 = wall;
-            oneOrTwoSwitchForWalls = 1;
-        }
+        lastWall = wall;
     }
 
     private IEnumerator JustJumpedOffEnemy()
