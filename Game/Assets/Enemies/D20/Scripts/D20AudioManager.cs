@@ -16,4 +16,9 @@ public class D20AudioManager : MonoBehaviour
     {
         audioSource.PlayOneShot(d20Sounds[clip - 1]);
     }
+
+    public void StopAudio()
+    {
+        audioSource.Stop();
+    }
 }

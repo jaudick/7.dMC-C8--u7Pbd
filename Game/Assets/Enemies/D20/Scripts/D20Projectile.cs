@@ -13,6 +13,7 @@ public class D20Projectile : Controller
     private float timeTillDestroy = 0;
     private float timeToDestroy = 3f;
     private bool frozen = false;
+    [SerializeField] private ProjectileAudio projectileAudio;
     private void Awake()
     {
         //shiftable = GetComponent<Shiftable>();
@@ -44,9 +45,15 @@ public class D20Projectile : Controller
         localTime = f;
         frozen = f == 0;
         if (frozen)
+        {
+            projectileAudio.PlayInactive();
             gameObject.layer = 8;
+        }
         else
+        {
+            projectileAudio.PlayActive();
             gameObject.layer = 9;
+        }
     }
 
     private void Update()

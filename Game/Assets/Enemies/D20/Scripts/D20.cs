@@ -78,6 +78,7 @@ public class D20 : Controller
         {
             resetRoation = 5;
             gameObject.layer = 8;
+            d20Audio.StopAudio();
         }
         else
         {

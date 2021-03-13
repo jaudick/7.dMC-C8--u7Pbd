@@ -17,7 +17,7 @@ public class HyperCube : Controller
     private bool frozen;
     private float timeTillDestroy = 0;
     private float timeToDestroy = 10f;
-    [SerializeField] private HyperCubeAudio hyperCubeAudio;
+    [SerializeField] private ProjectileAudio hyperCubeAudio;
 
     public override void setTime(float f)
     {
@@ -25,13 +25,13 @@ public class HyperCube : Controller
         frozen = f == 0;
         if (frozen)
         {
-            hyperCubeAudio.PlayHyperCubeInactive();
+            hyperCubeAudio.PlayInactive();
             rbody.isKinematic = true;
             gameObject.layer = 8;
         }
         else
         {
-            hyperCubeAudio.PlayHyperCubeActive();
+            hyperCubeAudio.PlayActive();
             rbody.isKinematic = false;
             gameObject.layer = 9;
         }

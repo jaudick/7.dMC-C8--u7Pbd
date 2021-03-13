@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HyperCubeAudio : MonoBehaviour
+public class ProjectileAudio : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip active;
@@ -13,14 +13,14 @@ public class HyperCubeAudio : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlayHyperCubeActive()
+    public void PlayActive()
     {
         audioSource.clip = active;
         audioSource.Stop();
         audioSource.Play();
     }
 
-    public void PlayHyperCubeInactive()
+    public void PlayInactive()
     {
         audioSource.clip = inactive;
         audioSource.Stop();
