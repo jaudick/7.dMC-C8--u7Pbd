@@ -116,6 +116,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
                     jumpedOfWallVelocity = rbody.velocity / 2;
                 }
 
+                currentWallRunUpForce = wallRunUpForce;
                 justJumpedOffWall = true;
                 getNextWall = true;
 
