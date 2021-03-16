@@ -91,7 +91,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
         if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && isGrounded && canJumpAgain)
         {
-            rbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+            rbody.AddForce(0, jumpForce*2, 0, ForceMode.Impulse);
             canJumpAgain = false;
             StartCoroutine(ResetJump());
         }
@@ -191,7 +191,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
         if (justJumpedOffWall && !dashing)
         {
             Vector3 jumpedOffWallAirSpeed = new Vector3(move.x * Time.deltaTime * 100f * resultSpeedBasedOnDirection, 0, move.z * Time.fixedDeltaTime * 100f * resultSpeedBasedOnDirection);
-            rbody.velocity = new Vector3(jumpedOfWallVelocity.x, rbody.velocity.y - 20f * Time.deltaTime, jumpedOfWallVelocity.z) + jumpedOffWallAirSpeed;
+            rbody.velocity = new Vector3(jumpedOffWallAirSpeed.x * 1.5f, rbody.velocity.y - 20f * Time.deltaTime, jumpedOffWallAirSpeed.z * 1.5f); //+ jumpedOffWallAirSpeed;
         }
 
         else if (canDoInput && !dashing)

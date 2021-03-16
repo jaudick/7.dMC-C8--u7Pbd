@@ -21,7 +21,7 @@ public class Dimond : Controller
     private bool frozen = false;
     private float resetRoation = 5f;
     public bool isTracking;
-
+    [SerializeField] private DimondAudio dimondAudio;
     private void Awake()
     {
         particleHolder = FindObjectOfType<ParticleHolder>();
@@ -55,8 +55,11 @@ public class Dimond : Controller
 
     private IEnumerator Shoot()
     {
+        float waitTime = Random.Range(0, 1.5f);
+        yield return new WaitForSeconds(waitTime);
         if (!frozen && isTracking)
         {
+            dimondAudio.PlayDimondSound();
             GameObject spawnedBullet = Instantiate(bullet) as GameObject;
             spawnedBullet.transform.position = shootBox.transform.position;
             Rigidbody bulletBody = spawnedBullet.GetComponent<Rigidbody>();
@@ -100,6 +103,7 @@ public class Dimond : Controller
         localTime = f;
         if (frozen)
         {
+            dimondAudio.StopAudio();
             resetRoation = 5;
             gameObject.layer = 8;
         }

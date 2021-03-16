@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 4152994472487357334}
-  active: {fileID: 8300000, guid: c57c8568620c8164f84f909cc9024309, type: 3}
-  inactive: {fileID: 8300000, guid: 0f218918a4c44b4478077b7066f1d886, type: 3}
+  active: {fileID: 8300000, guid: 159ca76d1af3f0f48b386061e13ec710, type: 3}
+  inactive: {fileID: 8300000, guid: ff77ab7a336b40647ad3c6ceea1b405c, type: 3}
 --- !u!1 &4980230338603517873
 GameObject:
   m_ObjectHideFlags: 0

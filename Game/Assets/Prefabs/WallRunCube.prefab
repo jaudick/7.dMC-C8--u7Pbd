@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7841881948150365699}
   - component: {fileID: 8749434919021883789}
+  - component: {fileID: 5884946610328013191}
   m_Layer: 0
   m_Name: GroundBoxCollider (1)
   m_TagString: WallRun
@@ -106,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2834338487990820971}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.002, y: -0.001156741, z: -0.0985}
+  m_LocalPosition: {x: -0.002, y: -0.001156741, z: -0.0942}
   m_LocalScale: {x: 0.0010164172, y: 0.19285755, z: 0.19651109}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
@@ -125,6 +126,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.88, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5884946610328013191
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834338487990820971}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3348589938913441561
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2959305043985974530}
   - component: {fileID: 4826304301601358920}
+  - component: {fileID: 2529031912961089505}
   m_Layer: 0
   m_Name: GroundBoxCollider
   m_TagString: Ground
@@ -150,8 +168,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3348589938913441561}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.101534635, y: -0.001156741, z: 0}
-  m_LocalScale: {x: 0.01611391, y: 0.016245363, z: 0.19651109}
+  m_LocalPosition: {x: -0.1007, y: -0.001156741, z: 0}
+  m_LocalScale: {x: 0.015197558, y: 0.009242312, z: 0.19337673}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 1
@@ -169,6 +187,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.88, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2529031912961089505
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348589938913441561}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &4477305288563329105
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3736475037255618832}
   - component: {fileID: 4692698046820073840}
+  - component: {fileID: 4803108369663941950}
   m_Layer: 0
   m_Name: GroundBoxCollider (2)
   m_TagString: WallRun
@@ -194,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4477305288563329105}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.002, y: -0.001156741, z: 0.101}
+  m_LocalPosition: {x: -0.002, y: -0.001156741, z: 0.0942}
   m_LocalScale: {x: 0.0010164172, y: 0.19285755, z: 0.19651109}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
@@ -213,6 +248,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.88, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4803108369663941950
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477305288563329105}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &5790737192882088705
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7404322336181540998}
   - component: {fileID: 7807875695433101882}
+  - component: {fileID: 3647441338236208887}
   m_Layer: 0
   m_Name: GroundBoxCollider (3)
   m_TagString: WallRun
@@ -238,8 +290,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5790737192882088705}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.004, y: 0.099, z: 0}
-  m_LocalScale: {x: 0.01611391, y: 0.20698206, z: 0.006747994}
+  m_LocalPosition: {x: -0.004, y: 0.0993, z: 0}
+  m_LocalScale: {x: 0.015496909, y: 0.18933478, z: 0.001872096}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 4
@@ -257,6 +309,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.88, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3647441338236208887
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790737192882088705}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &5900151282212191622
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328869984469950664}
   - component: {fileID: 8376706866022594304}
+  - component: {fileID: 8828133372873218372}
   m_Layer: 0
   m_Name: GroundBoxCollider (4)
   m_TagString: WallRun
@@ -283,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 5900151282212191622}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -0.004, y: -0.099, z: 0}
-  m_LocalScale: {x: 0.01611391, y: 0.20698206, z: 0.006747994}
+  m_LocalScale: {x: 0.01563961, y: 0.19037963, z: 0.0028313908}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 5
@@ -301,6 +370,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.88, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8828133372873218372
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900151282212191622}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &8332552553532953172
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,10 +397,9 @@ GameObject:
   - component: {fileID: 8712491427070429422}
   - component: {fileID: 5712577943686104907}
   - component: {fileID: 9178975645114934207}
-  - component: {fileID: 9178975645114934206}
   m_Layer: 6
-  m_Name: floatingCube
-  m_TagString: Ground
+  m_Name: WallRunCube
+  m_TagString: WallRun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,19 +441,7 @@ BoxCollider:
   m_GameObject: {fileID: 8332552553532953172}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.20000045, y: 0.20000003, z: 0.20000006}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9178975645114934206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8332552553532953172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8385a00cd3ed7f54d934d7254e4b9860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
