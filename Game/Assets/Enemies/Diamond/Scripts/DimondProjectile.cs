@@ -15,6 +15,7 @@ public class DimondProjectile : Controller
     private float timeTillDestroy = 0;
     private float timeToDestroy = 3f;
     private bool frozen = false;
+    [SerializeField] private ProjectileAudio projectileAudio;
     private void Awake()
     {
         //shiftable = GetComponent<Shiftable>();
@@ -63,10 +64,16 @@ public class DimondProjectile : Controller
     {
         localTime = f;
         frozen = f == 0;
-        if(frozen)
+        if (frozen)
+        {
             gameObject.layer = 8;
+            projectileAudio.PlayInactive();
+        }
         else
+        {
             gameObject.layer = 9;
+            projectileAudio.PlayActive();
+        }
     }
 
     private void Update()

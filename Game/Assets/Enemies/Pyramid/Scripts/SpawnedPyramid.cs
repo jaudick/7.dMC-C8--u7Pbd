@@ -14,6 +14,7 @@ public class SpawnedPyramid : Controller
     private float timeToDestroy = 5f;
     public bool frozen = false;
     float counter = 0;
+    [SerializeField] private ProjectileAudio projectileAudio;
 
 
     public override void setTime(float f)
@@ -22,11 +23,13 @@ public class SpawnedPyramid : Controller
         frozen = f == 0;
         if (frozen)
         {
+            projectileAudio.PlayInactive();
             spawnCollider.gameObject.layer = 8;
             gameObject.layer = 8;
         }
         else
         {
+            projectileAudio.PlayActive();
             spawnCollider.gameObject.layer = 9;
             gameObject.layer = 9;
         }
