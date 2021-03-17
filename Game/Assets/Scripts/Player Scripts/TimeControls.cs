@@ -13,6 +13,7 @@ public class TimeControls : MonoBehaviour
     private ColorAdjustments colors;
     private ChromaticAberration chromatic;
     private int currentTimeZone = 0;
+    [SerializeField] private Material[] skyBoxes;
     //private Vignette vignette;
 
     private float chromaticInit = 0f;
@@ -51,7 +52,7 @@ public class TimeControls : MonoBehaviour
                 DebugTime(1);
                 TimeCore.Shift(0);
                 StartCoroutine(DistortForTimeShift());
-                StartCoroutine(Shift());
+                StartCoroutine(Shift(0));
             }
             else if (Input.GetButtonDown("Time2") && currentTimeZone != 2)
             {
@@ -60,7 +61,7 @@ public class TimeControls : MonoBehaviour
                 DebugTime(2);
                 TimeCore.Shift(1);
                 StartCoroutine(DistortForTimeShift());
-                StartCoroutine(Shift());
+                StartCoroutine(Shift(1));
             }
             else if (Input.GetButtonDown("Time3") && currentTimeZone != 3)
             {
@@ -69,7 +70,7 @@ public class TimeControls : MonoBehaviour
                 DebugTime(3);
                 TimeCore.Shift(2);
                 StartCoroutine(DistortForTimeShift());
-                StartCoroutine(Shift());
+                StartCoroutine(Shift(2));
             }
             else if (Input.GetButtonDown("Time4") && currentTimeZone != 4)
             {
@@ -78,18 +79,19 @@ public class TimeControls : MonoBehaviour
                 DebugTime(4);
                 TimeCore.Shift(3);
                 StartCoroutine(DistortForTimeShift());
-                StartCoroutine(Shift());
+                StartCoroutine(Shift(3));
             }
 
             ///////////////scroll wheel
             else if (Input.GetAxis("Time3MouseWheel") > 0 && currentTimeZone != 3)
             {
+                RenderSettings.skybox = skyBoxes[2];
                 currentTimeZone = 3;
                 playerAudio.PlayWarp(3);
                 DebugTime(3);
                 TimeCore.Shift(2);
                 StartCoroutine(DistortForTimeShift());
-                StartCoroutine(Shift());
+                StartCoroutine(Shift(2));
             }
             else if (Input.GetAxis("Time4MouseWheel") < 0 && currentTimeZone != 4)
             {
@@ -98,7 +100,7 @@ public class TimeControls : MonoBehaviour
                 DebugTime(4);
                 TimeCore.Shift(3);
                 StartCoroutine(DistortForTimeShift());
-                StartCoroutine(Shift());
+                StartCoroutine(Shift(3));
             }
         }
     }
@@ -140,10 +142,12 @@ public class TimeControls : MonoBehaviour
 
     }
 
-    private IEnumerator Shift()
+    private IEnumerator Shift(int skyBox)
     {
         canShift = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
+        RenderSettings.skybox = skyBoxes[skyBox];
+        yield return new WaitForSeconds(0.4f);
         canShift = true;
     }
 
