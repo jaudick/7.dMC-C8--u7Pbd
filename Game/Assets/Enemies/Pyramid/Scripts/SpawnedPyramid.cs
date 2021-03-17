@@ -39,6 +39,7 @@ public class SpawnedPyramid : Controller
     {
         rbody = GetComponent<Rigidbody>();
         velocity = rbody.velocity;
+        spawnCollider = GetComponentInChildren<PyramidSpawnCollider>();
         setTime(TimeCore.times[GetComponent<Shiftable>().timeZone]);
     }
 

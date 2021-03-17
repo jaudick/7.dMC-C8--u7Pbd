@@ -16712,26 +16712,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1109621795397671625, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
-      propertyPath: skyBoxes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109621795397671625, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
-      propertyPath: skyBoxes.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9e62f9ce0f9944843a03561a2c9004be, type: 2}
-    - target: {fileID: 1109621795397671625, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
-      propertyPath: skyBoxes.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: a02424b443e70c34895d55eb1dd01f5c, type: 2}
-    - target: {fileID: 1109621795397671625, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
-      propertyPath: skyBoxes.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 84fd6e9b2523a1b4fbe009297dfae7ef, type: 2}
-    - target: {fileID: 1109621795397671625, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
-      propertyPath: skyBoxes.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: a5598dc7ff13df040af7355252a83102, type: 2}
     - target: {fileID: 1109621795397671636, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
       propertyPath: m_Name
       value: PLAYER

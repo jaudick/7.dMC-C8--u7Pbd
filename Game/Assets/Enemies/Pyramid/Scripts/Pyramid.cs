@@ -59,6 +59,7 @@ public class Pyramid : Controller
                 Rigidbody rbody = pyr.GetComponent<Rigidbody>();
                 rbody.velocity = (pyr.transform.forward.normalized) * spawnVelocity;
                 pyr.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;
+                pyr.GetComponent<SpawnedPyramid>().parent = gameObject;
             }
             yield return new WaitForSeconds(spawnTime);
             StartCoroutine(Spawn());

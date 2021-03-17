@@ -116,6 +116,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
                     jumpedOfWallVelocity = rbody.velocity / 2;
                 }
 
+                wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 currentWallRunUpForce = wallRunUpForce;
                 justJumpedOffWall = true;
                 getNextWall = true;
@@ -170,6 +171,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
         if (isGrounded)
         {
+            wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
             justJumpedOffEnemy = false;
             canDoInput = true;
             getNextWall = true;

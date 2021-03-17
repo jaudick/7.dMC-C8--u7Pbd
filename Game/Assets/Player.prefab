@@ -503,6 +503,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1403feb953b3e64cb03c96618ccb925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skyBoxes:
+  - {fileID: 2100000, guid: 9e62f9ce0f9944843a03561a2c9004be, type: 2}
+  - {fileID: 2100000, guid: a02424b443e70c34895d55eb1dd01f5c, type: 2}
+  - {fileID: 2100000, guid: 84fd6e9b2523a1b4fbe009297dfae7ef, type: 2}
+  - {fileID: 2100000, guid: a5598dc7ff13df040af7355252a83102, type: 2}
 --- !u!82 &1415530646
 AudioSource:
   m_ObjectHideFlags: 0
