@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3784741807214107041}
   - component: {fileID: -2676904978934576986}
   m_Layer: 0
-  m_Name: DiamondBulletExplosion
+  m_Name: HyperCubeBlueExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ ParticleSystem:
   m_GameObject: {fileID: 720135207087125495}
   serializedVersion: 7
   lengthInSec: 1
-  simulationSpeed: 3
+  simulationSpeed: 5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -286,7 +286,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1193,7 +1193,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -4818,7 +4818,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb0061083dc1e9f41941e717af2f418f, type: 2}
+  - {fileID: 2100000, guid: 85a038234a63d044e9b3b9c59537b432, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5160,7 +5160,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9692,7 +9692,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb0061083dc1e9f41941e717af2f418f, type: 2}
+  - {fileID: 2100000, guid: 85a038234a63d044e9b3b9c59537b432, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

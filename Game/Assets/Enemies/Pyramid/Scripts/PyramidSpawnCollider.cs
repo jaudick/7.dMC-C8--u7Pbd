@@ -6,9 +6,13 @@ public class PyramidSpawnCollider : MonoBehaviour
 {
     [SerializeField] private SpawnedPyramid spawnedPyramid;
     Rigidbody rbody;
+    [SerializeField] private GameObject trailPartice;
+    [SerializeField] private GameObject hitParticle;
+    public ParticleHolder particleHolder;
 
     private void Start()
     {
+        particleHolder = FindObjectOfType<ParticleHolder>();
         rbody = GetComponent<Rigidbody>();
     }
     private void Update()
@@ -19,16 +23,27 @@ public class PyramidSpawnCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !spawnedPyramid.frozen)
         {
-            //Debug.Log("<color=red>Dead</color>");
-            Destroy(transform.parent.gameObject);
+            DestroyParticle();
         }
 
         else if (collision.gameObject != spawnedPyramid.parent && !spawnedPyramid.frozen)
         {
-            //Debug.Log("<color=yellow>Destroyed</color>");
-            if (spawnedPyramid.hitParticle != null) Instantiate(spawnedPyramid.hitParticle);
-            Destroy(transform.parent.gameObject);
+            DestroyParticle();
         }
 
+    }
+
+    public void DestroyParticle()
+    {
+        Vector3 scale = trailPartice.transform.localScale;
+        trailPartice.transform.SetParent(particleHolder.transform);
+        trailPartice.transform.localScale = scale;
+        trailPartice.GetComponent<ParticleDestoyer>().DestroyParticle();
+        if (hitParticle != null)
+        {
+            GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
+            explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
+        }
+        Destroy(transform.parent.gameObject);
     }
 }

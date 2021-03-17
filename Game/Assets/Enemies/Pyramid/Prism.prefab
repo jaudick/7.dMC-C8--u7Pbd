@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4685f7ecf57e0c429aaf94a2a221d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeZone: 0
+  timeZone: 3
   active: {fileID: 2100000, guid: 8ea5fb190c7b3cf4a80b2105cabd7249, type: 2}
   stopped: {fileID: 2100000, guid: dfab4aa71db122e4db32940641466e26, type: 2}
 --- !u!1 &7543506823389141068
@@ -412,7 +412,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: cc719daef73e1154c92ce9e610be067c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8ea5fb190c7b3cf4a80b2105cabd7249, type: 2}
+      objectReference: {fileID: 2100000, guid: dfab4aa71db122e4db32940641466e26, type: 2}
     - target: {fileID: 919132149155446097, guid: cc719daef73e1154c92ce9e610be067c, type: 3}
       propertyPath: m_Name
       value: Prism

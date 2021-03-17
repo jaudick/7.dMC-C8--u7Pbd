@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class HyperCube : Controller
 {
-    public GameObject targ;
     [SerializeField] private GameObject hitParticle;
+    [SerializeField] private GameObject trailPartice;
+    public ParticleHolder particleHolder;
+    public GameObject targ;
     public float burst = 2;
     public float speed = 25;
     public GameObject parent;
@@ -40,6 +42,7 @@ public class HyperCube : Controller
     // Start is called before the first frame update
     void Start()
     {
+        particleHolder = FindObjectOfType<ParticleHolder>();
         rbody = GetComponent<Rigidbody>();
         localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
         setTime(localTime);
@@ -71,15 +74,12 @@ public class HyperCube : Controller
     {
         if (collision.gameObject.CompareTag("Player") && localTime > 0)
         {
-            //Debug.Log("<color=red>Dead</color>");
-            if (hitParticle != null) Instantiate(hitParticle);
+            DestroyParticle();
 
         }
         else if (collision.gameObject != parent && localTime > 0 && collision.gameObject.layer != 9)
         {
-            //Debug.Log("<color=yellow>Destroyed</color>");
-            if (hitParticle != null) Instantiate(hitParticle);
-            Destroy(gameObject);
+            DestroyParticle();
         }
     }
 
@@ -106,52 +106,18 @@ public class HyperCube : Controller
 
         StartCoroutine(GetTarget());
     }
+    private void DestroyParticle()
+    {
+        Vector3 scale = trailPartice.transform.localScale;
+        trailPartice.transform.SetParent(particleHolder.transform);
+        trailPartice.transform.localScale = scale;
+        trailPartice.GetComponent<ParticleDestoyer>().DestroyParticle();
+        if (hitParticle != null)
+        {
+            GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
+            explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
+        }
+        Destroy(gameObject);
+    }
+
 }
-
-
-
-
-
-//if (f == 0)
-//resetRotation = 5;
-//private float resetRotation;
-//private bool go = false;
-//private float current = 1;
-//private float slowDown = 0.25f;
-/*
-if(localTime != 0)
-{
-    //transform.LookAt(targ.transform);
-    Vector3 whereToLook = targ.transform.position - transform.position;
-    resetRotation += 2 * Time.deltaTime * localTime;
-    if (resetRotation >= 6) resetRotation += 50 * Time.deltaTime * localTime;
-    resetRotation = Mathf.Clamp(resetRotation, 5, 100);
-    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(whereToLook, Vector3.up), resetRotation * Time.deltaTime * localTime);
-}*/
-//Use for pyramid
-/*
-if (burst < -1)
-{
-    go = false;
-    burst = 2;
-    GetComponent<Rigidbody>().velocity = Vector3.zero;
-}*/
-/*
-if (burst < 0 && !go)
-{
-    last = targ.transform.position + Vector3.up + offset;
-    burst -= Time.deltaTime * localTime;
-    go = true;
-}
-if (go)
-{
-    burst -= Time.deltaTime * localTime;
-    GetComponent<Rigidbody>().velocity = (Vector3.Normalize(last - transform.position)) * speed * localTime;
-}
-
-else
-{
-    last = targ.transform.position + Vector3.up + offset;
-    GetComponent<Rigidbody>().velocity = (Vector3.Normalize(last - transform.position)) * speed * localTime/5;
-    burst -= Time.deltaTime * localTime;
-}*/

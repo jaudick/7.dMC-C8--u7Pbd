@@ -7,6 +7,7 @@ public class SpawnedPyramid : Controller
     public GameObject hitParticle;
     public GameObject parent;
     [SerializeField] private PyramidSpawnCollider spawnCollider;
+    [SerializeField] private GameObject realCollider;
     private Vector3 velocity;
     private Rigidbody rbody;
     private float localTime;
@@ -25,12 +26,14 @@ public class SpawnedPyramid : Controller
         {
             projectileAudio.PlayInactive();
             spawnCollider.gameObject.layer = 8;
+            realCollider.layer = 8;
             gameObject.layer = 8;
         }
         else
         {
             projectileAudio.PlayActive();
             spawnCollider.gameObject.layer = 9;
+            realCollider.layer = 9;
             gameObject.layer = 9;
         }
     }
@@ -52,8 +55,7 @@ public class SpawnedPyramid : Controller
             timeTillDestroy += Time.deltaTime * localTime;
             if (timeTillDestroy >= timeToDestroy)
             {
-                if (hitParticle != null) Instantiate(hitParticle);
-                Destroy(gameObject);
+                spawnCollider.DestroyParticle();
             }
         }
         else

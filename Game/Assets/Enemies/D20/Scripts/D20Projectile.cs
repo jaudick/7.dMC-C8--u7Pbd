@@ -5,6 +5,8 @@ using UnityEngine;
 public class D20Projectile : Controller
 {
     [SerializeField] private GameObject hitParticle;
+    [SerializeField] private GameObject trailPartice;
+    public ParticleHolder particleHolder;
     //[SerializeField] private Shiftable shiftable;
     public GameObject parent;
     private Vector3 velocity;
@@ -20,6 +22,7 @@ public class D20Projectile : Controller
     }
     void Start()
     {
+        particleHolder = FindObjectOfType<ParticleHolder>();
         rbody = GetComponent<Rigidbody>();
         velocity = rbody.velocity;
         setTime(TimeCore.times[GetComponent<Shiftable>().timeZone]);
@@ -29,13 +32,13 @@ public class D20Projectile : Controller
     {
         if (collision.gameObject.CompareTag("Player") && !frozen)
         {
+            DestroyParticle();
             //Debug.Log("<color=red>Dead</color>");
         }
         else if (collision.gameObject != parent && !frozen)
         {
+            DestroyParticle();
             //Debug.Log("<color=yellow>Destroyed</color>");
-            if (hitParticle != null) Instantiate(hitParticle);
-            Destroy(gameObject);
         }
 
     }
@@ -65,7 +68,7 @@ public class D20Projectile : Controller
             timeTillDestroy += Time.deltaTime * localTime;
             if (timeTillDestroy >= timeToDestroy)
             {
-                if (hitParticle != null) Instantiate(hitParticle);
+                DestroyParticle();
                 Destroy(gameObject);
             }
         }
@@ -74,5 +77,19 @@ public class D20Projectile : Controller
             rbody.velocity = Vector3.zero;
             rbody.isKinematic = true;
         }
+    }
+
+    private void DestroyParticle()
+    {
+        Vector3 scale = trailPartice.transform.localScale;
+        trailPartice.transform.SetParent(particleHolder.transform);
+        trailPartice.transform.localScale = scale;
+        trailPartice.GetComponent<ParticleDestoyer>().DestroyParticle();
+        if (hitParticle != null)
+        {
+            GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
+            explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
+        }
+        Destroy(gameObject);
     }
 }
