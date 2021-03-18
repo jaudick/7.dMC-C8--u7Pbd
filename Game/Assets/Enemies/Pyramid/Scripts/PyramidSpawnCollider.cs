@@ -10,9 +10,12 @@ public class PyramidSpawnCollider : MonoBehaviour
     [SerializeField] private GameObject hitParticle;
     public ParticleHolder particleHolder;
 
-    private void Start()
+    private void Awake()
     {
         particleHolder = FindObjectOfType<ParticleHolder>();
+    }
+    private void Start()
+    {
         rbody = GetComponent<Rigidbody>();
     }
     private void Update()
