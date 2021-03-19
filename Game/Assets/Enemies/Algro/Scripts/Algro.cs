@@ -11,18 +11,23 @@ public class Algro : Controller
     public GameObject hyper;
     public GameObject player;
     private float counter = 0;
+    private AlgroAudio algroAudio;
     public override void setTime(float f)
     {
         localTime = f;
         bool frozen = f == 0;
         if (frozen)
+        {
             gameObject.layer = 8;
+            algroAudio.StopAudio();
+        }
         else
             gameObject.layer = 9;
     }
 
     private void Awake()
     {
+        algroAudio = GetComponent<AlgroAudio>();
         player = FindObjectOfType<PlayerMovementRigidbody>().gameObject;
     }
     void Start()
@@ -38,6 +43,7 @@ public class Algro : Controller
         }
         if (reload <= 0)
         {
+            algroAudio.PlayAlgroSound();
             reload = reloadTime;
             GameObject g = Instantiate(hyper,transform);
             g.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;

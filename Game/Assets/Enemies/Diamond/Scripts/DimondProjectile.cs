@@ -32,14 +32,12 @@ public class DimondProjectile : Controller
     {
         if(collision.gameObject.CompareTag("Player")&&!frozen)
         {
-            DestroyParticle();
-            Destroy(gameObject);
+            StartCoroutine(DestroyParticle());
             //Debug.Log("<color=red>Dead</color>");
         }
         else if(collision.gameObject!=parent && !frozen)
         {
-            DestroyParticle();
-            Destroy(gameObject);
+            StartCoroutine(DestroyParticle());
         }
 
     }
@@ -70,7 +68,7 @@ public class DimondProjectile : Controller
             timeTillDestroy += Time.deltaTime * localTime;
             if (timeTillDestroy >= timeToDestroy)
             {
-                DestroyParticle();
+                StartCoroutine(DestroyParticle());
             }
         }
         else
@@ -80,7 +78,7 @@ public class DimondProjectile : Controller
         }
     }
 
-    private void DestroyParticle()
+    private IEnumerator DestroyParticle()
     {
         Vector3 scale = trailPartice.transform.localScale;
         trailPartice.transform.SetParent(particleHolder.transform);
@@ -91,6 +89,15 @@ public class DimondProjectile : Controller
             GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
             explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
         }
+
+        AudioSource audio = GetComponent<AudioSource>();
+
+        while (audio.volume > 0)
+        {
+            audio.volume -= 0.1f;
+            yield return new WaitForEndOfFrame();
+        }
+        audio.Stop();
         Destroy(gameObject);
     }
 }

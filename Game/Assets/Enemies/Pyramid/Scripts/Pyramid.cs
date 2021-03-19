@@ -13,6 +13,7 @@ public class Pyramid : Controller
     public float rotationSpeed = 50f;
     public float spawnTime = 2f;
     public float spawnVelocity = 5f;
+    [SerializeField] private PyramidAudioManager pyrAudio;
 
     public override void setTime(float f)
     {
@@ -20,6 +21,7 @@ public class Pyramid : Controller
         localTime = f;
         if (frozen)
         {
+            pyrAudio.StopAudio();
             triangleCollider.layer = 8;
             gameObject.layer = 8;
         }
@@ -61,6 +63,7 @@ public class Pyramid : Controller
                 pyr.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;
                 pyr.GetComponent<SpawnedPyramid>().parent = gameObject;
             }
+            pyrAudio.PlayPyramidSound();
             yield return new WaitForSeconds(spawnTime);
             StartCoroutine(Spawn());
         }

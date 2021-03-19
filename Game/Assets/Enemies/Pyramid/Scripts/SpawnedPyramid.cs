@@ -55,7 +55,7 @@ public class SpawnedPyramid : Controller
             timeTillDestroy += Time.deltaTime * localTime;
             if (timeTillDestroy >= timeToDestroy)
             {
-                spawnCollider.DestroyParticle();
+                spawnCollider.VoidDestroyParticle();
             }
         }
         else

@@ -65,7 +65,7 @@ public class D20 : Controller
         }
         else
         {
-            yield return new WaitForSeconds(durationBetweenShotsInSeconds);
+            yield return new WaitForSeconds(Random.Range(1,3));
             StartCoroutine(Shoot());
         }
 

@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 42.5
+  m_Radius: 65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2490921520680234915
 MonoBehaviour:
@@ -205,7 +205,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bullet: {fileID: 1381241706051275011, guid: 283a1850467b9624aa03fdf2e76f603f, type: 3}
   shootBox: {fileID: 851128526447205879}
-  bulletSpeed: 30
+  bulletSpeed: 25
   positionPredictionValue: 10
   distancePredictionValue: 10
   durationBetweenShotsInSeconds: 1

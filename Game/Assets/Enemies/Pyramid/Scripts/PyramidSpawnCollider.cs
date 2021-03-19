@@ -26,17 +26,17 @@ public class PyramidSpawnCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !spawnedPyramid.frozen)
         {
-            DestroyParticle();
+            StartCoroutine(DestroyParticle());
         }
 
         else if (collision.gameObject != spawnedPyramid.parent && !spawnedPyramid.frozen)
         {
-            DestroyParticle();
+            StartCoroutine(DestroyParticle());
         }
 
     }
 
-    public void DestroyParticle()
+    public IEnumerator DestroyParticle()
     {
         Vector3 scale = trailPartice.transform.localScale;
         trailPartice.transform.SetParent(particleHolder.transform);
@@ -47,6 +47,19 @@ public class PyramidSpawnCollider : MonoBehaviour
             GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
             explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
         }
+        AudioSource audio = GetComponentInParent<AudioSource>();
+
+        while (audio.volume > 0)
+        {
+            audio.volume -= 0.1f;
+            yield return new WaitForEndOfFrame();
+        }
+        audio.Stop();
         Destroy(transform.parent.gameObject);
+    }
+
+    public void VoidDestroyParticle()
+    {
+        StartCoroutine(DestroyParticle());
     }
 }

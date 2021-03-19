@@ -32,12 +32,12 @@ public class D20Projectile : Controller
     {
         if (collision.gameObject.CompareTag("Player") && !frozen)
         {
-            DestroyParticle();
+            StartCoroutine(DestroyParticle());
             //Debug.Log("<color=red>Dead</color>");
         }
         else if (collision.gameObject != parent && !frozen)
         {
-            DestroyParticle();
+            StartCoroutine(DestroyParticle());
             //Debug.Log("<color=yellow>Destroyed</color>");
         }
 
@@ -68,8 +68,7 @@ public class D20Projectile : Controller
             timeTillDestroy += Time.deltaTime * localTime;
             if (timeTillDestroy >= timeToDestroy)
             {
-                DestroyParticle();
-                Destroy(gameObject);
+                StartCoroutine(DestroyParticle());
             }
         }
         else
@@ -79,7 +78,7 @@ public class D20Projectile : Controller
         }
     }
 
-    private void DestroyParticle()
+    private IEnumerator DestroyParticle()
     {
         Vector3 scale = trailPartice.transform.localScale;
         trailPartice.transform.SetParent(particleHolder.transform);
@@ -90,6 +89,15 @@ public class D20Projectile : Controller
             GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
             explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
         }
+
+        AudioSource audio = GetComponent<AudioSource>();
+
+        while (audio.volume > 0)
+        {
+            audio.volume -= 0.1f;
+            yield return new WaitForEndOfFrame();
+        }
+        audio.Stop();
         Destroy(gameObject);
     }
 }

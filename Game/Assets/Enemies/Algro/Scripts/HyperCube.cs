@@ -74,12 +74,11 @@ public class HyperCube : Controller
     {
         if (collision.gameObject.CompareTag("Player") && localTime > 0)
         {
-            DestroyParticle();
-
+            StartCoroutine(DestroyParticle());
         }
         else if (collision.gameObject != parent && localTime > 0 && collision.gameObject.layer != 9)
         {
-            DestroyParticle();
+            StartCoroutine(DestroyParticle());
         }
     }
 
@@ -106,7 +105,7 @@ public class HyperCube : Controller
 
         StartCoroutine(GetTarget());
     }
-    private void DestroyParticle()
+    private IEnumerator DestroyParticle()
     {
         Vector3 scale = trailPartice.transform.localScale;
         trailPartice.transform.SetParent(particleHolder.transform);
@@ -117,6 +116,15 @@ public class HyperCube : Controller
             GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
             explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
         }
+
+        AudioSource audio = GetComponent<AudioSource>();
+
+        while (audio.volume > 0)
+        {
+            audio.volume -= 0.05f;
+            yield return new WaitForEndOfFrame();
+        }
+        audio.Stop();
         Destroy(gameObject);
     }
 
