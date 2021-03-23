@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2015642483985076569}
   - component: {fileID: -7705932194035287284}
   - component: {fileID: 5539708608644986032}
+  - component: {fileID: 7651261578507756805}
   m_Layer: 9
   m_Name: D20-Projectile
   m_TagString: Enemy
@@ -51,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4685f7ecf57e0c429aaf94a2a221d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localTime: 0
   timeZone: 0
   active: {fileID: 2100000, guid: f6cdcb5a2fae26549857cb5d177cfe79, type: 2}
   stopped: {fileID: 2100000, guid: 3485e02a20993fd48b9b527dd44e7fbc, type: 2}
@@ -223,6 +225,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7651261578507756805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974422634716976636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61f4a674ed126f4fa081f8184d5af98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &4974422633597666890
 Animator:
   serializedVersion: 3

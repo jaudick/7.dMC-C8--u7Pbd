@@ -12,9 +12,12 @@ public class CheckPointManager : MonoBehaviour
     private ColorAdjustments color;
     private AudioSource source;
     public AudioClip respawnSound;
+    public bool isInvincible;
+    private bool respawning;
 
     private void Awake()
     {
+        respawning = false;
         source = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerMovementRigidbody>();
         volume = FindObjectOfType<Volume>();
@@ -25,11 +28,13 @@ public class CheckPointManager : MonoBehaviour
     
     public void Respawn()
     {
-        StartCoroutine(RespawnCo());
+        if(!isInvincible && !respawning)
+            StartCoroutine(RespawnCo());
     }
 
     private IEnumerator RespawnCo()
     {
+        respawning = true;
         float counter = 0;
         Vector3 originalPosition = player.transform.position;
         source.PlayOneShot(respawnSound);
@@ -54,5 +59,6 @@ public class CheckPointManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         color.postExposure.value = 0;
+        respawning = false;
     }
 }

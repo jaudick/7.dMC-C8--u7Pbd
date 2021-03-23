@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shiftable : MonoBehaviour
 {
-    private float localTime = 0;
+    public float localTime = 0;
     public int timeZone;
     public Material active, stopped;
     // Start is called before the first frame update

@@ -38,24 +38,27 @@ public class PyramidSpawnCollider : MonoBehaviour
 
     public IEnumerator DestroyParticle()
     {
-        Vector3 scale = trailPartice.transform.localScale;
-        trailPartice.transform.SetParent(particleHolder.transform);
-        trailPartice.transform.localScale = scale;
-        trailPartice.GetComponent<ParticleDestoyer>().DestroyParticle();
-        if (hitParticle != null)
+        if (trailPartice != null)
         {
-            GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
-            explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
-        }
-        AudioSource audio = GetComponentInParent<AudioSource>();
+            Vector3 scale = trailPartice.transform.localScale;
+            trailPartice.transform.SetParent(particleHolder.transform);
+            trailPartice.transform.localScale = scale;
+            trailPartice.GetComponent<ParticleDestoyer>().DestroyParticle();
+            if (hitParticle != null)
+            {
+                GameObject explosion = Instantiate(hitParticle, transform.position, Quaternion.identity);
+                explosion.GetComponent<ParticleDestoyer>().DestroyParticle(2f);
+            }
+            AudioSource audio = GetComponentInParent<AudioSource>();
 
-        while (audio.volume > 0)
-        {
-            audio.volume -= 0.1f;
-            yield return new WaitForEndOfFrame();
+            while (audio.volume > 0)
+            {
+                audio.volume -= 0.1f;
+                yield return new WaitForEndOfFrame();
+            }
+            audio.Stop();
+            Destroy(transform.parent.gameObject);
         }
-        audio.Stop();
-        Destroy(transform.parent.gameObject);
     }
 
     public void VoidDestroyParticle()

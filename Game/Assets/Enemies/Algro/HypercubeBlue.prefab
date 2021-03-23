@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 6620457794003534590}
   - component: {fileID: 2960657103484297263}
   - component: {fileID: 4492804011168823679}
+  - component: {fileID: 5920583780838136048}
   m_Layer: 9
   m_Name: HypercubeBlue
   m_TagString: Untagged
@@ -302,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 6278579286834565298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 169114794113972879}
   - {fileID: 557157274307940137}
@@ -383,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4685f7ecf57e0c429aaf94a2a221d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localTime: 0
   timeZone: 0
   active: {fileID: 2100000, guid: 63165409f21eb6942b20be96b018b481, type: 2}
   stopped: {fileID: 2100000, guid: 2c26bd8c3a23a5f4ca75e158e294f54c, type: 2}
@@ -518,6 +520,18 @@ MonoBehaviour:
   audioSource: {fileID: 2960657103484297263}
   active: {fileID: 8300000, guid: 2da3c172032f27c4d90dd3a59f0876a3, type: 3}
   inactive: {fileID: 8300000, guid: 3063bd5d103e14c40bfc17d43f1471dc, type: 3}
+--- !u!114 &5920583780838136048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278579286834565298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61f4a674ed126f4fa081f8184d5af98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9161248338395418838
 GameObject:
   m_ObjectHideFlags: 0
