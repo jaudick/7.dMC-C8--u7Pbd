@@ -15,6 +15,8 @@ public class Pyramid : Controller
     public float spawnVelocity = 5f;
     [SerializeField] private PyramidAudioManager pyrAudio;
 
+    float timer = 0;
+
     public override void setTime(float f)
     {
         frozen = f == 0;
@@ -40,15 +42,33 @@ public class Pyramid : Controller
     private void Update()
     {
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * localTime);
+
+        timer += Time.deltaTime * localTime;
+        if (timer >= spawnTime)
+        {
+            foreach (Transform transformBox in spawnBoxes)
+            {
+                GameObject pyr = Instantiate(pyramidSpawn);
+                pyr.transform.position = transformBox.position;
+                pyr.transform.forward = transformBox.forward;
+                Rigidbody rbody = pyr.GetComponent<Rigidbody>();
+                rbody.velocity = (pyr.transform.forward.normalized) * spawnVelocity;
+                pyr.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;
+                pyr.GetComponent<SpawnedPyramid>().parent = gameObject;
+            }
+            pyrAudio.PlayPyramidSound();
+            timer = 0;
+        }
     }
 
     private void Start()
     {
         localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
         setTime(localTime);
-        StartCoroutine(Spawn());
+        //StartCoroutine(Spawn());
     }
 
+    /*
     private IEnumerator Spawn()
     {
         if (!frozen)
@@ -73,5 +93,5 @@ public class Pyramid : Controller
             yield return new WaitForSeconds(1f);
             StartCoroutine(Spawn());
         }
-    }
+    }*/
 }

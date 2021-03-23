@@ -9,7 +9,8 @@ public class HyperCube : Controller
     public ParticleHolder particleHolder;
     public GameObject targ;
     public float burst = 2;
-    public float speed = 25;
+    public float speed = 20;
+    private float init;
     public GameObject parent;
     private float localTime;
     private Vector3 last;
@@ -42,6 +43,7 @@ public class HyperCube : Controller
     // Start is called before the first frame update
     void Start()
     {
+        init = speed;
         particleHolder = FindObjectOfType<ParticleHolder>();
         rbody = GetComponent<Rigidbody>();
         localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
@@ -61,7 +63,7 @@ public class HyperCube : Controller
             if (timeTillDestroy >= timeToDestroy)
             {
                 if (hitParticle != null) Instantiate(hitParticle);
-                Destroy(gameObject);
+                StartCoroutine(DestroyParticle());
             }
         }
         else
@@ -84,24 +86,24 @@ public class HyperCube : Controller
 
     private IEnumerator Spawn()
     {
-        speed = 10;
+        speed = init;
         last = targ.transform.position + Vector3.up + offset;
         rbody.velocity = ((Vector3.Normalize(last - transform.position)) * speed) * localTime;
-        yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.2f));
         StartCoroutine(GetTarget());
     }
 
     private IEnumerator GetTarget()
     {
-        speed = 15;
-        last = targ.transform.position + Vector3.up + offset;
+        speed = init;
+        last = targ.transform.position + Vector3.up + offset/2;
         rbody.velocity = ((Vector3.Normalize(last - transform.position)) * speed) * localTime;
-        yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));
 
-        last = targ.transform.position + Vector3.up + offset;
+        last = targ.transform.position + Vector3.up + offset/2;
         rbody.velocity = ((Vector3.Normalize(last - transform.position)) * speed) * localTime;
-        speed = 5;
-        yield return new WaitForSeconds(Random.Range(0.2f, 1f));
+        speed = init/2;
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
 
         StartCoroutine(GetTarget());
     }
