@@ -14,6 +14,7 @@ public class Pyramid : Controller
     public float spawnTime = 2f;
     public float spawnVelocity = 5f;
     [SerializeField] private PyramidAudioManager pyrAudio;
+    private PrismTracker tracker;
 
     float timer = 0;
 
@@ -37,53 +38,38 @@ public class Pyramid : Controller
     private void Awake()
     {
         player = FindObjectOfType<PlayerMovementRigidbody>();
+        tracker = GetComponentInChildren<PrismTracker>();
     }
 
     private void Update()
     {
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * localTime);
-
-        timer += Time.deltaTime * localTime;
-        if (timer >= spawnTime)
-        {
-            foreach (Transform transformBox in spawnBoxes)
-            {
-                GameObject pyr = Instantiate(pyramidSpawn);
-                pyr.transform.position = transformBox.position;
-                pyr.transform.forward = transformBox.forward;
-                Rigidbody rbody = pyr.GetComponent<Rigidbody>();
-                rbody.velocity = (pyr.transform.forward.normalized) * spawnVelocity;
-                pyr.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;
-                pyr.GetComponent<SpawnedPyramid>().parent = gameObject;
-            }
-            pyrAudio.PlayPyramidSound();
-            timer = 0;
-        }
     }
 
     private void Start()
     {
         localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
         setTime(localTime);
-        //StartCoroutine(Spawn());
+        StartCoroutine(Spawn());
     }
 
-    /*
+    
     private IEnumerator Spawn()
     {
-        if (!frozen)
+        if (!frozen && tracker.tracking)
         {
-            foreach (Transform transformBox in spawnBoxes)
+            pyrAudio.PlayPyramidSound();
+            for (int i = 0; i<4 && !frozen; i++)
             {
                 GameObject pyr = Instantiate(pyramidSpawn);
-                pyr.transform.position = transformBox.position;
-                pyr.transform.forward = transformBox.forward;
+                pyr.transform.position = spawnBoxes[i].position;
+                pyr.transform.forward = spawnBoxes[i].forward;
                 Rigidbody rbody = pyr.GetComponent<Rigidbody>();
                 rbody.velocity = (pyr.transform.forward.normalized) * spawnVelocity;
                 pyr.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;
                 pyr.GetComponent<SpawnedPyramid>().parent = gameObject;
+                yield return new WaitForSeconds(0.075f);
             }
-            pyrAudio.PlayPyramidSound();
             yield return new WaitForSeconds(spawnTime);
             StartCoroutine(Spawn());
         }
@@ -93,5 +79,5 @@ public class Pyramid : Controller
             yield return new WaitForSeconds(1f);
             StartCoroutine(Spawn());
         }
-    }*/
+    }
 }

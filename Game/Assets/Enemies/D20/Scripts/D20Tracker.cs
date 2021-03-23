@@ -6,7 +6,7 @@ public class D20Tracker : MonoBehaviour
 {
     [SerializeField] private D20 d20;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) d20.isTracking = true;
 

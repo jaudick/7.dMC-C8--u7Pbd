@@ -18,7 +18,7 @@ public class ProjectileKillbox : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerMovementRigidbody>() != null && !isFrozen)
         {
-            checkPointManager.Respawn();
+            if (checkPointManager!=null) checkPointManager.Respawn();
         }
     }
 

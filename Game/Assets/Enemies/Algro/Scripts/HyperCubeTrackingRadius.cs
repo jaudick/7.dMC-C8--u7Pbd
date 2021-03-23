@@ -6,7 +6,7 @@ public class HyperCubeTrackingRadius : MonoBehaviour
 {
     [SerializeField] private HyperCube hyperCube;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) hyperCube.isTracking = true;
         

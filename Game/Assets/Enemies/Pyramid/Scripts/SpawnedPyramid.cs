@@ -12,7 +12,7 @@ public class SpawnedPyramid : Controller
     private Rigidbody rbody;
     private float localTime;
     private float timeTillDestroy = 0;
-    private float timeToDestroy = 4f;
+    private float timeToDestroy = 5f;
     public bool frozen = false;
     float counter = 0;
     [SerializeField] private ProjectileAudio projectileAudio;

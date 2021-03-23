@@ -6,7 +6,7 @@ public class DimondTracker : MonoBehaviour
 {
     [SerializeField] private Dimond dimond;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) dimond.isTracking = true;
 

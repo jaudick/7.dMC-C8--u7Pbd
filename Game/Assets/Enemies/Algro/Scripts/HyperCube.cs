@@ -8,7 +8,7 @@ public class HyperCube : Controller
     [SerializeField] private GameObject trailPartice;
     public ParticleHolder particleHolder;
     public GameObject targ;
-    public float burst = 2;
+    //public float burst = 2;
     public float speed = 20;
     private float init;
     public GameObject parent;

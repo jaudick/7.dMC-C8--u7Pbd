@@ -405,7 +405,7 @@ MonoBehaviour:
   particleHolder: {fileID: 0}
   targ: {fileID: 2787827359041496021}
   burst: 2
-  speed: 25
+  speed: 20
   parent: {fileID: 0}
   isTracking: 1
   hyperCubeAudio: {fileID: 4492804011168823679}

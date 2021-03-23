@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occupied: 0
   reload: 0
-  reloadTime: 4
+  reloadTime: 3
   hyper: {fileID: 6278579286834565298, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
   player: {fileID: 0}
 --- !u!114 &1771386664298591965

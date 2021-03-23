@@ -24,7 +24,8 @@ public class CheckPoint : MonoBehaviour
     {
         if(other.GetComponent<PlayerMovementRigidbody>()!=null)
         {
-            if(checkPointManager.lastCheckpoint!=this)
+            checkPointManager.isInvincible = true;
+            if (checkPointManager.lastCheckpoint!=this)
             {
                 audioSource.PlayOneShot(checkpointSound);
             }
@@ -34,13 +35,14 @@ public class CheckPoint : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<PlayerMovementRigidbody>() != null)
         {
             checkPointManager.isInvincible = true;
         }
-    }
+    }*/
 
     private void OnTriggerExit(Collider other)
     {
