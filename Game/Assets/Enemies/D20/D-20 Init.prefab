@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 686709228}
   - component: {fileID: 686709227}
   m_Layer: 9
-  m_Name: D-20
+  m_Name: D-20 G
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4685f7ecf57e0c429aaf94a2a221d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localTime: 0
   timeZone: 0
   active: {fileID: 0}
   stopped: {fileID: 0}

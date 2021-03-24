@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5539708608644986032}
   - component: {fileID: 7651261578507756805}
   m_Layer: 9
-  m_Name: D20-Projectile
+  m_Name: D20-Proj G
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
