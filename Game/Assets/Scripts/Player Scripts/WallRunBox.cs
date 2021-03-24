@@ -13,7 +13,7 @@ public class WallRunBox : MonoBehaviour
         player = GetComponentInParent<PlayerMovementRigidbody>();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject))
         {
