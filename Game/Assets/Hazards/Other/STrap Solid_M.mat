@@ -127,7 +127,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _SampleGI: 0
-    - _Smoothness: 1
+    - _Smoothness: 0.506
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
@@ -144,5 +144,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 1.4901961, b: 2.9960785, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
-    - _SpecColor: {r: 0, g: 0.98039216, b: 1, a: 1}
+    - _SpecColor: {r: 0, g: 0.16648172, b: 0.16981131, a: 1}
   m_BuildTextureStacks: []
