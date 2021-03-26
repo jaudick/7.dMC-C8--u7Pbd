@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &916840094482242597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6896678199779326009}
+  - component: {fileID: 1319712339087932218}
+  m_Layer: 0
+  m_Name: GroundBoxCollider (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6896678199779326009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916840094482242597}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.0865, y: -0.001156741, z: 0}
+  m_LocalScale: {x: 0.015059412, y: 0.02179848, z: 0.19337673}
+  m_Children: []
+  m_Father: {fileID: 8712491427070429422}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1319712339087932218
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916840094482242597}
+  m_Material: {fileID: 13400000, guid: 0e867ad0833bca743ab0e31cb947337c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.23, y: 1, z: 1.04}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2698350536341076215
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +150,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2834338487990820971}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.002, y: -0.001156741, z: -0.0942}
-  m_LocalScale: {x: 0.0010164172, y: 0.19285755, z: 0.19651109}
+  m_LocalPosition: {x: -0.002, y: -0.001156741, z: -0.0791}
+  m_LocalScale: {x: 0.0032223847, y: 0.19285755, z: 0.19651109}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 2
@@ -151,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 3348589938913441561}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -0.096, y: -0.001156741, z: 0}
-  m_LocalScale: {x: 0.015059412, y: 0.009242312, z: 0.19337673}
+  m_LocalScale: {x: 0.015059412, y: 0.011494664, z: 0.19337673}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 1
@@ -194,8 +238,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4477305288563329105}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.002, y: -0.001156741, z: 0.0942}
-  m_LocalScale: {x: 0.0010164172, y: 0.19285755, z: 0.19651109}
+  m_LocalPosition: {x: -0.002, y: -0.001156741, z: 0.0792}
+  m_LocalScale: {x: 0.002968853, y: 0.19285755, z: 0.19651109}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 3
@@ -238,8 +282,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5790737192882088705}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.004, y: 0.0993, z: 0}
-  m_LocalScale: {x: 0.015496909, y: 0.18933478, z: 0.001872096}
+  m_LocalPosition: {x: 0.0005, y: 0.092, z: -0.001}
+  m_LocalScale: {x: 0.015496909, y: 0.20077716, z: 0.014041657}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 4
@@ -282,8 +326,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5900151282212191622}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.004, y: -0.099, z: 0}
-  m_LocalScale: {x: 0.01563961, y: 0.19037963, z: 0.0028313908}
+  m_LocalPosition: {x: -0.004, y: -0.0928, z: 0}
+  m_LocalScale: {x: 0.01563961, y: 0.19037963, z: 0.012267001}
   m_Children: []
   m_Father: {fileID: 8712491427070429422}
   m_RootOrder: 5
@@ -336,6 +380,7 @@ Transform:
   - {fileID: 3736475037255618832}
   - {fileID: 7404322336181540998}
   - {fileID: 328869984469950664}
+  - {fileID: 6896678199779326009}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
