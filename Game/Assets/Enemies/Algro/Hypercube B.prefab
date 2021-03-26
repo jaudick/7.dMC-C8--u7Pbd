@@ -7,14 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 199384858802481745, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6278579286834565298, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
       propertyPath: m_Name
       value: Hypercube B
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278579286834565298, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6620457794003534585, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
       propertyPath: timeZone
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6620457794003534590, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
+      propertyPath: trailPartice
+      value: 
+      objectReference: {fileID: 9058261370888343699}
     - target: {fileID: 6659185800151173640, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,3 +73,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
+--- !u!1 &9058261370888343699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199384858802481745, guid: 4704bef1d70b8e748859458ffa6df46f, type: 3}
+  m_PrefabInstance: {fileID: 9183178016471268034}
+  m_PrefabAsset: {fileID: 0}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 497465791382390966}
   - component: {fileID: 5751824298087311534}
   m_Layer: 0
-  m_Name: D20GreenTrail
+  m_Name: D20TrailGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4296204489892733664}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.89, y: 114.05, z: 890.93}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}

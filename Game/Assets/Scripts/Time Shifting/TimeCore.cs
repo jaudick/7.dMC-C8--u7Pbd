@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeCore : MonoBehaviour
 {
     public static float [] times = {0, 1, 1, 1};
-    private static int cd = 2;
+    private static int cd = 3;
     public static bool check = true;
 
     private void Update()
