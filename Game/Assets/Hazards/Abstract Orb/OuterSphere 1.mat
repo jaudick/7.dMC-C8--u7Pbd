@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OuterSphere
+  m_Name: OuterSphere 1
   m_Shader: {fileID: -6465566751694194690, guid: 291c0b32283b03140990be059a3359f5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -113,8 +113,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_852cb21a56284ac4b51ce51bd0d32dc8: {r: 0, g: 0.49999994, b: 0, a: 0}
-    - Color_d246cf713cdb42dbbb8a9c62887b2139: {r: 0, g: 0.1509434, b: 0, a: 0}
+    - Color_852cb21a56284ac4b51ce51bd0d32dc8: {r: 0.4509804, g: 0.05628896, b: 0, a: 0}
+    - Color_d246cf713cdb42dbbb8a9c62887b2139: {r: 0.46784553, g: 0.16901228, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
