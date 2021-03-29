@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1224268612864247867}
   - component: {fileID: 1224268612864247866}
   m_Layer: 0
-  m_Name: SpherePink 2
+  m_Name: SpherePink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
