@@ -11,11 +11,15 @@ public class GroundCheck : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
         {
+            StopCoroutine(ChangeTempGroundCheck());
+            player.tempIsGrounded = true;
             player.isGrounded = true;
         }
 
         if (other.gameObject.CompareTag("WallRun"))
         {
+            StopCoroutine(ChangeTempGroundCheck());
+            player.tempIsGrounded = false;
             player.isGrounded = false;
         }
     }
@@ -25,6 +29,14 @@ public class GroundCheck : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             player.isGrounded = false;
+            StartCoroutine(ChangeTempGroundCheck());
         }
+    }
+
+    private IEnumerator ChangeTempGroundCheck()
+    {
+        player.tempIsGrounded = true;
+        yield return new WaitForSeconds(0.1f);
+        player.tempIsGrounded = false;
     }
 }

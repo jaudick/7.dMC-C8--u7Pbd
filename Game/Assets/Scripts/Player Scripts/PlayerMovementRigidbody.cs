@@ -13,6 +13,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
 
     public bool isGrounded = true;
+    public bool tempIsGrounded = true;
     [SerializeField] Transform groundCheck;
     private float groundDistance = 0.4f;
     public LayerMask ground;
@@ -89,13 +90,6 @@ public class PlayerMovementRigidbody : MonoBehaviour
             headCamera.SetBool("Left", false);
         }
 
-        if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && isGrounded && canJumpAgain)
-        {
-            rbody.AddForce(0, jumpForce*2, 0, ForceMode.Impulse);
-            canJumpAgain = false;
-            StartCoroutine(ResetJump());
-        }
-
         if (isWallRunning && !isGrounded && !justJumpedOffWall)
         {
             if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && canJumpAgain)
@@ -128,6 +122,13 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
                 StartCoroutine(ResetJump());
             }
+        }
+
+        else if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && (isGrounded || tempIsGrounded) && canJumpAgain )
+        {
+            rbody.AddForce(0, jumpForce * 2, 0, ForceMode.Impulse);
+            canJumpAgain = false;
+            StartCoroutine(ResetJump());
         }
 
         if ((isGrounded && (Input.GetButtonDown("Slide") || ((Input.GetAxis("SlideController") > 0) && !holdingSlideTriggerInAir)) && !isWallRunning && canSlide))
