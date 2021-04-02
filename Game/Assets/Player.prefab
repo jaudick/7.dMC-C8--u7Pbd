@@ -459,6 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDoInput: 1
   isGrounded: 1
+  tempIsGrounded: 1
   groundCheck: {fileID: 0}
   ground:
     serializedVersion: 2

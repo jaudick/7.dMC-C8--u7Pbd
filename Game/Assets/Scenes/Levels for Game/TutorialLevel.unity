@@ -25610,6 +25610,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.093
       objectReference: {fileID: 0}
+    - target: {fileID: 7841881948150365699, guid: dd9036a6b2f22744ea8a1094b542c391, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.000087673456
+      objectReference: {fileID: 0}
+    - target: {fileID: 7841881948150365699, guid: dd9036a6b2f22744ea8a1094b542c391, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.09918
+      objectReference: {fileID: 0}
     - target: {fileID: 8332552553532953172, guid: dd9036a6b2f22744ea8a1094b542c391, type: 3}
       propertyPath: m_Name
       value: WallRunCube (42)

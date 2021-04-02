@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMovementRigidbody : MonoBehaviour
 {
-    float forwardSpeed = 11.5f;
-    float sideToSideSpeed = 10f;
-    float backSpeed = 9f;
+    float forwardSpeed = 12.5f;
+    float sideToSideSpeed = 11f;
+    float backSpeed = 10f;
     private float targetSpeed = 0f;
     public bool canDoInput = true;
     private PlayerAudio playerAudio;

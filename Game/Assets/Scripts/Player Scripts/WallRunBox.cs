@@ -7,14 +7,18 @@ public class WallRunBox : MonoBehaviour
     private PlayerMovementRigidbody player;
     public bool isRightBox;
     public bool isLeftBox;
+    int layer = 1 << 10;
 
     private void Start()
     {
         player = GetComponentInParent<PlayerMovementRigidbody>();
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
+        string name = player.lastWall != null ? player.lastWall.name : "null";
+        Debug.Log(other.gameObject.name + " : " + name);
         if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject))
         {
             if (player.getNextWall)
@@ -42,8 +46,9 @@ public class WallRunBox : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("WallRun"))
+        if (other.CompareTag("WallRun") && !player.isGrounded)
         {
+            Debug.Log(gameObject.name);
             player.isWallRunning = false;
             player.isWallRunningLeft = false;
             player.isWallRunningRight = false;
