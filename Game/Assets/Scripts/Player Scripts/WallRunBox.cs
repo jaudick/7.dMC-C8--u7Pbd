@@ -17,8 +17,6 @@ public class WallRunBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        string name = player.lastWall != null ? player.lastWall.name : "null";
-        Debug.Log(other.gameObject.name + " : " + name);
         if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject))
         {
             if (player.getNextWall)
