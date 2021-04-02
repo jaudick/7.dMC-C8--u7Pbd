@@ -200,7 +200,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
         else if (canDoInput && !dashing)
         {
-            if (isGrounded && !isWallRunning)
+            if (isGrounded && !isWallRunning) 
             {
                 rbody.velocity = new Vector3(move.x * Time.fixedDeltaTime * 100f * resultSpeedBasedOnDirection, rbody.velocity.y, move.z * Time.fixedDeltaTime * 100f * resultSpeedBasedOnDirection);
             }
