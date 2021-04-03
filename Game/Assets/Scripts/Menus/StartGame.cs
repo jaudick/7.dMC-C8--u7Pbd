@@ -7,9 +7,11 @@ public class StartGame : MonoBehaviour
     public Animator animatorMenu;
     public Animator animatorFade;
     public Animator animatorShrink;
+    public string sceneName;
 
     public void StartGameMethod()
     {
+        ChangeScene.sceneName = sceneName;
         animatorMenu.SetTrigger("Start");
         animatorFade.gameObject.SetActive(true);
         animatorFade.SetTrigger("Fade");
