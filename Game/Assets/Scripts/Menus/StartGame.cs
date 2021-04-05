@@ -11,6 +11,7 @@ public class StartGame : MonoBehaviour
 
     public void StartGameMethod()
     {
+        AudioMenu.audioMenu.PlaySelect();
         ChangeScene.sceneName = sceneName;
         animatorMenu.SetTrigger("Start");
         animatorFade.gameObject.SetActive(true);
