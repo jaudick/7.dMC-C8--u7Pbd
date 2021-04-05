@@ -43,7 +43,7 @@ public class TimeControls : MonoBehaviour
     }
     void Update()
     {
-        if (canShift)
+        if (canShift && !GameCanvas.paused)
         {
             if (Input.GetButtonDown("Time1") && currentTimeZone!=1)
             {

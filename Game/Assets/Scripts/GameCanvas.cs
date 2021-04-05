@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameCanvas : MonoBehaviour
 {
-    bool paused = false;
+    public static bool paused = false;
     public GameObject pauseMenu;
     private void Awake()
     {
@@ -33,11 +33,11 @@ public class GameCanvas : MonoBehaviour
         pauseMenu.SetActive(true);
     }
 
-    public void Unpause()
+    public void Unpause(bool disbableMenu = true)
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         paused = false;
         Cursor.lockState = CursorLockMode.Locked;
-        pauseMenu.SetActive(false);
+        pauseMenu.SetActive(!disbableMenu);
     }
 }

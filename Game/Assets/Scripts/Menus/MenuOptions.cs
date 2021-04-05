@@ -23,11 +23,17 @@ public class MenuOptions : MonoBehaviour
 
     public void Unpause()
     {
-        gameCanvas.Unpause();
+        AudioMenu.audioMenu.PlaySelect();
+        gameCanvas.Unpause(true);
     }
 
     public void LeaveGame()
     {
+        CheckPointManager player = FindObjectOfType<CheckPointManager>();
+        player.isInvincible = true;
+        gameCanvas.Unpause(false);
+        //AudioMenu.audioMenu.PlaySelect();
+        AudioMenu.playOnAwake = true;
         ChangeScene.sceneName = "MainMenu";
         scene.ChangeSceneMethod();
     }

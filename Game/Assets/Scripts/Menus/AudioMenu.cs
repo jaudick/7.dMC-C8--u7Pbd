@@ -9,11 +9,17 @@ public class AudioMenu : MonoBehaviour
     public AudioClip navigate;
     public AudioClip select;
     public AudioClip back;
+    public static bool playOnAwake = false;
 
     private void Awake()
     {
         audioMenu = this;
         audioSource = GetComponent<AudioSource>();
+        if(playOnAwake)
+        {
+            PlaySelect();
+            playOnAwake = false;
+        }
     }
     public void PlaySelect()
     {
