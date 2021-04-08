@@ -5,23 +5,25 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     [SerializeField] PlayerMovementRigidbody player;
-    public LayerMask layer;
+    //public LayerMask layer;
 
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.CompareTag("Ground"))
         {
+            Debug.Log(other.gameObject);
             StopCoroutine(ChangeTempGroundCheck());
             player.tempIsGrounded = true;
             player.isGrounded = true;
         }
 
-        if (other.gameObject.CompareTag("WallRun"))
+        /*
+        else if (other.gameObject.CompareTag("WallRun"))
         {
             StopCoroutine(ChangeTempGroundCheck());
             player.tempIsGrounded = false;
             player.isGrounded = false;
-        }
+        }*/
     }
 
     private void OnTriggerExit(Collider other)

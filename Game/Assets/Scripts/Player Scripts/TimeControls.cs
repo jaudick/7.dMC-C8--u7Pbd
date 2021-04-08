@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class TimeControls : MonoBehaviour
 {
     private PlayerAudio playerAudio;
-    private bool canShift = true;
+    public static bool canShift = true;
     private Volume volume;
     private LensDistortion distortion;
     private ColorAdjustments colors;

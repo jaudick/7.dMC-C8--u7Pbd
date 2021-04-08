@@ -40,4 +40,11 @@ public class GameCanvas : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(!disbableMenu);
     }
+
+    IEnumerator CannotTimeShiftBriefly()
+    {
+        TimeControls.canShift = false;
+        yield return new WaitForEndOfFrame();
+        TimeControls.canShift = true;
+    }
 }
