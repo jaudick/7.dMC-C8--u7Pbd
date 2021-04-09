@@ -26,6 +26,11 @@ public class WallRunBox : MonoBehaviour
                 player.rigRotation = transform.rotation;
                 player.wallRunVelocity = player.GetVelocity();
             }
+
+            if(other.GetComponentInParent<MovingHazard>()!=null)
+            {
+                player.currentWallRunUpForce = -10;
+            }
             if (isRightBox)
             {
                 player.isWallRunning = true;

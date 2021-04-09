@@ -39,7 +39,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     public bool isWallRunningRight;
     public bool isWallRunningLeft;
     private float wallRunUpForce = 12f;
-    private float currentWallRunUpForce = 0f;
+    public float currentWallRunUpForce = 0f;
     private float wallRunDecreaseRate = 25f;
     private float jumpOffWallUpForce = 30.5f;
     private float jumpOffWallForwardForce = 23.5f;
