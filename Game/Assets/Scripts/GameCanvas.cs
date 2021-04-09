@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameCanvas : MonoBehaviour
 {
     public static bool paused = false;
     public GameObject pauseMenu;
+
+    public AudioMixer mixer;
     private void Awake()
     {
         pauseMenu.SetActive(false);
@@ -14,7 +17,6 @@ public class GameCanvas : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.Confined;
             if (!paused)
             {
                 paused = true;
@@ -29,12 +31,15 @@ public class GameCanvas : MonoBehaviour
     }
     public void Pause()
     {
+        mixer.SetFloat("GameSounds", -80);
+        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
     }
 
     public void Unpause(bool disbableMenu = true)
     {
+        mixer.SetFloat("GameSounds", 0);
         Time.timeScale = 1;
         paused = false;
         Cursor.lockState = CursorLockMode.Locked;

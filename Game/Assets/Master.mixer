@@ -57,6 +57,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-1898518060743684437
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: f37adfe3e9206544aaa0f84ac117f547
+  m_EffectName: Attenuation
+  m_MixLevel: 753680182deb35f489ce5aeed1278c7d
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-654388307371537195
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -86,7 +100,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: f86e81f4f0cc31f40bea89151a070f91
+    name: GameSounds
+  - guid: 90d0e2a5df86c834f9909e286c0d811e
+    name: MasterVolume
   m_AudioMixerGroupViews:
   - guids:
     - 363211977a2140d489fa4c83bc245676
@@ -94,6 +112,7 @@ AudioMixerController:
     - bb7cf18c6323b20478eacd04943f6259
     - 7667ecd8e9b614f4e9fab59eb049655e
     - b2220a3ae7459da42876f605b97e7d6d
+    - ff13887cf5156f040a52657b7620d8e2
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -107,16 +126,14 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 363211977a2140d489fa4c83bc245676
   m_Children:
-  - {fileID: 2570042070205279249}
-  - {fileID: -7998412917734711251}
-  - {fileID: -2288758305900636105}
   - {fileID: -5730293901517188818}
+  - {fileID: 1640204851843780602}
   m_Volume: 90d0e2a5df86c834f9909e286c0d811e
   m_Pitch: d88cbb520d53a534e92977166f759b4d
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -147,6 +164,28 @@ AudioMixerSnapshotController:
     90d0e2a5df86c834f9909e286c0d811e: 0.23288241
     31d4473d9bba8c7418b18a134ef35743: -5.3230715
   m_TransitionOverrides: {}
+--- !u!243 &1640204851843780602
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Game Sounds
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: ff13887cf5156f040a52657b7620d8e2
+  m_Children:
+  - {fileID: 2570042070205279249}
+  - {fileID: -7998412917734711251}
+  - {fileID: -2288758305900636105}
+  m_Volume: f86e81f4f0cc31f40bea89151a070f91
+  m_Pitch: f49ae2b23f402aa409a3714e0734681d
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -1898518060743684437}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &2570042070205279249
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
