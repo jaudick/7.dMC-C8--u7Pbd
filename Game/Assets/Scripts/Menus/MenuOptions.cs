@@ -37,4 +37,9 @@ public class MenuOptions : MonoBehaviour
         ChangeScene.sceneName = "MainMenu";
         scene.ChangeSceneMethod();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
