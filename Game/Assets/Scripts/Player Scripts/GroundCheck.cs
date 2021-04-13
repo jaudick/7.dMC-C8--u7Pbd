@@ -11,7 +11,6 @@ public class GroundCheck : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
         {
-            Debug.Log(other.gameObject);
             StopCoroutine(ChangeTempGroundCheck());
             player.tempIsGrounded = true;
             player.isGrounded = true;
