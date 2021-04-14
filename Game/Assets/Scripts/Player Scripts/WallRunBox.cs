@@ -51,7 +51,6 @@ public class WallRunBox : MonoBehaviour
     {
         if (other.CompareTag("WallRun") && !player.isGrounded)
         {
-            Debug.Log(gameObject.name);
             player.isWallRunning = false;
             player.isWallRunningLeft = false;
             player.isWallRunningRight = false;

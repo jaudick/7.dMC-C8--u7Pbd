@@ -7,8 +7,11 @@ public class GameCanvas : MonoBehaviour
 {
     public static bool paused = false;
     public GameObject pauseMenu;
+    //private float previousGameSoundValue = 1;
+    public static float previousGameSoundValue = 1;
 
     public AudioMixer mixer;
+
     private void Awake()
     {
         pauseMenu.SetActive(false);
@@ -31,7 +34,9 @@ public class GameCanvas : MonoBehaviour
     }
     public void Pause()
     {
-        mixer.SetFloat("GameSounds", -80);
+        if (mixer.GetFloat("GameSounds", out float value))
+            previousGameSoundValue = value;
+        mixer.SetFloat("GameSounds", -80f);
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
@@ -39,7 +44,7 @@ public class GameCanvas : MonoBehaviour
 
     public void Unpause(bool disbableMenu = true)
     {
-        mixer.SetFloat("GameSounds", 0);
+        mixer.SetFloat("GameSounds", previousGameSoundValue);
         Time.timeScale = 1;
         paused = false;
         Cursor.lockState = CursorLockMode.Locked;

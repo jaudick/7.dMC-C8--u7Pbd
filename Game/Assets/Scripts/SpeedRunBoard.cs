@@ -34,19 +34,29 @@ public class SpeedRunBoard : MonoBehaviour
 
     public void UpdateData()
     {
-        Debug.Log("Updating SpeedRun Board " + data.times[4]);
         text.text = string.Format(
-        "{0:0.000}\n" +
-        "{1:0.000}\n" +
-        "{2:0.000}\n" +
-        "{3:0.000}\n" +
-        "{4:0.000}\n" +
-        "{5:0.000}\n" +
-        "{6:0.000}\n" +
-        "{7:0.000}\n" +
-        "{8:0.000}\n" +
-        "{9:0.000}\n" +
-        "{10:0.000}", 
-        data.times[0],data.times[1],data.times[2],data.times[3],data.times[4],data.times[5],data.times[6],data.times[7],data.times[8],data.times[9],data.times[10]);
+        "{0:00} : {1:00.000}\n" +
+        "{2:00} : {3:00.000}\n" +
+        "{4:00} : {5:00.000}\n" +
+        "{6:00} : {7:00.000}\n" +
+        "{8:00} : {9:00.000}\n" +
+        "{10:00} : {11:00.000}\n" +
+        "{12:00} : {13:00.000}\n" +
+        "{14:00} : {15:00.000}\n" +
+        "{16:00} : {17:00.000}\n" +
+        "{18:00} : {19:00.000}\n" +
+        "{20:00} : {21:00.000}\n",
+        Mathf.FloorToInt(data.times[0] / 60), data.times[0] % 60,
+        Mathf.FloorToInt(data.times[1] / 60), data.times[1] % 60,
+        Mathf.FloorToInt(data.times[2] / 60), data.times[2] % 60,
+        Mathf.FloorToInt(data.times[3] / 60), data.times[3] % 60,
+        Mathf.FloorToInt(data.times[4] / 60), data.times[4] % 60,
+        Mathf.FloorToInt(data.times[5] / 60), data.times[5] % 60,
+        Mathf.FloorToInt(data.times[6] / 60), data.times[6] % 60,
+        Mathf.FloorToInt(data.times[7] / 60), data.times[7] % 60,
+        Mathf.FloorToInt(data.times[8] / 60), data.times[8] % 60,
+        Mathf.FloorToInt(data.times[9] / 60), data.times[9] % 60,
+        Mathf.FloorToInt(data.times[10] / 60), data.times[10] % 60);
+
     }
 }
