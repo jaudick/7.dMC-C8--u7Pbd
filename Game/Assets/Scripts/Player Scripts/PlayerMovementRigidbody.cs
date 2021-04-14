@@ -52,6 +52,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     public Quaternion rigRotation;
     public bool getNextWall = true;
     private Vector3 jumpedOfWallVelocity = Vector3.zero;
+    public bool lastFrameWasHoldingRightTigger = false;
 
     [Header("Enemy Parkour")]
     [SerializeField] private BulletEnemyJumpBox bulletEnemyJumpBox;
@@ -92,7 +93,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
         if (isWallRunning && !isGrounded && !justJumpedOffWall)
         {
-            if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && canJumpAgain)
+            if ((Input.GetButtonUp("Jump") || (Input.GetAxis("JumpController") <= 0 && lastFrameWasHoldingRightTigger)) && canJumpAgain)
             {
                 float x = Input.GetAxisRaw("Horizontal");
                 float z = Input.GetAxisRaw("Vertical");
