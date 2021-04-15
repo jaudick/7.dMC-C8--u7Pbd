@@ -7,6 +7,8 @@ public class GameCanvas : MonoBehaviour
 {
     public static bool paused = false;
     public GameObject pauseMenu;
+    public GameObject[] notPauseOpen;
+    public GameObject pauseOpen;
     //private float previousGameSoundValue = 1;
     public static float previousGameSoundValue = 1;
 
@@ -49,6 +51,11 @@ public class GameCanvas : MonoBehaviour
         paused = false;
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(!disbableMenu);
+        for(int i = 0; i < notPauseOpen.Length; i++)
+        {
+            notPauseOpen[i].SetActive(false);
+        }
+        pauseOpen.SetActive(true);
     }
 
     IEnumerator CannotTimeShiftBriefly()
