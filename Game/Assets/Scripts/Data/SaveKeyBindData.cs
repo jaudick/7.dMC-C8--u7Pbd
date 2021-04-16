@@ -24,7 +24,7 @@ public static class SaveKeyBindData
             }
             else
             {
-                Debug.Log("<color=green>Save file exists</color> at path: " + path);
+                //Debug.Log("<color=green>Save file exists</color> at path: " + path);
                 dataFile = formatter.Deserialize(stream) as KeyBindData;
                 stream.Close();
             }
@@ -44,7 +44,7 @@ public static class SaveKeyBindData
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/KeyBindData.data";
-        Debug.Log("<color=yellow>Saving new key binds</color> ");
+        //Debug.Log("<color=yellow>Saving new key binds</color> ");
         keyBindData.PrintInputs();
         FileStream stream = new FileStream(path, FileMode.Create);
 

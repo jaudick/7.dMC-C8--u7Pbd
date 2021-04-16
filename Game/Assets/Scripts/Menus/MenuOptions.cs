@@ -44,6 +44,11 @@ public class MenuOptions : MonoBehaviour
         AudioMenu.audioMenu.ResetAudioData();
     }
 
+    public void SaveAudioChanges()
+    {
+        AudioMenu.audioMenu.SaveAudioData();
+    }
+
     public void QuitGame()
     {
         Application.Quit();

@@ -23,7 +23,7 @@ public static class AudioDataSaver
             }
             else
             {
-                Debug.Log("<color=green>Save file exists</color> at path: " + path);
+                //Debug.Log("<color=green>Save file exists</color> at path: " + path);
                 dataFile = formatter.Deserialize(stream) as AudioData;
                 stream.Close();
             }
@@ -42,7 +42,7 @@ public static class AudioDataSaver
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/AudioVolume.data";
-        Debug.Log("<color=yellow>Saving new key binds</color> ");
+        //Debug.Log("<color=yellow>Saving new key binds</color> ");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         formatter.Serialize(stream, audioData);

@@ -71,11 +71,6 @@ public class GameCanvas : MonoBehaviour
 
     public void SaveAudioData()
     {
-        AudioData audioData = new AudioData();
-        if (mixer.GetFloat("GameSounds", out float value1)) audioData.gameVolume = value1;
-        if (mixer.GetFloat("MasterVolume", out float value2)) audioData.masterVolume = value2;
-        if (mixer.GetFloat("UIVolume", out float value3)) audioData.uiVolume = value3;
-        if (mixer.GetFloat("Music", out float value4)) audioData.musicVolume = value4;
-        AudioDataSaver.SaveDataToSystem(audioData);
+        AudioMenu.audioMenu.SaveAudioData();
     }
 }

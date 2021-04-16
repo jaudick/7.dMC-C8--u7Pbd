@@ -50,7 +50,7 @@ public static class SpeedRunSaveData
             }
             else
             {
-                Debug.Log("<color=green>Save file exists</color>");
+                //Debug.Log("<color=green>Save file exists</color>");
                 data = formatter.Deserialize(stream) as SpeedRunData;
                 stream.Close();
             }
