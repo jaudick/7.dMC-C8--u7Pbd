@@ -106,6 +106,8 @@ public class KeyBindingManager : MonoBehaviour
     {
         switch (name)
         {
+            case "Escape":
+                break;
             case "Jump":
                 currentKeys[0] = code.ToString();
                 JUMP = code;

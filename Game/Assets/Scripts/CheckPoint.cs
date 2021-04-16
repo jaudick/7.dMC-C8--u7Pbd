@@ -11,6 +11,7 @@ public class CheckPoint : MonoBehaviour
     private MeshRenderer meshRenderer;
     private AudioSource audioSource;
     [SerializeField] private AudioClip checkpointSound;
+    private bool waitForIntro = true;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class CheckPoint : MonoBehaviour
         checkPointManager = FindObjectOfType<CheckPointManager>();
         if (meshRenderer != null) meshRenderer.material = deactivatedMaterial;
         audioSource = GetComponent<AudioSource>();
+        StartCoroutine(WaitForIntro());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,7 +27,7 @@ public class CheckPoint : MonoBehaviour
         if(other.GetComponent<PlayerMovementRigidbody>()!=null)
         {
             checkPointManager.isInvincible = true;
-            if (checkPointManager.lastCheckpoint!=this)
+            if (checkPointManager.lastCheckpoint!=this && !waitForIntro)
             {
                 audioSource.PlayOneShot(checkpointSound);
             }
@@ -33,6 +35,12 @@ public class CheckPoint : MonoBehaviour
             activated = true;
             if(meshRenderer!=null) meshRenderer.material = activatedMaterial;
         }
+    }
+
+    private IEnumerator WaitForIntro()
+    {
+        yield return new WaitForEndOfFrame();
+        waitForIntro = false;
     }
 
     /*

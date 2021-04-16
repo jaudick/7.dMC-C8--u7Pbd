@@ -70,113 +70,116 @@ public class PlayerMovementRigidbody : MonoBehaviour
     
     void Update()
     {
-        if (isWallRunningRight)
+        if (!GameCanvas.paused)
         {
-            justJumpedOffEnemy = false;
-            justJumpedOffWall = false;
-            canDoInput = true;
-            headCamera.SetBool("Right", true);
-        }
-        else if (isWallRunningLeft)
-        {
-            justJumpedOffEnemy = false;
-            justJumpedOffWall = false;
-            canDoInput = true;
-            headCamera.SetBool("Left", true);
-        }
-        else
-        {
-            headCamera.SetBool("Right", false);
-            headCamera.SetBool("Left", false);
-        }
-
-        if (isWallRunning && !isGrounded && !justJumpedOffWall)
-        {
-            if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && canJumpAgain)
+            if (isWallRunningRight)
             {
-                float x = Input.GetAxisRaw("Horizontal");
-                float z = Input.GetAxisRaw("Vertical");
+                justJumpedOffEnemy = false;
+                justJumpedOffWall = false;
+                canDoInput = true;
+                headCamera.SetBool("Right", true);
+            }
+            else if (isWallRunningLeft)
+            {
+                justJumpedOffEnemy = false;
+                justJumpedOffWall = false;
+                canDoInput = true;
+                headCamera.SetBool("Left", true);
+            }
+            else
+            {
+                headCamera.SetBool("Right", false);
+                headCamera.SetBool("Left", false);
+            }
 
-                if (Mathf.Abs(x) > 0 && (Mathf.Abs(x) > Mathf.Abs(z/2)))
+            if (isWallRunning && !isGrounded && !justJumpedOffWall)
+            {
+                if ((Input.GetKeyDown(KeyBindingManager.instance.JUMP) || (Input.GetAxis("JumpController") > 0)) && canJumpAgain)
                 {
-                    Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
-                    rbody.velocity = jumpOffWallForwardForce / 50 * transform.forward + transform.up * jumpOffWallUpForce * 1.55f + jumpOffWallSideForce * 10f;
-                    jumpedOfWallVelocity = rbody.velocity / 2;
+                    float x = Input.GetAxisRaw("Horizontal");
+                    float z = Input.GetAxisRaw("Vertical");
+
+                    if (Mathf.Abs(x) > 0 && (Mathf.Abs(x) > Mathf.Abs(z / 2)))
+                    {
+                        Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
+                        rbody.velocity = jumpOffWallForwardForce / 50 * transform.forward + transform.up * jumpOffWallUpForce * 1.55f + jumpOffWallSideForce * 10f;
+                        jumpedOfWallVelocity = rbody.velocity / 2;
+                    }
+                    else
+                    {
+                        Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
+                        rbody.velocity = jumpOffWallForwardForce * transform.forward + transform.up * jumpOffWallUpForce + jumpOffWallSideForce * 2.5f;
+                        jumpedOfWallVelocity = rbody.velocity / 2;
+                    }
+
+                    wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    currentWallRunUpForce = wallRunUpForce;
+                    justJumpedOffWall = true;
+                    getNextWall = true;
+
+                    isWallRunning = false;
+                    isWallRunningLeft = false;
+                    isWallRunningRight = false;
+                    canDash = true;
+
+                    StartCoroutine(ResetJump());
                 }
-                else 
-                {
-                    Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
-                    rbody.velocity = jumpOffWallForwardForce * transform.forward + transform.up * jumpOffWallUpForce + jumpOffWallSideForce * 2.5f;
-                    jumpedOfWallVelocity = rbody.velocity / 2;
-                }
+            }
 
-                wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                currentWallRunUpForce = wallRunUpForce;
-                justJumpedOffWall = true;
-                getNextWall = true;
-
-                isWallRunning = false;
-                isWallRunningLeft = false;
-                isWallRunningRight = false;
-                canDash = true;
-
+            else if ((Input.GetKeyDown(KeyBindingManager.instance.JUMP) || Input.GetAxis("JumpController") > 0) && (isGrounded || tempIsGrounded) && canJumpAgain)
+            {
+                rbody.AddForce(0, jumpForce * 2, 0, ForceMode.Impulse);
+                canJumpAgain = false;
                 StartCoroutine(ResetJump());
             }
-        }
 
-        else if ((Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && (isGrounded || tempIsGrounded) && canJumpAgain )
-        {
-            rbody.AddForce(0, jumpForce * 2, 0, ForceMode.Impulse);
-            canJumpAgain = false;
-            StartCoroutine(ResetJump());
-        }
+            if ((isGrounded && (Input.GetKeyDown(KeyBindingManager.instance.SLIDE) || ((Input.GetAxis("SlideController") > 0) && !holdingSlideTriggerInAir)) && !isWallRunning && canSlide))
+            {
+                capsuleCollider.height = 0.5f;
+                capsuleCollider.center = new Vector3(0, 0.25f, 0);
+                rbody.velocity = (transform.forward.normalized * slideForce / 2) + -transform.up * 5f;
+                StartCoroutine(Sliding());
+            }
 
-        if ((isGrounded && (Input.GetButtonDown("Slide") || ((Input.GetAxis("SlideController") > 0) && !holdingSlideTriggerInAir)) && !isWallRunning && canSlide))
-        {
-            capsuleCollider.height = 0.5f;
-            capsuleCollider.center = new Vector3(0, 0.25f, 0);
-            rbody.velocity = (transform.forward.normalized * slideForce / 2) + -transform.up * 5f;
-            StartCoroutine(Sliding());
-        }
+            else if ((Input.GetKey(KeyBindingManager.instance.SLIDE) || Input.GetAxis("SlideController") > 0) && !isWallRunning && !isGrounded)
+            {
+                rbody.velocity = new Vector3(rbody.velocity.x, rbody.velocity.y - 100f * Time.deltaTime, rbody.velocity.z);
+                holdingSlideTriggerInAir = Input.GetAxis("SlideController") > 0;
+            }
 
-        else if ((Input.GetButton("Slide") || Input.GetAxis("SlideController") > 0) && !isWallRunning && !isGrounded)
-        {
-            rbody.velocity = new Vector3(rbody.velocity.x, rbody.velocity.y - 100f * Time.deltaTime, rbody.velocity.z);
-            holdingSlideTriggerInAir = Input.GetAxis("SlideController") > 0;
-        }
-
-        if(Input.GetAxis("SlideController") <= 0 && isGrounded)
+            if (Input.GetAxis("SlideController") <= 0 && isGrounded)
                 holdingSlideTriggerInAir = false;
 
-        if (Input.GetButton("DashLeft") && canDash && !isWallRunning)
-        {
-            if(canSlide) headCamera.SetBool("DashLeft", true);
-            rbody.velocity = -transform.right.normalized * dashForce + transform.forward.normalized * 1.5f + move;
-            StartCoroutine(Dashing("DashLeft"));
-        }
+            if ((Input.GetKeyDown(KeyBindingManager.instance.DASH_LEFT) || Input.GetButton("DashLeftController")) && canDash && !isWallRunning)
+            {
+                if (canSlide) headCamera.SetBool("DashLeft", true);
+                rbody.velocity = -transform.right.normalized * dashForce + transform.forward.normalized * 1.5f + move;
+                StartCoroutine(Dashing("DashLeft"));
+            }
 
-        if (Input.GetButton("DashRight") && canDash && !isWallRunning)
-        {
-            if (canSlide) headCamera.SetBool("DashRight", true);
-            rbody.velocity = transform.right.normalized * dashForce + transform.forward.normalized * 1.5f + move;
-            StartCoroutine(Dashing("DashRight"));
-        }
+            if ((Input.GetKeyDown(KeyBindingManager.instance.DASH_RIGHT) || Input.GetButton("DashRightController")) && canDash && !isWallRunning)
+            {
+                if (canSlide) headCamera.SetBool("DashRight", true);
+                rbody.velocity = transform.right.normalized * dashForce + transform.forward.normalized * 1.5f + move;
+                StartCoroutine(Dashing("DashRight"));
+            }
 
-        if (bulletEnemyJumpBox.canJumpOffEnemy && !isGrounded && !isWallRunning && (Input.GetButton("Jump") || Input.GetAxis("JumpController") > 0) && !justJumpedOffEnemy && canJumpAgain)
-        {
-            ResetWallRun();
-            rbody.velocity = transform.up * jumpOffEnemyUpForce;
-            StartCoroutine(JustJumpedOffEnemy());
-            StartCoroutine(ResetJump());
-        }
+            if (bulletEnemyJumpBox.canJumpOffEnemy && !isGrounded && !isWallRunning && ((Input.GetKey(KeyBindingManager.instance.JUMP) || Input.GetAxis("JumpController") > 0) && !justJumpedOffEnemy && canJumpAgain))
+            {
+                ResetWallRun();
+                rbody.velocity = transform.up * jumpOffEnemyUpForce;
+                StartCoroutine(JustJumpedOffEnemy());
+                StartCoroutine(ResetJump());
+            }
 
-        if (isGrounded)
-        {
-            wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            justJumpedOffEnemy = false;
-            canDoInput = true;
-            getNextWall = true;
-            ResetWallRun();
+            if (isGrounded)
+            {
+                wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                justJumpedOffEnemy = false;
+                canDoInput = true;
+                getNextWall = true;
+                ResetWallRun();
+            }
         }
     }
 

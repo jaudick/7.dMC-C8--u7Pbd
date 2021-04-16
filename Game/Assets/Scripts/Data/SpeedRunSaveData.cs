@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveData
+public static class SpeedRunSaveData
 {
     public static void SaveDefaultDataToSystem()
     {
@@ -50,7 +50,7 @@ public static class SaveData
             }
             else
             {
-                Debug.Log("<color=green>Save file exists</color>");
+                //Debug.Log("<color=green>Save file exists</color>");
                 data = formatter.Deserialize(stream) as SpeedRunData;
                 stream.Close();
             }

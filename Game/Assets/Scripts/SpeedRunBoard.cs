@@ -21,7 +21,7 @@ public class SpeedRunBoard : MonoBehaviour
         else
         {
             Debug.Log("Creating new default data");
-            SaveData.SaveDefaultDataToSystem();
+            SpeedRunSaveData.SaveDefaultDataToSystem();
             LoadSpeedRunData();
             UpdateData();
         }
@@ -29,7 +29,7 @@ public class SpeedRunBoard : MonoBehaviour
 
     public void LoadSpeedRunData()
     {
-        data = SaveData.LoadSpeedRunData();
+        data = SpeedRunSaveData.LoadSpeedRunData();
     }
 
     public void UpdateData()

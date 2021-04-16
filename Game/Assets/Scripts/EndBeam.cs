@@ -29,7 +29,7 @@ public class EndBeam : MonoBehaviour
             ChangeScene.sceneName = "MainMenu";
 
             int level = GetLevelInt();
-            SaveData.SaveDataToSystem(level, timer);
+            SpeedRunSaveData.SaveDataToSystem(level, timer);
 
             animator.gameObject.SetActive(true);
             animator.SetTrigger("Fade");

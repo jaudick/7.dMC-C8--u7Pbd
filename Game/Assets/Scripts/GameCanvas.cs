@@ -5,17 +5,18 @@ using UnityEngine.Audio;
 
 public class GameCanvas : MonoBehaviour
 {
+    public static GameCanvas instance;
     public static bool paused = false;
     public GameObject pauseMenu;
     public GameObject[] notPauseOpen;
     public GameObject pauseOpen;
     //private float previousGameSoundValue = 1;
     public static float previousGameSoundValue = 1;
-
     public AudioMixer mixer;
 
     private void Awake()
     {
+        instance = this;
         pauseMenu.SetActive(false);
     }
     private void Update()
@@ -56,6 +57,9 @@ public class GameCanvas : MonoBehaviour
             notPauseOpen[i].SetActive(false);
         }
         pauseOpen.SetActive(true);
+
+        SaveAudioData();
+
     }
 
     IEnumerator CannotTimeShiftBriefly()
@@ -63,5 +67,10 @@ public class GameCanvas : MonoBehaviour
         TimeControls.canShift = false;
         yield return new WaitForEndOfFrame();
         TimeControls.canShift = true;
+    }
+
+    public void SaveAudioData()
+    {
+        AudioMenu.audioMenu.SaveAudioData();
     }
 }

@@ -26,6 +26,12 @@ public class VolumeSlider : MonoBehaviour
             }
         }
     }
+
+    public void SetDefaultSliderValue()
+    {
+        mixer.SetFloat(mixerVariable, 0.0001f);
+        slider.value = 1;
+    }
     public void SetVolumeLevel(float sliderValue)
     {
         mixer.SetFloat(mixerVariable, Mathf.Log10(sliderValue) * 20);
