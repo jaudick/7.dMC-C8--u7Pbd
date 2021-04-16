@@ -5,177 +5,152 @@ using UnityEngine.UI;
 
 public class KeyBindingManager : MonoBehaviour
 {
-    public KeyBindingManager KBM;
-    public KeyCode jump_KBM;
-    public KeyCode slide_KBM;
-    public KeyCode dashLeft_KBM;
-    public KeyCode dashRight_KBM;
-    public KeyCode Time1_KBM;
-    public KeyCode Time2_KBM;
-    public KeyCode Time3_KBM;
-    public KeyCode Time4_KBM;
-    public bool holdWallEnabled;
-    public bool scrollWheelEnabled;
-    public bool doInitialUpdate;
-    private KeyCode[] codes;
+    public static KeyBindingManager instance;
+    public KeyCode JUMP;
+    public KeyCode SLIDE;
+    public KeyCode DASH_LEFT;
+    public KeyCode DASH_RIGHT;
+    public KeyCode TIME1;
+    public KeyCode TIME2;
+    public KeyCode TIME3;
+    public KeyCode TIME4;
+    public bool HOLD_WALL;
+    public bool SCROLL_WHEEL;
+    KeyCode[] codes;
 
-    public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "LeftMouse", "RightMouse", "ThumbBack", "ThumbFront" };
-    public static List<string> defaultPreferences = new List<string> { "Disabled", "Enabled" };
-    public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "LeftMouse", "RightMouse", "ThumbBack", "ThumbFront" };
 
-    public List<Dropdown> bindings = new List<Dropdown>();
-    public Dropdown holdWall;
-    public Dropdown scrollWheel;
-    public static List<string> keys = new List<string> { "LeftMouse", "MiddleMouse", "RightMouse", "ThumbBack" , "ThumbFront", "Space", "LeftAlt", "LeftCtrl", "LeftShift", "CapsLock", "Tab", "BackQuote", "Q", "E", "R", "T", "F", "G", "V", "C", "X", "Z"};
-    public static List<string> preferenceBools = new List<string> { "Enabled", "Disabled" };
+    public Button[] keyButtons;
+    public Toggle holdWallRun;
+    public Toggle scrollWheel;
+
+    public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse3", "Mouse4" };
+    public static List<bool> defaultPreferences = new List<bool> { false, true };
+    public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse3", "Mouse4" };
 
     private void Awake()
     {
-        codes = new KeyCode[] { jump_KBM, slide_KBM, dashLeft_KBM,dashRight_KBM,Time1_KBM,Time2_KBM,Time3_KBM,Time4_KBM };
-        doInitialUpdate = true;
+        instance = this;
 
-        if(KBM == null)
+        KeyBindData data = SaveKeyBindData.LoadInputBindings();
+
+        currentKeys = data.GetInputs();
+        HOLD_WALL = data.holdWallRun;
+        SCROLL_WHEEL = data.scrollWheel;
+        holdWallRun.isOn = HOLD_WALL;
+        scrollWheel.isOn = SCROLL_WHEEL;
+
+        JUMP = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[0]);
+        SLIDE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[1]);
+        DASH_LEFT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[2]);
+        DASH_RIGHT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[3]);
+        TIME1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[4]);
+        TIME2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
+        TIME3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
+        TIME4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
+        codes = new KeyCode[] { JUMP, SLIDE, DASH_LEFT, DASH_RIGHT, TIME1, TIME2, TIME3, TIME4 };
+
+        for (int i = 0; i<keyButtons.Length; i++)
         {
-            DontDestroyOnLoad(gameObject);
-            KBM = this;
+            keyButtons[i].GetComponentInChildren<Text>().text = currentKeys[i];
         }
-        else if(KBM != this)
-        {
-            Destroy(gameObject);
-        }    
-
-        for(int i = 0; i<bindings.Count; i++)
-        {
-            bindings[i].AddOptions(keys);
-        }
-
-        holdWall.AddOptions(preferenceBools);
-        scrollWheel.AddOptions(preferenceBools);
-
-        //load the file.
-        //set the currentkeys with the file.
-
-        jump_KBM = ProcessKeyCode(currentKeys[0]);
-        slide_KBM = ProcessKeyCode(currentKeys[1]);
-        dashLeft_KBM = ProcessKeyCode(currentKeys[2]);
-        dashRight_KBM = ProcessKeyCode(currentKeys[3]);
-        Time1_KBM = ProcessKeyCode(currentKeys[4]);
-        Time2_KBM = ProcessKeyCode(currentKeys[5]);
-        Time3_KBM = ProcessKeyCode(currentKeys[6]);
-        Time4_KBM = ProcessKeyCode(currentKeys[7]);
 
     }
 
-    private KeyCode ProcessKeyCode(string input)
-    {
-        switch (input)
-        {
-            case "LeftMouse":
-                return KeyCode.Mouse0;
-            case "RightMouse":
-                return KeyCode.Mouse1;
-            case "MiddleMouse":
-                return KeyCode.Mouse2;
-            case "ThumbBack":
-                return KeyCode.Mouse3;
-            case "ThumbFront":
-                return KeyCode.Mouse4;
-            case "LeftCtrl":
-                return KeyCode.LeftControl;
-            default:
-                return (KeyCode)System.Enum.Parse(typeof(KeyCode), input);
-        }
-    }
-
-
-    private void Update()
-    {
-        if (doInitialUpdate)
-        {
-            for (int i = 0; i < bindings.Count; i++)
-            {
-                bindings[i].GetComponentInChildren<Text>().text = currentKeys[i];
-            }
-            doInitialUpdate = false;
-        }
-    }
 
     public void Save()
     {
-
+        KeyBindData data = new KeyBindData();
+        data.SetInputs(currentKeys);
+        data.holdWallRun = HOLD_WALL;
+        data.scrollWheel = SCROLL_WHEEL;
+        SaveKeyBindData.SaveDataToSystem(data);
     }
 
     public void SetDefault()
     {
-        for(int i = 0; i < defaultKeys.Count; i++)
+        for (int i = 0; i < keyButtons.Length; i++)
         {
             currentKeys[i] = defaultKeys[i];
-            bindings[i].GetComponentInChildren<Text>().text = currentKeys[i];
+            keyButtons[i].GetComponentInChildren<Text>().text = currentKeys[i];
         }
-        holdWallEnabled = false;
-        scrollWheelEnabled = true;
+
+        holdWallRun.isOn = false;
+        scrollWheel.isOn = true;
+        HOLD_WALL = false;
+        SCROLL_WHEEL = true;
+
+        JUMP = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[0]);
+        SLIDE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[1]);
+        DASH_LEFT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[2]);
+        DASH_RIGHT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[3]);
+        TIME1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[4]);
+        TIME2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
+        TIME3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
+        TIME4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
+        Save();
     }
 
-    public void ChangeJumpKey(int id)
+    public void SetWallToggle(bool toggle)
     {
-        jump_KBM = GetKeyCode(id);
+        HOLD_WALL = toggle;
+        Save();
     }
-
-    public void ChangeSlideKey(int id)
+    public void SetScrollWheel(bool toggle)
     {
-        slide_KBM = GetKeyCode(id);
-    }
-
-    public void ChangeDashLeftKey(int id)
-    {
-        dashLeft_KBM = GetKeyCode(id);
-    }
-
-    public void ChangeDashRightKey(int id)
-    {
-        dashRight_KBM = GetKeyCode(id);
-    }
-
-    public void ChangeTime1Key(int id)
-    {
-        Time1_KBM= GetKeyCode(id);
-    }
-
-    public void ChangeTime2Key(int id)
-    {
-        Time2_KBM = GetKeyCode(id);
-    }
-
-    public void ChangeTime3Key(int id)
-    {
-        Time3_KBM = GetKeyCode(id);
-    }
-    public void ChangeTime4Key(int id)
-    {
-        Time4_KBM = GetKeyCode(id);
-    }
-
-    public void ChangeHoldWallRunPreference(int id)
-    {
-        holdWallEnabled = preferenceBools[id] == "Enabled" ? true : false ;
-    }
-
-    public void ChangeScrollWheelPreference(int id)
-    {
-        scrollWheelEnabled = preferenceBools[id] == "Enabled" ? true : false;
+        SCROLL_WHEEL = toggle;
+        Save();
     }
 
 
-    private KeyCode GetKeyCode(int id)
+    public void SetKeyCode(string name, KeyCode code)
     {
-        if (keys[id] == "LeftMouse" || keys[id] == "RightMouse" || keys[id] == "ThumbBack" || keys[id] == "ThumbFront" || keys[id] == "MiddleMouse" || keys[id] == "LeftCtrl")
+        switch (name)
         {
-            Debug.Log("MouseInput");
-            return 0;
+            case "Jump":
+                currentKeys[0] = code.ToString();
+                JUMP = code;
+                Save();
+                break;
+            case "Slide":
+                currentKeys[1] = code.ToString();
+                SLIDE = code;
+                Save();
+                break;
+            case "DashLeft":
+                currentKeys[2] = code.ToString();
+                DASH_LEFT = code;
+                Save();
+                break;
+            case "DashRight":
+                currentKeys[3] = code.ToString();
+                DASH_RIGHT = code;
+                Save();
+                break;
+            case "Time1":
+                currentKeys[4] = code.ToString();
+                TIME1 = code;
+                Save();
+                break;
+            case "Time2":
+                currentKeys[5] = code.ToString();
+                TIME2 = code;
+                Save();
+                break;
+            case "Time3":
+                currentKeys[6] = code.ToString();
+                TIME3 = code;
+                Save();
+                break;
+            case "Time4":
+                currentKeys[7] = code.ToString();
+                TIME4 = code;
+                Save();
+                break;
         }
-        else
-        {
-            return (KeyCode)System.Enum.Parse(typeof(KeyCode), keys[id]);
-        }
+        //savefile
     }
+
+    
+
+
 }
