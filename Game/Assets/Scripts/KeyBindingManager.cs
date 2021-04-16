@@ -14,12 +14,26 @@ public class KeyBindingManager : MonoBehaviour
     public KeyCode Time2_KBM;
     public KeyCode Time3_KBM;
     public KeyCode Time4_KBM;
+    public bool holdWallEnabled;
+    public bool scrollWheelEnabled;
+    public bool doInitialUpdate;
+    private KeyCode[] codes;
 
-    public List<Dropdown> dropdowns = new List<Dropdown>();
-    public static List<string> keys = new List<string> { "LeftMouse", "RightMouse", "ThumbBack" , "ThumbFront", "Space", "LeftShift", "LeftCtrl", "LeftAlt", "CapsLock", "Tab", "BackQuote", "Q", "E", "R", "T", "F", "Z", "X", "C", "V"};
+    public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "LeftMouse", "RightMouse", "ThumbBack", "ThumbFront" };
+    public static List<string> defaultPreferences = new List<string> { "Disabled", "Enabled" };
+    public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "LeftMouse", "RightMouse", "ThumbBack", "ThumbFront" };
+
+    public List<Dropdown> bindings = new List<Dropdown>();
+    public Dropdown holdWall;
+    public Dropdown scrollWheel;
+    public static List<string> keys = new List<string> { "LeftMouse", "MiddleMouse", "RightMouse", "ThumbBack" , "ThumbFront", "Space", "LeftAlt", "LeftCtrl", "LeftShift", "CapsLock", "Tab", "BackQuote", "Q", "E", "R", "T", "F", "G", "V", "C", "X", "Z"};
+    public static List<string> preferenceBools = new List<string> { "Enabled", "Disabled" };
 
     private void Awake()
     {
+        codes = new KeyCode[] { jump_KBM, slide_KBM, dashLeft_KBM,dashRight_KBM,Time1_KBM,Time2_KBM,Time3_KBM,Time4_KBM };
+        doInitialUpdate = true;
+
         if(KBM == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -30,10 +44,76 @@ public class KeyBindingManager : MonoBehaviour
             Destroy(gameObject);
         }    
 
-        for(int i = 0; i<dropdowns.Count; i++)
+        for(int i = 0; i<bindings.Count; i++)
         {
-            dropdowns[i].AddOptions(keys);
+            bindings[i].AddOptions(keys);
         }
+
+        holdWall.AddOptions(preferenceBools);
+        scrollWheel.AddOptions(preferenceBools);
+
+        //load the file.
+        //set the currentkeys with the file.
+
+        jump_KBM = ProcessKeyCode(currentKeys[0]);
+        slide_KBM = ProcessKeyCode(currentKeys[1]);
+        dashLeft_KBM = ProcessKeyCode(currentKeys[2]);
+        dashRight_KBM = ProcessKeyCode(currentKeys[3]);
+        Time1_KBM = ProcessKeyCode(currentKeys[4]);
+        Time2_KBM = ProcessKeyCode(currentKeys[5]);
+        Time3_KBM = ProcessKeyCode(currentKeys[6]);
+        Time4_KBM = ProcessKeyCode(currentKeys[7]);
+
+    }
+
+    private KeyCode ProcessKeyCode(string input)
+    {
+        switch (input)
+        {
+            case "LeftMouse":
+                return KeyCode.Mouse0;
+            case "RightMouse":
+                return KeyCode.Mouse1;
+            case "MiddleMouse":
+                return KeyCode.Mouse2;
+            case "ThumbBack":
+                return KeyCode.Mouse3;
+            case "ThumbFront":
+                return KeyCode.Mouse4;
+            case "LeftCtrl":
+                return KeyCode.LeftControl;
+            default:
+                return (KeyCode)System.Enum.Parse(typeof(KeyCode), input);
+        }
+    }
+
+
+    private void Update()
+    {
+        if (doInitialUpdate)
+        {
+            for (int i = 0; i < bindings.Count; i++)
+            {
+                bindings[i].GetComponentInChildren<Text>().text = currentKeys[i];
+            }
+            doInitialUpdate = false;
+        }
+    }
+
+    public void Save()
+    {
+
+    }
+
+    public void SetDefault()
+    {
+        for(int i = 0; i < defaultKeys.Count; i++)
+        {
+            currentKeys[i] = defaultKeys[i];
+            bindings[i].GetComponentInChildren<Text>().text = currentKeys[i];
+        }
+        holdWallEnabled = false;
+        scrollWheelEnabled = true;
     }
 
     public void ChangeJumpKey(int id)
@@ -75,10 +155,20 @@ public class KeyBindingManager : MonoBehaviour
         Time4_KBM = GetKeyCode(id);
     }
 
+    public void ChangeHoldWallRunPreference(int id)
+    {
+        holdWallEnabled = preferenceBools[id] == "Enabled" ? true : false ;
+    }
+
+    public void ChangeScrollWheelPreference(int id)
+    {
+        scrollWheelEnabled = preferenceBools[id] == "Enabled" ? true : false;
+    }
+
 
     private KeyCode GetKeyCode(int id)
     {
-        if (keys[id] == "LeftMouse" || keys[id] == "RightMouse" || keys[id] == "ThumbBack" || keys[id] == "ThumbFront")
+        if (keys[id] == "LeftMouse" || keys[id] == "RightMouse" || keys[id] == "ThumbBack" || keys[id] == "ThumbFront" || keys[id] == "MiddleMouse" || keys[id] == "LeftCtrl")
         {
             Debug.Log("MouseInput");
             return 0;
