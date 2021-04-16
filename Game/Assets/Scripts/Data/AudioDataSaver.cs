@@ -4,12 +4,12 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveKeyBindData
+public static class AudioDataSaver
 {
-    public static KeyBindData LoadInputBindings()
+    public static AudioData LoadAudioData()
     {
-        KeyBindData dataFile = new KeyBindData();
-        string path = Application.persistentDataPath + "/KeyBindData.data";
+        AudioData dataFile = new AudioData();
+        string path = Application.persistentDataPath + "/AudioVolume.data";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -19,13 +19,12 @@ public static class SaveKeyBindData
                 stream.Close();
                 Debug.Log("<color=green>New Data File created</color>");
                 SaveDefaultDataToSystem(dataFile);
-                dataFile.SetInputs(KeyBindingManager.defaultKeys);
 
             }
             else
             {
                 Debug.Log("<color=green>Save file exists</color> at path: " + path);
-                dataFile = formatter.Deserialize(stream) as KeyBindData;
+                dataFile = formatter.Deserialize(stream) as AudioData;
                 stream.Close();
             }
 
@@ -35,30 +34,27 @@ public static class SaveKeyBindData
         {
             Debug.LogError("<color=green>Save file not found at path: </color>" + path);
             SaveDefaultDataToSystem(dataFile);
-            dataFile.SetInputs(KeyBindingManager.defaultKeys);
             return dataFile;
         }
     }
 
-    public static void SaveDataToSystem(KeyBindData speedRunData)
+    public static void SaveDataToSystem(AudioData audioData)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/KeyBindData.data";
+        string path = Application.persistentDataPath + "/AudioVolume.data";
         Debug.Log("<color=yellow>Saving new key binds</color> ");
-        speedRunData.PrintInputs();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        formatter.Serialize(stream, speedRunData);
+        formatter.Serialize(stream, audioData);
         stream.Close();
     }
 
-    public static void SaveDefaultDataToSystem(KeyBindData data)
+    public static void SaveDefaultDataToSystem(AudioData data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/KeyBindData.data";
+        string path = Application.persistentDataPath + "/AudioVolume.data";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        data.SetInputs(KeyBindingManager.defaultKeys);
         Debug.Log("<color=green>New path created</color>");
 
         formatter.Serialize(stream, data);

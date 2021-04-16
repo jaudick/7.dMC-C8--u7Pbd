@@ -29,6 +29,7 @@ public class MenuOptions : MonoBehaviour
 
     public void LeaveGame()
     {
+        GameCanvas.instance.SaveAudioData();
         CheckPointManager player = FindObjectOfType<CheckPointManager>();
         player.isInvincible = true;
         gameCanvas.Unpause(false);
@@ -36,6 +37,11 @@ public class MenuOptions : MonoBehaviour
         AudioMenu.playOnAwake = true;
         ChangeScene.sceneName = "MainMenu";
         scene.ChangeSceneMethod();
+    }
+
+    public void SetDefaultAudio()
+    {
+        AudioMenu.audioMenu.ResetAudioData();
     }
 
     public void QuitGame()

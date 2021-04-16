@@ -140,6 +140,8 @@ AudioMixerController:
     name: MasterVolume
   - guid: 9f33d1c30a270a540a9194218a5cd3dc
     name: Music
+  - guid: 89f79c8bc29b2e84087a1a6b3893e757
+    name: UIVolume
   m_AudioMixerGroupViews:
   - guids:
     - 363211977a2140d489fa4c83bc245676
