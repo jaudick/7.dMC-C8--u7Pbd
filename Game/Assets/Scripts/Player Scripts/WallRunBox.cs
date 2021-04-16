@@ -15,10 +15,13 @@ public class WallRunBox : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject))
+        if (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject) && 
+            (((KeyBindingManager.instance.HOLD_WALL && (Input.GetKey(KeyBindingManager.instance.JUMP) || Input.GetAxis("JumpController") > 0))) || !KeyBindingManager.instance.HOLD_WALL))
         {
+            if (Input.GetAxis("JumpController") > 0)
+                player.lastFrameWasHoldingRightTigger = true;
             if (player.getNextWall)
             {
                 player.SetLastWalls(other.gameObject);
