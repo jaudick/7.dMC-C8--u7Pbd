@@ -26635,8 +26635,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 594017359860239217, guid: 58324f3a04a22ac45a5550a8932a4ce9, type: 3}
       propertyPath: m_text
-      value: "Activate by pressing \n\nMB1, MB2, MB4 (or Scroll UP), MB5 (or Scroll
-        Down)\n\nA\tB\tY\tX "
+      value: "Activate by pressing \n\nMB0, MB1, MB3 (or Scroll UP), MB4 (or Scroll
+        Down)\n\nA\tX\tY\tB"
       objectReference: {fileID: 0}
     - target: {fileID: 594017359860239217, guid: 58324f3a04a22ac45a5550a8932a4ce9, type: 3}
       propertyPath: m_fontSize

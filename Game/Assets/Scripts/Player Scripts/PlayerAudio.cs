@@ -19,7 +19,7 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayWarp(int clip)
     {
-        audioSource.PlayOneShot(warpSounds[clip - 1]);
+        audioSource.PlayOneShot(warpSounds[clip - 1], 0.6f);
     }
 
     public void PlayWallRun()

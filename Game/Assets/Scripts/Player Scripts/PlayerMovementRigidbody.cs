@@ -73,6 +73,10 @@ public class PlayerMovementRigidbody : MonoBehaviour
     {
         if (!GameCanvas.paused)
         {
+            if(Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F3))
+            {
+                CheckPointManager.instance.Respawn();
+            }
             if (isWallRunningRight)
             {
                 justJumpedOffEnemy = false;
