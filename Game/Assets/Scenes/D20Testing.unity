@@ -1867,6 +1867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5593831434750923647, guid: dd9036a6b2f22744ea8a1094b542c391, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97091d135f3218c448e381046ff0a904, type: 2}
     - target: {fileID: 8332552553532953172, guid: dd9036a6b2f22744ea8a1094b542c391, type: 3}
       propertyPath: m_Name
       value: WallRunCube (8)
