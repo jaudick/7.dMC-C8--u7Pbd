@@ -24,6 +24,7 @@ public class WallRunBox : MonoBehaviour
                 player.lastFrameWasHoldingRightTigger = true;
             if (player.getNextWall)
             {
+                player.playerAudio.PlayWallRun();
                 player.SetLastWalls(other.gameObject);
                 player.getNextWall = false;
                 player.rigRotation = transform.rotation;

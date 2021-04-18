@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
-    public float sensitivity = 90f;
+    private float sensitivity;
     [SerializeField] private Transform body;
     [SerializeField] private PlayerMovementRigidbody player;
     private float xRotation = 0f;
     private void Start()
     {
+        sensitivity = (float) KeyBindingManager.instance.SENSITIVITY * 100;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void LateUpdate()
     {
+        if(KeyBindingManager.instance.changeSensitivity)
+        {
+            sensitivity = (float)KeyBindingManager.instance.SENSITIVITY * 100;
+            KeyBindingManager.instance.changeSensitivity = false;
+        }
         //cursor locking
         if(Input.GetKeyDown(KeyCode.Escape))
         {

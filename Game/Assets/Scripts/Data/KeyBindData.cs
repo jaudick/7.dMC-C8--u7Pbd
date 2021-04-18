@@ -8,12 +8,14 @@ public class KeyBindData
     public List<string> inputBindings;
     public bool holdWallRun;
     public bool scrollWheel;
+    public int sensitivity;
 
     public KeyBindData()
     {
         inputBindings = new List<string>();
         holdWallRun = false;
         scrollWheel = true;
+        sensitivity = 5;
     }
     public List<string> GetInputs()
     {

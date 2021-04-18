@@ -16,19 +16,24 @@ public class KeyBindingManager : MonoBehaviour
     public KeyCode TIME4;
     public bool HOLD_WALL;
     public bool SCROLL_WHEEL;
+    public int SENSITIVITY;
     KeyCode[] codes;
 
 
     public Button[] keyButtons;
     public Toggle holdWallRun;
     public Toggle scrollWheel;
+    public Slider sensitivity;
+    public bool changeSensitivity;
 
     public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse3", "Mouse4" };
     public static List<bool> defaultPreferences = new List<bool> { false, true };
+    private int defaultSensitivity = 5;
     public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse3", "Mouse4" };
 
     private void Awake()
     {
+
         instance = this;
 
         KeyBindData data = SaveKeyBindData.LoadInputBindings();
@@ -38,6 +43,7 @@ public class KeyBindingManager : MonoBehaviour
         SCROLL_WHEEL = data.scrollWheel;
         holdWallRun.isOn = HOLD_WALL;
         scrollWheel.isOn = SCROLL_WHEEL;
+        SENSITIVITY = data.sensitivity;
 
         JUMP = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[0]);
         SLIDE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[1]);
@@ -49,10 +55,12 @@ public class KeyBindingManager : MonoBehaviour
         TIME4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
         codes = new KeyCode[] { JUMP, SLIDE, DASH_LEFT, DASH_RIGHT, TIME1, TIME2, TIME3, TIME4 };
 
-        for (int i = 0; i<keyButtons.Length; i++)
+        for (int i = 0; i < keyButtons.Length; i++)
         {
             keyButtons[i].GetComponentInChildren<Text>().text = currentKeys[i];
         }
+
+        sensitivity.value = SENSITIVITY;
 
     }
 
@@ -63,6 +71,7 @@ public class KeyBindingManager : MonoBehaviour
         data.SetInputs(currentKeys);
         data.holdWallRun = HOLD_WALL;
         data.scrollWheel = SCROLL_WHEEL;
+        data.sensitivity = SENSITIVITY;
         SaveKeyBindData.SaveDataToSystem(data);
     }
 
@@ -87,6 +96,8 @@ public class KeyBindingManager : MonoBehaviour
         TIME2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
         TIME3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
         TIME4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
+        SENSITIVITY = defaultSensitivity;
+        sensitivity.value = defaultSensitivity;
         Save();
     }
 
@@ -98,6 +109,13 @@ public class KeyBindingManager : MonoBehaviour
     public void SetScrollWheel(bool toggle)
     {
         SCROLL_WHEEL = toggle;
+        Save();
+    }
+
+    public void SetSensitivity(int sensitivity)
+    {
+        SENSITIVITY = sensitivity;
+        changeSensitivity = true;
         Save();
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class CheckPointManager : MonoBehaviour
 {
+    public static CheckPointManager instance;
     private PlayerMovementRigidbody player;
     public CheckPoint lastCheckpoint;
     private Volume volume;
@@ -17,6 +18,7 @@ public class CheckPointManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         respawning = false;
         source = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerMovementRigidbody>();
@@ -37,7 +39,7 @@ public class CheckPointManager : MonoBehaviour
         respawning = true;
         float counter = 0;
         Vector3 originalPosition = player.transform.position;
-        source.PlayOneShot(respawnSound);
+        source.PlayOneShot(respawnSound, 0.7f);
         while (counter < 0.5f)
         {
             player.transform.position = originalPosition;
