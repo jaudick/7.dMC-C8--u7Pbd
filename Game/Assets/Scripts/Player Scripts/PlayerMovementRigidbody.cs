@@ -9,7 +9,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     float backSpeed = 10f;
     private float targetSpeed = 0f;
     public bool canDoInput = true;
-    private PlayerAudio playerAudio;
+    public PlayerAudio playerAudio;
 
 
     public bool isGrounded = true;
@@ -114,6 +114,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
                         jumpedOfWallVelocity = rbody.velocity / 2;
                     }
 
+                    playerAudio.PlayJump();
                     wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
                     currentWallRunUpForce = wallRunUpForce;
                     justJumpedOffWall = true;
@@ -130,6 +131,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
             else if ((Input.GetKeyDown(KeyBindingManager.instance.JUMP) || Input.GetAxis("JumpController") > 0) && (isGrounded || tempIsGrounded) && canJumpAgain)
             {
+                playerAudio.PlayJump();
                 rbody.AddForce(0, jumpForce * 2, 0, ForceMode.Impulse);
                 canJumpAgain = false;
                 StartCoroutine(ResetJump());
@@ -168,6 +170,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
             if (bulletEnemyJumpBox.canJumpOffEnemy && !isGrounded && !isWallRunning && ((Input.GetKey(KeyBindingManager.instance.JUMP) || Input.GetAxis("JumpController") > 0) && !justJumpedOffEnemy && canJumpAgain))
             {
+                playerAudio.PlayJumpOffEnemy();
                 ResetWallRun();
                 rbody.velocity = transform.up * jumpOffEnemyUpForce;
                 StartCoroutine(JustJumpedOffEnemy());
@@ -284,6 +287,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     IEnumerator Sliding()
     {
+        playerAudio.PlaySlide();
         canSlide = false;
         headCamera.SetTrigger("Slide");
         canDoInput = false;
@@ -297,6 +301,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     IEnumerator Dashing(string direction)
     {
+        playerAudio.PlayDash();
         dashing = true;
         canDash = false;
         yield return new WaitForSeconds(0.3f);

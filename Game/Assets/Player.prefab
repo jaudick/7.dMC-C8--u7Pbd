@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDoInput: 1
+  playerAudio: {fileID: 0}
   isGrounded: 1
   tempIsGrounded: 1
   groundCheck: {fileID: 0}
@@ -480,6 +481,7 @@ MonoBehaviour:
   wallRunRig: {fileID: 1109621793960628557}
   rigRotation: {x: 0, y: 0, z: 0, w: 0}
   getNextWall: 1
+  lastFrameWasHoldingRightTigger: 0
   bulletEnemyJumpBox: {fileID: 6832786766283512388}
 --- !u!114 &1109621795397671630
 MonoBehaviour:
@@ -624,6 +626,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e065975e3953c0045ac3ff588d0d2b22, type: 3}
   - {fileID: 8300000, guid: e065975e3953c0045ac3ff588d0d2b22, type: 3}
   - {fileID: 8300000, guid: e065975e3953c0045ac3ff588d0d2b22, type: 3}
+  wallRun: {fileID: 8300000, guid: cd63a71e686e13e4d9c1418baf5036b6, type: 3}
+  dash: {fileID: 8300000, guid: d27ebb13104836c40a7bc0d743082969, type: 3}
+  slide: {fileID: 8300000, guid: 8dc46a57c0f9e414bb6fd7a1d0696277, type: 3}
+  jump: {fileID: 8300000, guid: 4dc4acf34ace4c04bb31557ba3906824, type: 3}
+  jumpOffEnemy: {fileID: 8300000, guid: 8bc2f2e81e27bd04988dbb52c8bc02bc, type: 3}
 --- !u!1 &1109621795567725076
 GameObject:
   m_ObjectHideFlags: 0
