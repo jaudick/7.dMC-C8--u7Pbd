@@ -626,7 +626,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e065975e3953c0045ac3ff588d0d2b22, type: 3}
   - {fileID: 8300000, guid: e065975e3953c0045ac3ff588d0d2b22, type: 3}
   - {fileID: 8300000, guid: e065975e3953c0045ac3ff588d0d2b22, type: 3}
-  wallRun: {fileID: 8300000, guid: cd63a71e686e13e4d9c1418baf5036b6, type: 3}
+  wallRun: {fileID: 8300000, guid: 655681b2817fc4a4dacc04a0fff1a33c, type: 3}
   dash: {fileID: 8300000, guid: d27ebb13104836c40a7bc0d743082969, type: 3}
   slide: {fileID: 8300000, guid: 8dc46a57c0f9e414bb6fd7a1d0696277, type: 3}
   jump: {fileID: 8300000, guid: 4dc4acf34ace4c04bb31557ba3906824, type: 3}
@@ -828,7 +828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9951914bcfcf54299ab0d33a903d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 600
   body: {fileID: 1109621795397671637}
   player: {fileID: 1109621795397671626}
 --- !u!1 &1109621795700275241
