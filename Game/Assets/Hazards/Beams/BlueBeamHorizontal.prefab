@@ -456,6 +456,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeamOrange
       objectReference: {fileID: 0}
+    - target: {fileID: 6483018774780326429, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483018774780326430, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6483018774780326430, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -478,11 +486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483018774780326431, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.y
-      value: 0.43901825
+      value: 0.24964744
       objectReference: {fileID: 0}
     - target: {fileID: 6483018774780326431, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.z
-      value: 2
+      value: 1.1353015
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5694167880690608256, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}

@@ -379,8 +379,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6483018774780326431, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.x
+      value: 0.7485627
+      objectReference: {fileID: 0}
+    - target: {fileID: 6483018774780326431, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.y
-      value: 0.8669084
+      value: 0.32976332
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5694167880690608256, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
