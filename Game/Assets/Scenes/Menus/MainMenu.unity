@@ -4094,7 +4094,7 @@ MonoBehaviour:
   animatorMenu: {fileID: 1862346527}
   animatorFade: {fileID: 1581473266}
   animatorShrink: {fileID: 1492452184}
-  sceneName: Tutorial2
+  sceneName: Tutorial
 --- !u!114 &1132531926
 MonoBehaviour:
   m_ObjectHideFlags: 0
