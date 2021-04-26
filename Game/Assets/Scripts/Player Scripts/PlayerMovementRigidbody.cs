@@ -25,7 +25,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private bool dashing = false;
     private bool canSlide = true;
     Vector3 move;
-    private bool canJumpAgain = true;
+    public bool canJumpAgain = true;
     private bool holdingSlideTriggerInAir = false;
 
 
@@ -33,6 +33,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     //public GameObject lastWall1;
     //public GameObject lastWall2;
     public GameObject lastWall;
+    public GameObject currentWall;
     public int oneOrTwoSwitchForWalls= 1;
     public int oneOrTwoSwitchForNormalVectors = 1;
     public bool isWallRunning;
@@ -53,6 +54,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     public bool getNextWall = true;
     private Vector3 jumpedOfWallVelocity = Vector3.zero;
     public bool lastFrameWasHoldingRightTigger = false;
+    public bool wait = false;
 
     [Header("Enemy Parkour")]
     [SerializeField] private BulletEnemyJumpBox bulletEnemyJumpBox;
@@ -66,6 +68,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     {
         playerAudio = GetComponent<PlayerAudio>();
         getNextWall = true;
+        wait = false;
     }
 
     
@@ -102,6 +105,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
                 if ((!KeyBindingManager.instance.HOLD_WALL && ((Input.GetKeyDown(KeyBindingManager.instance.JUMP) || (Input.GetAxis("JumpController") > 0))) ||
                     (KeyBindingManager.instance.HOLD_WALL && ((Input.GetKeyUp(KeyBindingManager.instance.JUMP) || (Input.GetAxis("JumpController") <= 0 && lastFrameWasHoldingRightTigger))) && canJumpAgain)))
                 {
+                    lastWall = currentWall;
                     float x = Input.GetAxisRaw("Horizontal");
                     float z = Input.GetAxisRaw("Vertical");
 
@@ -339,6 +343,18 @@ public class PlayerMovementRigidbody : MonoBehaviour
         canJumpAgain = false;
         yield return new WaitForSeconds(0.2f);
         canJumpAgain = true;
+    }
+
+    public void Wait()
+    {
+        StartCoroutine(WaitCo());
+    }
+
+    private IEnumerator WaitCo()
+    {
+        wait = true;
+        yield return new WaitForSeconds(0.2f);
+        wait = false;
     }
 }
 
