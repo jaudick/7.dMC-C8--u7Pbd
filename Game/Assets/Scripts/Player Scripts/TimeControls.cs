@@ -45,7 +45,7 @@ public class TimeControls : MonoBehaviour
     {
         if (canShift && !GameCanvas.paused)
         {
-            if ((Input.GetButtonDown("Time1Controller") || Input.GetButtonDown("Time1") || Input.GetKeyDown(KeyBindingManager.instance.TIME1)) && currentTimeZone!=1)
+            if ((Input.GetButtonDown("PinkController") || Input.GetButtonDown("Time1") || Input.GetKeyDown(KeyBindingManager.instance.TIME1)) && currentTimeZone!=1)
             {
                 currentTimeZone = 1;
                 playerAudio.PlayWarp(1);
@@ -54,7 +54,7 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(0));
             }
-            else if ((Input.GetButtonDown("Time2Controller") || Input.GetButtonDown("Time2") || Input.GetKeyDown(KeyBindingManager.instance.TIME2)) && currentTimeZone != 2)
+            else if ((Input.GetButtonDown("BlueController") || Input.GetButtonDown("Time2") || Input.GetKeyDown(KeyBindingManager.instance.TIME2)) && currentTimeZone != 2)
             {
                 currentTimeZone = 2;
                 playerAudio.PlayWarp(2);
@@ -63,7 +63,7 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(1));
             }
-            else if ((Input.GetButtonDown("Time3Controller") || Input.GetButtonDown("Time3") || Input.GetKeyDown(KeyBindingManager.instance.TIME3)) && currentTimeZone != 3)
+            else if ((Input.GetButtonDown("GreenController") || Input.GetButtonDown("Time3") || Input.GetKeyDown(KeyBindingManager.instance.TIME3)) && currentTimeZone != 3)
             {
                 currentTimeZone = 3;
                 playerAudio.PlayWarp(3);
@@ -72,7 +72,7 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(2));
             }
-            else if ((Input.GetButtonDown("Time4Controller") || Input.GetButtonDown("Time4") || Input.GetKeyDown(KeyBindingManager.instance.TIME4)) && currentTimeZone != 4)
+            else if ((Input.GetButtonDown("OrangeController") || Input.GetButtonDown("Time4") || Input.GetKeyDown(KeyBindingManager.instance.TIME4)) && currentTimeZone != 4)
             {
                 currentTimeZone = 4;
                 playerAudio.PlayWarp(4);

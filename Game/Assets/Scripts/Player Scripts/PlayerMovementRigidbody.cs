@@ -18,9 +18,9 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private float groundDistance = 0.4f;
     public LayerMask ground;
     public Rigidbody rbody;
-    private float jumpForce = 1400f;
-    private float slideForce = 90f;
-    private float dashForce = 37.5f;
+    private const float jumpForce = 1400f;
+    private const float slideForce = 90f;
+    private const float dashForce = 37.5f;
     private bool canDash = true;
     private bool dashing = false;
     private bool canSlide = true;
@@ -34,16 +34,16 @@ public class PlayerMovementRigidbody : MonoBehaviour
     //public GameObject lastWall2;
     public GameObject lastWall;
     public GameObject currentWall;
-    public int oneOrTwoSwitchForWalls= 1;
-    public int oneOrTwoSwitchForNormalVectors = 1;
+    //public int oneOrTwoSwitchForWalls= 1;
+    //public int oneOrTwoSwitchForNormalVectors = 1;
     public bool isWallRunning;
     public bool isWallRunningRight;
     public bool isWallRunningLeft;
-    private float wallRunUpForce = 12f;
+    private const float wallRunUpForce = 12f;
     public float currentWallRunUpForce = 0f;
-    private float wallRunDecreaseRate = 25f;
-    private float jumpOffWallUpForce = 30.5f;
-    private float jumpOffWallForwardForce = 23.5f;
+    private const float wallRunDecreaseRate = 25f;
+    private const float jumpOffWallUpForce = 30.5f;
+    private const float jumpOffWallForwardForce = 23.5f;
     public bool justJumpedOffWall = false;
     [SerializeField] private Animator headCamera;
     [SerializeField] private CapsuleCollider capsuleCollider; 
@@ -52,31 +52,39 @@ public class PlayerMovementRigidbody : MonoBehaviour
     public GameObject wallRunRig;
     public Quaternion rigRotation;
     public bool getNextWall = true;
-    private Vector3 jumpedOfWallVelocity = Vector3.zero;
+    //private Vector3 jumpedOfWallVelocity = Vector3.zero;
     public bool lastFrameWasHoldingRightTigger = false;
     public bool wait = false;
+    public bool isTouchingWall;
 
     [Header("Enemy Parkour")]
     [SerializeField] private BulletEnemyJumpBox bulletEnemyJumpBox;
     private float jumpOffEnemyUpForce = 45f;
-    private float jumpOffEnemyForwardForce = 150f;
     private float jumpOffEnemySpeedBoost = 2.5f;
     private bool justJumpedOffEnemy = false;
-    private bool canJumpOffEnemy = true;
 
     void Awake()
     {
         playerAudio = GetComponent<PlayerAudio>();
         getNextWall = true;
         wait = false;
+        isTouchingWall = false;
     }
 
-    
     void Update()
     {
+        Collider[] walls = Physics.OverlapBox(transform.position, Vector3.one, Quaternion.identity, 1 << 10);
+        if(walls.Length==1)
+        {
+            isTouchingWall = true;
+        }
+        else
+        {
+            isTouchingWall = false;
+        }
         if (!GameCanvas.paused)
         {
-            if(Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F3))
+            if(Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F3) || Input.GetAxis("RespawnController") < 0)
             {
                 CheckPointManager.instance.Respawn();
             }
@@ -113,13 +121,11 @@ public class PlayerMovementRigidbody : MonoBehaviour
                     {
                         Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
                         rbody.velocity = jumpOffWallForwardForce / 50 * transform.forward + transform.up * jumpOffWallUpForce * 1.55f + jumpOffWallSideForce * 10f;
-                        jumpedOfWallVelocity = rbody.velocity / 2;
                     }
                     else
                     {
                         Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
                         rbody.velocity = jumpOffWallForwardForce * transform.forward + transform.up * jumpOffWallUpForce + jumpOffWallSideForce * 2.5f;
-                        jumpedOfWallVelocity = rbody.velocity / 2;
                     }
 
                     playerAudio.PlayJump();
@@ -162,14 +168,14 @@ public class PlayerMovementRigidbody : MonoBehaviour
             if (Input.GetAxis("SlideController") <= 0 && isGrounded)
                 holdingSlideTriggerInAir = false;
 
-            if ((Input.GetKeyDown(KeyBindingManager.instance.DASH_LEFT) || Input.GetButton("DashLeftController")) && canDash && !isWallRunning)
+            if ((Input.GetKeyDown(KeyBindingManager.instance.DASH_LEFT) || Input.GetButtonDown("DashLeftController")) && canDash && !isWallRunning)
             {
                 if (canSlide) headCamera.SetBool("DashLeft", true);
                 rbody.velocity = -transform.right.normalized * dashForce + transform.forward.normalized * 1.5f + move;
                 StartCoroutine(Dashing("DashLeft"));
             }
 
-            if ((Input.GetKeyDown(KeyBindingManager.instance.DASH_RIGHT) || Input.GetButton("DashRightController")) && canDash && !isWallRunning)
+            if ((Input.GetKeyDown(KeyBindingManager.instance.DASH_RIGHT) || Input.GetButtonDown("DashRightController")) && canDash && !isWallRunning)
             {
                 if (canSlide) headCamera.SetBool("DashRight", true);
                 rbody.velocity = transform.right.normalized * dashForce + transform.forward.normalized * 1.5f + move;

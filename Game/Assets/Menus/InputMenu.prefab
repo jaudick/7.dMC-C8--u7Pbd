@@ -671,7 +671,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time 3 (Green)
+  m_Text: Green
 --- !u!1 &871824387406112393
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +814,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 29afaa64330c27442b25b28c7e59a46c, type: 3}
-    m_FontSize: 16
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -825,7 +825,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Scroll Wheel \nUp/Down 3/4 Time"
+  m_Text: "Scroll Wheel Up/Down \nGreen/Orange Time"
 --- !u!1 &1503638419091060845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,7 +2596,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time 2 (Blue)
+  m_Text: Blue
 --- !u!1 &5336282851616428957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,7 +3000,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time 1 (Pink)
+  m_Text: Pink
 --- !u!1 &6184183852432830085
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,7 +4237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Time 4 (Orange)
+  m_Text: Orange
 --- !u!1 &7769469210649681654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4996,7 +4996,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 327, y: -206}
-  m_SizeDelta: {x: 345.3, y: 93.62}
+  m_SizeDelta: {x: 346.79, y: 93.62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2204838698013552630
 CanvasRenderer:
@@ -5028,7 +5028,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 29afaa64330c27442b25b28c7e59a46c, type: 3}
-    m_FontSize: 17
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -5039,9 +5039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1, 2, 3, 4 Number Keys are
-
-    assigned to Time states'
+  m_Text: "1, 2, 3, 4 Number Keys are assigned to \nPink, Blue, Green, Orange"
 --- !u!1 &9049046502690894408
 GameObject:
   m_ObjectHideFlags: 0

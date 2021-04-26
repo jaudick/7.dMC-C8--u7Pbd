@@ -468,8 +468,6 @@ MonoBehaviour:
   canJumpAgain: 1
   lastWall: {fileID: 0}
   currentWall: {fileID: 0}
-  oneOrTwoSwitchForWalls: 1
-  oneOrTwoSwitchForNormalVectors: 1
   isWallRunning: 0
   isWallRunningRight: 0
   isWallRunningLeft: 0

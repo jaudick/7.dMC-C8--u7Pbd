@@ -16,7 +16,7 @@ public class WallRunCube : MonoBehaviour
             }
             else
             {
-                walls[i].tag = "MainCamera";
+                walls[i].tag = "NotWallRun";
             }
         }
     }

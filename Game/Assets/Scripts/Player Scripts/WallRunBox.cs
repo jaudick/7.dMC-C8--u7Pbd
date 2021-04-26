@@ -8,69 +8,16 @@ public class WallRunBox : MonoBehaviour
     public bool isRightBox;
     public bool isLeftBox;
     int layer = 1 << 10;
-    Collider[] colliders;
     private bool wait = false;
-    private bool canTakeNewWall = true;
 
     private void Start()
     {
         player = GetComponentInParent<PlayerMovementRigidbody>();
     }
 
-    /*
-    private void Update()
-    {
-        colliders = Physics.OverlapBox(transform.position, new Vector3(1, 1, 1), Quaternion.identity, layer);
-        if ((colliders.Length == 1 && !player.isGrounded && ((player.lastWall == null) || player.lastWall != colliders[0].gameObject))
-            && ((KeyBindingManager.instance.HOLD_WALL && (Input.GetKey(KeyBindingManager.instance.JUMP) || (Input.GetAxis("JumpController") > 0)))
-            || !KeyBindingManager.instance.HOLD_WALL))
-        {
-            if (Input.GetAxis("JumpController") > 0)
-                player.lastFrameWasHoldingRightTigger = true;
-            if (player.getNextWall)
-            {
-                player.playerAudio.PlayWallRun();
-                player.SetLastWalls(colliders[0].gameObject);
-                player.getNextWall = false;
-                player.rigRotation = transform.rotation;
-                player.wallRunVelocity = player.GetVelocity();
-            }
-
-            if (colliders[0].GetComponentInParent<MovingHazard>() != null)
-            {
-                player.currentWallRunUpForce = -10;
-            }
-            if (isRightBox)
-            {
-                player.isWallRunning = true;
-                player.isWallRunningRight = true;
-                player.isWallRunningLeft = false;
-            }
-
-            else if (isLeftBox)
-            {
-                player.isWallRunning = true;
-                player.isWallRunningLeft = true;
-                player.isWallRunningRight = false;
-            }
-        }
-
-        else
-        {
-            player.isWallRunning = false;
-            player.isWallRunningLeft = false;
-            player.isWallRunningRight = false;
-            player.rigRotation = player.transform.rotation;
-            player.getNextWall = true;
-        }
-
-
-    }*/
-
-    
     private void OnTriggerStay(Collider other)
     {
-        if (!wait && player.canDoInput && (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject)) 
+        if (player.isTouchingWall && !wait && player.canDoInput && (other.CompareTag("WallRun") && !player.isGrounded && ((player.lastWall == null) || player.lastWall!=other.gameObject)) 
             && ((KeyBindingManager.instance.HOLD_WALL && (Input.GetKey(KeyBindingManager.instance.JUMP) || (Input.GetAxis("JumpController") > 0))) 
             || !KeyBindingManager.instance.HOLD_WALL))
         {
@@ -111,12 +58,11 @@ public class WallRunBox : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == player.currentWall)
+        if (other.gameObject == player.currentWall && (player.isWallRunning || player.justJumpedOffWall))
         {
             if (!wait)
             {
                 player.canDoInput = false;
-                canTakeNewWall = true;
                 player.currentWall = null;
                 wait = true;
                 player.isWallRunning = false;
