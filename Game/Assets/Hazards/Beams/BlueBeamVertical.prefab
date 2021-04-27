@@ -448,11 +448,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6483018774780326431, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.y
-      value: 0.24964744
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 6483018774780326431, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
       propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[1].m_Value.z
-      value: 1.1353015
+      value: 1.4980392
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5694167880690608256, guid: c101544bb8b138240a2f47b7ad75624e, type: 3}
@@ -482,12 +482,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3854687208519417804, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3854687208519417804, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3854687208519417804, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3854687208519417804, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3854687208519417804, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.439
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3854687208519417804, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
       propertyPath: m_LocalPosition.z
