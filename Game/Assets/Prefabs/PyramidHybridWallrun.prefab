@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2272418411346682504}
   - component: {fileID: 4066108111284377154}
   - component: {fileID: 3435158451852020416}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PyramidHybridWallrun
   m_TagString: WallRun
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8826671826297616516}
   - component: {fileID: 1934352065094386822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Ground
   m_Icon: {fileID: 0}

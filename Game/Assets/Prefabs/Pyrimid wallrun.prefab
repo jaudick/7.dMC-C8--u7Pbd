@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2272418411346682504}
   - component: {fileID: 4066108111284377154}
   - component: {fileID: 3435158451852020416}
-  m_Layer: 0
-  m_Name: Prism
+  m_Layer: 10
+  m_Name: Pyrimid wallrun
   m_TagString: WallRun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2552779819613894551}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -40.071342, y: -4.87, z: 342.6758}
-  m_LocalScale: {x: 500, y: 500, z: 500}
+  m_LocalScale: {x: 678.2816, y: 678.2816, z: 712.2114}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &2272418411346682504
 MeshFilter:
   m_ObjectHideFlags: 0

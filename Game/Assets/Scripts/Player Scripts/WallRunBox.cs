@@ -69,7 +69,8 @@ public class WallRunBox : MonoBehaviour
                 player.isWallRunningLeft = false;
                 player.isWallRunningRight = false;
                 player.rigRotation = player.transform.rotation;
-                player.SetLastWalls(other.gameObject);
+                if (other.GetComponent<Mobius>() == null)
+                    player.SetLastWalls(other.gameObject);
                 StartCoroutine(WaitCo(other));
             }
         }
