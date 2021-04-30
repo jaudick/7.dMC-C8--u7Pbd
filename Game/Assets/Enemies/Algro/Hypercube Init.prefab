@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4492804011168823679}
   - component: {fileID: 5920583780838136048}
   m_Layer: 9
-  m_Name: HypercubeBlue
+  m_Name: Hypercube Init
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 6278579286834565298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 169114794113972879}
   - {fileID: 557157274307940137}
@@ -404,7 +404,6 @@ MonoBehaviour:
   trailPartice: {fileID: 199384858802481745}
   particleHolder: {fileID: 0}
   targ: {fileID: 2787827359041496021}
-  burst: 2
   speed: 20
   parent: {fileID: 0}
   isTracking: 1
