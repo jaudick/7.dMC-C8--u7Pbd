@@ -12,6 +12,7 @@ public class Algro : Controller
     public GameObject player;
     private float counter = 0;
     private AlgroAudio algroAudio;
+    private float initScale;
     public override void setTime(float f)
     {
         localTime = f;
@@ -27,6 +28,7 @@ public class Algro : Controller
 
     private void Awake()
     {
+        initScale = transform.localScale.x;
         algroAudio = GetComponent<AlgroAudio>();
         player = FindObjectOfType<PlayerMovementRigidbody>().gameObject;
     }
@@ -45,7 +47,8 @@ public class Algro : Controller
         {
             algroAudio.PlayAlgroSound();
             reload = reloadTime;
-            GameObject g = Instantiate(hyper,transform);
+            GameObject g = Instantiate(hyper);
+            g.transform.position = transform.position;
             g.GetComponent<Shiftable>().timeZone = GetComponent<Shiftable>().timeZone;
             g.GetComponent<HyperCube>().targ = player;
             g.GetComponent<HyperCube>().parent = gameObject;
@@ -55,7 +58,7 @@ public class Algro : Controller
         counter += localTime * Time.deltaTime;
         counter %= 180;
         float f = (localTime * Mathf.Abs(Mathf.Sin(counter)) * .15f) + 1f;
-        transform.localScale = new Vector3(f, f, f);
+        transform.localScale = new Vector3(initScale + f, initScale + f, initScale + f);;
     }
 
 }
