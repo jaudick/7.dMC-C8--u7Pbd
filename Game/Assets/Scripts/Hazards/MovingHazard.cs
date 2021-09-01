@@ -30,142 +30,145 @@ public class MovingHazard : MonoBehaviour
 
     private IEnumerator LerpPosition()
     {
-        if (is4Way)
+        if (!doesNotMove)
         {
-            float timeStarted = Time.time;
-            float percentageDone = 0;
-            if (goingTo1)
+            if (is4Way)
             {
-                while (percentageDone < 1)
+                float timeStarted = Time.time;
+                float percentageDone = 0;
+                if (goingTo1)
                 {
-                    if (shiftable.localTime == 0)
+                    while (percentageDone < 1)
                     {
-                        timeStarted += Time.deltaTime;
-                        yield return new WaitForEndOfFrame();
+                        if (shiftable.localTime == 0)
+                        {
+                            timeStarted += Time.deltaTime;
+                            yield return new WaitForEndOfFrame();
+                        }
+                        else
+                        {
+                            percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
+                            beam.transform.position = Vector3.Lerp(point4.position, point1.position, percentageDone);
+                            yield return new WaitForEndOfFrame();
+                        }
                     }
-                    else
-                    {
-                        percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
-                        beam.transform.position = Vector3.Lerp(point4.position, point1.position, percentageDone);
-                        yield return new WaitForEndOfFrame();
-                    }
+                    goingTo1 = false;
+                    goingTo2 = true;
+                    goingTo3 = false;
+                    goingTo4 = false;
                 }
-                goingTo1 = false;
-                goingTo2 = true;
-                goingTo3 = false;
-                goingTo4 = false;
-            }
-            else if (goingTo2)
-            {
-                while (percentageDone < 1)
+                else if (goingTo2)
                 {
-                    if (shiftable.localTime == 0)
+                    while (percentageDone < 1)
                     {
-                        timeStarted += Time.deltaTime;
-                        yield return new WaitForEndOfFrame();
+                        if (shiftable.localTime == 0)
+                        {
+                            timeStarted += Time.deltaTime;
+                            yield return new WaitForEndOfFrame();
+                        }
+                        else
+                        {
+                            percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
+                            beam.transform.position = Vector3.Lerp(point1.position, point2.position, percentageDone);
+                            yield return new WaitForEndOfFrame();
+                        }
                     }
-                    else
-                    {
-                        percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
-                        beam.transform.position = Vector3.Lerp(point1.position, point2.position, percentageDone);
-                        yield return new WaitForEndOfFrame();
-                    }
+                    goingTo1 = false;
+                    goingTo2 = false;
+                    goingTo3 = true;
+                    goingTo4 = false;
                 }
-                goingTo1 = false;
-                goingTo2 = false;
-                goingTo3 = true;
-                goingTo4 = false;
+
+                else if (goingTo3)
+                {
+                    while (percentageDone < 1)
+                    {
+                        if (shiftable.localTime == 0)
+                        {
+                            timeStarted += Time.deltaTime;
+                            yield return new WaitForEndOfFrame();
+                        }
+                        else
+                        {
+                            percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
+                            beam.transform.position = Vector3.Lerp(point2.position, point3.position, percentageDone);
+                            yield return new WaitForEndOfFrame();
+                        }
+                    }
+                    goingTo1 = false;
+                    goingTo2 = false;
+                    goingTo3 = false;
+                    goingTo4 = true;
+                }
+
+                else if (goingTo4)
+                {
+                    while (percentageDone < 1)
+                    {
+                        if (shiftable.localTime == 0)
+                        {
+                            timeStarted += Time.deltaTime;
+                            yield return new WaitForEndOfFrame();
+                        }
+                        else
+                        {
+                            percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
+                            beam.transform.position = Vector3.Lerp(point3.position, point4.position, percentageDone);
+                            yield return new WaitForEndOfFrame();
+                        }
+                    }
+                    goingTo1 = true;
+                    goingTo2 = false;
+                    goingTo3 = false;
+                    goingTo4 = false;
+                }
             }
 
-            else if (goingTo3)
+            else
             {
-                while (percentageDone < 1)
+                float timeStarted = Time.time;
+                float percentageDone = 0;
+                if (goingTo1)
                 {
-                    if (shiftable.localTime == 0)
+                    while (percentageDone < 1)
                     {
-                        timeStarted += Time.deltaTime;
-                        yield return new WaitForEndOfFrame();
+                        if (shiftable.localTime == 0)
+                        {
+                            timeStarted += Time.deltaTime;
+                            yield return new WaitForEndOfFrame();
+                        }
+                        else
+                        {
+                            percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
+                            beam.transform.position = Vector3.Lerp(point2.position, point1.position, percentageDone);
+                            yield return new WaitForEndOfFrame();
+                        }
                     }
-                    else
-                    {
-                        percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
-                        beam.transform.position = Vector3.Lerp(point2.position, point3.position, percentageDone);
-                        yield return new WaitForEndOfFrame();
-                    }
+                    goingTo1 = false;
+                    goingTo2 = true;
                 }
-                goingTo1 = false;
-                goingTo2 = false;
-                goingTo3 = false;
-                goingTo4 = true;
-            }
-
-            else if (goingTo4)
-            {
-                while (percentageDone < 1)
+                else if (goingTo2)
                 {
-                    if (shiftable.localTime == 0)
+                    while (percentageDone < 1)
                     {
-                        timeStarted += Time.deltaTime;
-                        yield return new WaitForEndOfFrame();
+                        if (shiftable.localTime == 0)
+                        {
+                            timeStarted += Time.deltaTime;
+                            yield return new WaitForEndOfFrame();
+                        }
+                        else
+                        {
+                            percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
+                            beam.transform.position = Vector3.Lerp(point1.position, point2.position, percentageDone);
+                            yield return new WaitForEndOfFrame();
+                        }
                     }
-                    else
-                    {
-                        percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
-                        beam.transform.position = Vector3.Lerp(point3.position, point4.position, percentageDone);
-                        yield return new WaitForEndOfFrame();
-                    }
+                    goingTo2 = false;
+                    goingTo1 = true;
                 }
-                goingTo1 = true;
-                goingTo2 = false;
-                goingTo3 = false;
-                goingTo4 = false;
             }
+            //StartCoroutine(LerpPosition());
         }
-
-        else
-        {
-            float timeStarted = Time.time;
-            float percentageDone = 0;
-            if (goingTo1)
-            {
-                while (percentageDone < 1)
-                {
-                    if (shiftable.localTime == 0)
-                    {
-                        timeStarted += Time.deltaTime;
-                        yield return new WaitForEndOfFrame();
-                    }
-                    else
-                    {
-                        percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
-                        beam.transform.position = Vector3.Lerp(point2.position, point1.position, percentageDone);
-                        yield return new WaitForEndOfFrame();
-                    }
-                }
-                goingTo1 = false;
-                goingTo2 = true;
-            }
-            else if (goingTo2)
-            {
-                while (percentageDone < 1)
-                {
-                    if (shiftable.localTime == 0)
-                    {
-                        timeStarted += Time.deltaTime;
-                        yield return new WaitForEndOfFrame();
-                    }
-                    else
-                    {
-                        percentageDone = (Time.time - timeStarted) / timeBetweenPoints;
-                        beam.transform.position = Vector3.Lerp(point1.position, point2.position, percentageDone);
-                        yield return new WaitForEndOfFrame();
-                    }
-                }
-                goingTo2 = false;
-                goingTo1 = true;
-            }
-        }
-        StartCoroutine(LerpPosition());
     }
 
     private void Update()
