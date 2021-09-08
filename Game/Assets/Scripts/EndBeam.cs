@@ -84,7 +84,7 @@ public class EndBeam : MonoBehaviour
 
         if (sceneName == "Level7")
         {
-            Debug.Log("<color=yellow>Saving 8</color>");
+            Debug.Log("<color=yellow>Saving 7</color>");
             return 7;
         }
 

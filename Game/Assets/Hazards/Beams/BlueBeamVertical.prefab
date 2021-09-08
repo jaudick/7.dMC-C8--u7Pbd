@@ -319,6 +319,10 @@ PrefabInstance:
       value: CylinderSolid (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4482569522988639606, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482569522988639606, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
@@ -536,6 +540,10 @@ PrefabInstance:
     - target: {fileID: 4482569522988639606, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
       propertyPath: m_Name
       value: CylinderSolid
+      objectReference: {fileID: 0}
+    - target: {fileID: 4482569522988639606, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4482569522988639606, guid: 59ee6df3db099bc4985e88f3de719d55, type: 3}
       propertyPath: m_IsActive
