@@ -99,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 767746050268630123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.69, z: 0}
-  m_LocalScale: {x: 2.396, y: 6.7279844, z: 2.2546}
+  m_LocalScale: {x: 3.3, y: 7.7, z: 3.3}
   m_Children: []
   m_Father: {fileID: 1109621795397671637}
   m_RootOrder: 4
@@ -482,6 +482,7 @@ MonoBehaviour:
   getNextWall: 1
   lastFrameWasHoldingRightTigger: 0
   wait: 0
+  isTouchingWall: 0
   bulletEnemyJumpBox: {fileID: 6832786766283512388}
 --- !u!114 &1109621795397671630
 MonoBehaviour:
