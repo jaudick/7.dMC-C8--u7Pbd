@@ -167,7 +167,7 @@ public class MovingHazard : MonoBehaviour
                     goingTo1 = true;
                 }
             }
-            //StartCoroutine(LerpPosition());
+            StartCoroutine(LerpPosition());
         }
     }
 
