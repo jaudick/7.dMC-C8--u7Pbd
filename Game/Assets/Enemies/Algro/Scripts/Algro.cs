@@ -13,10 +13,11 @@ public class Algro : Controller
     private float counter = 0;
     private AlgroAudio algroAudio;
     private float initScale;
+    private bool frozen;
     public override void setTime(float f)
     {
         localTime = f;
-        bool frozen = f == 0;
+        frozen = f == 0;
         if (frozen)
         {
             gameObject.layer = 8;
@@ -59,6 +60,14 @@ public class Algro : Controller
         counter %= 180;
         float f = (localTime * Mathf.Abs(Mathf.Sin(counter)) * .15f) + 1f;
         transform.localScale = new Vector3(initScale + f, initScale + f, initScale + f);;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && !frozen)
+        {
+            FindObjectOfType<CheckPointManager>().Respawn();
+        }
     }
 
 }

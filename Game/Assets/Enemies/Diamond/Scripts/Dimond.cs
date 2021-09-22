@@ -112,4 +112,12 @@ public class Dimond : Controller
             gameObject.layer = 9;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && !frozen)
+        {
+            FindObjectOfType<CheckPointManager>().Respawn();
+        }
+    }
 }

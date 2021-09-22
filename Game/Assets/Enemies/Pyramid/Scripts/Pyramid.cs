@@ -80,4 +80,12 @@ public class Pyramid : Controller
             StartCoroutine(Spawn());
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && !frozen)
+        {
+            FindObjectOfType<CheckPointManager>().Respawn();
+        }
+    }
 }
