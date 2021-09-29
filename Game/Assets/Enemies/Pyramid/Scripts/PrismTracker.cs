@@ -9,7 +9,7 @@ public class PrismTracker : MonoBehaviour
     {
         tracking = false;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<PlayerMovementRigidbody>() != null) tracking = true;
     }
