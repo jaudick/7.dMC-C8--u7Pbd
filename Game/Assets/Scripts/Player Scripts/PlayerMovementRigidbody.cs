@@ -259,6 +259,11 @@ public class PlayerMovementRigidbody : MonoBehaviour
                 currentWallRunUpForce = wallRunUpForce;
             }
         }
+
+        if((isGrounded || isWallRunning || justJumpedOffEnemy) && !dashing)
+        {
+            canDash = true;
+        }
     }
 
     public void ResetWallRun()
@@ -324,7 +329,6 @@ public class PlayerMovementRigidbody : MonoBehaviour
         dashing = false;
 
         yield return new WaitForSeconds(0.35f);
-        canDash = true;
     }
 
     public Vector3 GetVelocity()
