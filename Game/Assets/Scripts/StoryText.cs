@@ -11,7 +11,7 @@ public class StoryText : MonoBehaviour
     public int index = 1;
     public int currentTextBox = 0;
     public float waitFor = 0.075f;
-    public float waitForMultiplier = 6;
+    public float waitForMultiplier = 7.5f;
     void Start()
     {
         originalText = text[currentTextBox].text;
@@ -36,7 +36,7 @@ public class StoryText : MonoBehaviour
             //float waitFor = 0.001f;
             text[currentTextBox].text = currentText;
             currentText = originalText.Substring(0, index++);
-            if (index>2 && (currentText.ToCharArray()[index-3] == '.' || currentText.ToCharArray()[index - 3] == ','))
+            if (index>2 && (currentText.ToCharArray()[index-3] == '.' || currentText.ToCharArray()[index - 3] == '}'))
             {
                 waitFor2 *= waitForMultiplier;
             }
