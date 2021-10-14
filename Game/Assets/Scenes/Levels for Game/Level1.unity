@@ -16908,7 +16908,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e44876a1df7640c4ab4235868219d2fa, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e44876a1df7640c4ab4235868219d2fa, type: 3}
       propertyPath: m_LocalScale.x
@@ -37839,7 +37839,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8035444086185220744, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
       propertyPath: m_Volume
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8035444086185220744, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
       propertyPath: m_audioClip
