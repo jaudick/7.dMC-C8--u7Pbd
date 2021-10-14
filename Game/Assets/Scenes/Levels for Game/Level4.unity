@@ -1741,10 +1741,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1.5842, z: 1}
   m_Children:
   - {fileID: 318359825}
-  - {fileID: 1715036889}
   - {fileID: 384460911}
-  - {fileID: 1536489379}
+  - {fileID: 1715036889}
   - {fileID: 1410721851}
+  - {fileID: 1536489379}
   - {fileID: 105535857}
   - {fileID: 974422344}
   m_Father: {fileID: 0}
@@ -17901,8 +17901,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8035444086185220744, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
       propertyPath: m_Volume
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8035444086185220744, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ee0597dee4b73840b093b74ec7757fe, type: 3}
     - target: {fileID: 8035444086185220745, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
       propertyPath: m_RootOrder
       value: 10

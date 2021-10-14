@@ -2804,8 +2804,8 @@ Transform:
   - {fileID: 1233708709}
   - {fileID: 720989411}
   - {fileID: 1095519687}
-  - {fileID: 2046235239}
   - {fileID: 1872098453}
+  - {fileID: 2046235239}
   - {fileID: 1624848971}
   m_Father: {fileID: 1055003892}
   m_RootOrder: 1
@@ -37837,6 +37837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8035444086185220744, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8035444086185220744, guid: c9cf4c6dbbf6d984daf3ffbc032ea588, type: 3}
       propertyPath: m_audioClip
       value: 
