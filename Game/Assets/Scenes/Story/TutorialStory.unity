@@ -912,7 +912,7 @@ MonoBehaviour:
   index: 1
   currentTextBox: 0
   waitFor: 0.075
-  waitForMultiplier: 7.5
+  waitForMultiplier: 6
 --- !u!95 &1228828259 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 345059271839681502, guid: eccd8f7c5849a4a4fb2dd35607448db1, type: 3}
