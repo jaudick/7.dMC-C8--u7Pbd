@@ -2804,8 +2804,8 @@ Transform:
   - {fileID: 1233708709}
   - {fileID: 720989411}
   - {fileID: 1095519687}
-  - {fileID: 2046235239}
   - {fileID: 1872098453}
+  - {fileID: 2046235239}
   - {fileID: 1624848971}
   m_Father: {fileID: 1055003892}
   m_RootOrder: 1
@@ -16908,7 +16908,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e44876a1df7640c4ab4235868219d2fa, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e44876a1df7640c4ab4235868219d2fa, type: 3}
       propertyPath: m_LocalScale.x
