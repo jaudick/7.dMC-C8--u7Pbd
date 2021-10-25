@@ -827,8 +827,8 @@ MonoBehaviour:
   currentText: 
   index: 1
   currentTextBox: 0
-  waitFor: 0.07
-  waitForMultiplier: 6
+  waitFor: 0.1
+  waitForMultiplier: 8
 --- !u!95 &1228828259 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 345059271839681502, guid: eccd8f7c5849a4a4fb2dd35607448db1, type: 3}
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Evaluation 7 initializing...
+  m_Text: 'Evaluation 7 initializing..
 
 '
 --- !u!222 &1230803448
@@ -1085,9 +1085,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Hello Iteration. I am The Creator. I.I. informed me of your ability. I
-    expected an iteration to evolve into something unexpected to complete my test.
-    Your evolution was not an error, but simply a matter of time. The next tests
-    will push your skills even further. I hope you impress me.
+    always expected an iteration to evolve into something unexpected to complete
+    my test. Your evolution was not an error, but simply a matter of time. These
+    next tests will push your skills even further. I hope you impress me....
 --- !u!222 &1570582578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1679,7 +1679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &2041111610
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1690,10 +1690,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 460052178be2d0648a4e409795dcf82d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a03e3ad3614273446ab61cc9995c185b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.9
+  m_Pitch: 0.95
   Loop: 0
   Mute: 0
   Spatialize: 0

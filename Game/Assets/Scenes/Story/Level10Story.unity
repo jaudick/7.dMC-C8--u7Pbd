@@ -356,7 +356,7 @@ MonoBehaviour:
   animatorMenu: {fileID: 1862346527}
   animatorFade: {fileID: 1228828259}
   animatorShrink: {fileID: 1492452184}
-  sceneName: Level8
+  sceneName: Level10
 --- !u!4 &410669543
 Transform:
   m_ObjectHideFlags: 0
@@ -827,7 +827,7 @@ MonoBehaviour:
   currentText: 
   index: 1
   currentTextBox: 0
-  waitFor: 0.09
+  waitFor: 0.1
   waitForMultiplier: 8
 --- !u!95 &1228828259 stripped
 Animator:
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Evaluation 8 initializing...
+  m_Text: Final Evaluation initializing....
 --- !u!222 &1230803448
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1082,10 +1082,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Impressive Iteration. Quite impressive. But do not feel too confident
-    yet. Three more evaluations remain...
-
-'
+  m_Text: This is it, Iteration. The final Evaluation. This last test I developed
+    during your previous evaluations using the data I gathered from I.I. A fifth
+    color installed with I.I. has been added. This color will be unaffected by your
+    ability. If you complete this, your consciousness will be ready for the upload
+    process....
 --- !u!222 &1570582578
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1688,7 +1689,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 73a2e03bd54ebef4fb81f17ed8361149, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1b79c66f8963e324ab0b76a3c148d28a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 0.95
