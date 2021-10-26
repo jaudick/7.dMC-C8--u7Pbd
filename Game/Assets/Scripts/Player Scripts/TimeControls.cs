@@ -14,6 +14,7 @@ public class TimeControls : MonoBehaviour
     private ChromaticAberration chromatic;
     private int currentTimeZone = 0;
     [SerializeField] private Material[] skyBoxes;
+    public GameObject[] colorUI;
     //private Vignette vignette;
 
     private float chromaticInit = 0f;
@@ -34,6 +35,7 @@ public class TimeControls : MonoBehaviour
             chromaticInit = chrom.intensity.value;
         }
 
+        SetColorUI(1);
         /*
         if (volume.profile.TryGet<Vignette>(out var vin))
         {
@@ -45,8 +47,10 @@ public class TimeControls : MonoBehaviour
     {
         if (canShift && !GameCanvas.paused)
         {
-            if ((Input.GetButtonDown("PinkController") || Input.GetButtonDown("Time1") || Input.GetKeyDown(KeyBindingManager.instance.TIME1)) && currentTimeZone!=1)
+            //blue
+            if ((Input.GetButtonDown("PinkController") || Input.GetButtonDown("Time1") || Input.GetKeyDown(KeyBindingManager.instance.BLUE)) && currentTimeZone!=1)
             {
+                SetColorUI(0);
                 currentTimeZone = 1;
                 playerAudio.PlayWarp(1);
                 DebugTime(1);
@@ -54,8 +58,11 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(0));
             }
-            else if ((Input.GetButtonDown("BlueController") || Input.GetButtonDown("Time2") || Input.GetKeyDown(KeyBindingManager.instance.TIME2)) && currentTimeZone != 2)
+
+            //pink
+            else if ((Input.GetButtonDown("BlueController") || Input.GetButtonDown("Time2") || Input.GetKeyDown(KeyBindingManager.instance.PINK)) && currentTimeZone != 2)
             {
+                SetColorUI(1);
                 currentTimeZone = 2;
                 playerAudio.PlayWarp(2);
                 DebugTime(2);
@@ -63,8 +70,11 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(1));
             }
-            else if ((Input.GetButtonDown("GreenController") || Input.GetButtonDown("Time3") || Input.GetKeyDown(KeyBindingManager.instance.TIME3)) && currentTimeZone != 3)
+
+            //orange
+            else if ((Input.GetButtonDown("GreenController") || Input.GetButtonDown("Time3") || Input.GetKeyDown(KeyBindingManager.instance.GREEN)) && currentTimeZone != 3)
             {
+                SetColorUI(2);
                 currentTimeZone = 3;
                 playerAudio.PlayWarp(3);
                 DebugTime(3);
@@ -72,8 +82,11 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(2));
             }
-            else if ((Input.GetButtonDown("OrangeController") || Input.GetButtonDown("Time4") || Input.GetKeyDown(KeyBindingManager.instance.TIME4)) && currentTimeZone != 4)
+
+            //green
+            else if ((Input.GetButtonDown("OrangeController") || Input.GetButtonDown("Time4") || Input.GetKeyDown(KeyBindingManager.instance.ORANGE)) && currentTimeZone != 4)
             {
+                SetColorUI(3);
                 currentTimeZone = 4;
                 playerAudio.PlayWarp(4);
                 DebugTime(4);
@@ -83,8 +96,9 @@ public class TimeControls : MonoBehaviour
             }
 
             ///////////////scroll wheel
-            else if ((Input.GetAxis("Time3MouseWheel") > 0 && KeyBindingManager.instance.SCROLL_WHEEL) && currentTimeZone != 3)
+            else if ((Input.GetAxis("Time3MouseWheel") < 0 && KeyBindingManager.instance.SCROLL_WHEEL) && currentTimeZone != 3)
             {
+                SetColorUI(2);
                 RenderSettings.skybox = skyBoxes[2];
                 currentTimeZone = 3;
                 playerAudio.PlayWarp(3);
@@ -93,8 +107,9 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(2));
             }
-            else if ((Input.GetAxis("Time4MouseWheel") < 0 && KeyBindingManager.instance.SCROLL_WHEEL) && currentTimeZone != 4)
+            else if ((Input.GetAxis("Time4MouseWheel") > 0 && KeyBindingManager.instance.SCROLL_WHEEL) && currentTimeZone != 4)
             {
+                SetColorUI(3);
                 currentTimeZone = 4;
                 playerAudio.PlayWarp(4);
                 DebugTime(4);
@@ -102,6 +117,14 @@ public class TimeControls : MonoBehaviour
                 StartCoroutine(DistortForTimeShift());
                 StartCoroutine(Shift(3));
             }
+        }
+    }
+
+    private void SetColorUI(int color)
+    {
+        for(int i=0; i<colorUI.Length; i++)
+        {
+            colorUI[i].SetActive(i == color);
         }
     }
 

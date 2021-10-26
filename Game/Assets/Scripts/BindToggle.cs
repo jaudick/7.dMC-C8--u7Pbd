@@ -13,4 +13,9 @@ public class BindToggle : MonoBehaviour
     {
         KeyBindingManager.instance.SetScrollWheel(toggle);
     }
+
+    public void ColorUIToggle(bool toggle)
+    {
+        KeyBindingManager.instance.SetColorUI(toggle);
+    }
 }

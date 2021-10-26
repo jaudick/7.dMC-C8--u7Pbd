@@ -10,12 +10,13 @@ public class KeyBindingManager : MonoBehaviour
     public KeyCode SLIDE;
     public KeyCode DASH_LEFT;
     public KeyCode DASH_RIGHT;
-    public KeyCode TIME1;
-    public KeyCode TIME2;
-    public KeyCode TIME3;
-    public KeyCode TIME4;
+    public KeyCode PINK;
+    public KeyCode BLUE;
+    public KeyCode ORANGE;
+    public KeyCode GREEN;
     public bool HOLD_WALL;
     public bool SCROLL_WHEEL;
+    public bool COLOR_UI;
     public int SENSITIVITY;
     KeyCode[] codes;
 
@@ -23,13 +24,14 @@ public class KeyBindingManager : MonoBehaviour
     public Button[] keyButtons;
     public Toggle holdWallRun;
     public Toggle scrollWheel;
+    public Toggle colorUIEnabled;
     public Slider sensitivity;
     public bool changeSensitivity;
 
-    public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse3", "Mouse4" };
+    public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse4", "Mouse3" };
     public static List<bool> defaultPreferences = new List<bool> { false, true };
     private int defaultSensitivity = 5;
-    public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse3", "Mouse4" };
+    public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse4", "Mouse3" };
 
     private void Awake()
     {
@@ -41,19 +43,21 @@ public class KeyBindingManager : MonoBehaviour
         currentKeys = data.GetInputs();
         HOLD_WALL = data.holdWallRun;
         SCROLL_WHEEL = data.scrollWheel;
+        COLOR_UI = data.colorUI;
         holdWallRun.isOn = HOLD_WALL;
         scrollWheel.isOn = SCROLL_WHEEL;
+        colorUIEnabled.isOn = COLOR_UI;
         SENSITIVITY = data.sensitivity;
 
         JUMP = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[0]);
         SLIDE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[1]);
         DASH_LEFT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[2]);
         DASH_RIGHT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[3]);
-        TIME1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[4]);
-        TIME2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
-        TIME3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
-        TIME4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
-        codes = new KeyCode[] { JUMP, SLIDE, DASH_LEFT, DASH_RIGHT, TIME1, TIME2, TIME3, TIME4 };
+        PINK = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[4]);
+        BLUE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
+        ORANGE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
+        GREEN = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
+        codes = new KeyCode[] { JUMP, SLIDE, DASH_LEFT, DASH_RIGHT, PINK, BLUE, ORANGE, GREEN };
 
         for (int i = 0; i < keyButtons.Length; i++)
         {
@@ -72,6 +76,7 @@ public class KeyBindingManager : MonoBehaviour
         data.holdWallRun = HOLD_WALL;
         data.scrollWheel = SCROLL_WHEEL;
         data.sensitivity = SENSITIVITY;
+        data.colorUI = COLOR_UI;
         SaveKeyBindData.SaveDataToSystem(data);
     }
 
@@ -85,17 +90,19 @@ public class KeyBindingManager : MonoBehaviour
 
         holdWallRun.isOn = false;
         scrollWheel.isOn = true;
+        colorUIEnabled.isOn = true;
         HOLD_WALL = false;
         SCROLL_WHEEL = true;
+        COLOR_UI = true;
 
         JUMP = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[0]);
         SLIDE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[1]);
         DASH_LEFT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[2]);
         DASH_RIGHT = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[3]);
-        TIME1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[4]);
-        TIME2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
-        TIME3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
-        TIME4 = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
+        PINK = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[4]);
+        BLUE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[5]);
+        ORANGE = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[6]);
+        GREEN = (KeyCode)System.Enum.Parse(typeof(KeyCode), currentKeys[7]);
         SENSITIVITY = defaultSensitivity;
         sensitivity.value = defaultSensitivity;
         Save();
@@ -109,6 +116,12 @@ public class KeyBindingManager : MonoBehaviour
     public void SetScrollWheel(bool toggle)
     {
         SCROLL_WHEEL = toggle;
+        Save();
+    }
+
+    public void SetColorUI(bool toggle)
+    {
+        COLOR_UI = toggle;
         Save();
     }
 
@@ -148,22 +161,22 @@ public class KeyBindingManager : MonoBehaviour
                 break;
             case "Time1":
                 currentKeys[4] = code.ToString();
-                TIME1 = code;
+                PINK = code;
                 Save();
                 break;
             case "Time2":
                 currentKeys[5] = code.ToString();
-                TIME2 = code;
+                BLUE = code;
                 Save();
                 break;
             case "Time3":
                 currentKeys[6] = code.ToString();
-                TIME3 = code;
+                ORANGE = code;
                 Save();
                 break;
             case "Time4":
                 currentKeys[7] = code.ToString();
-                TIME4 = code;
+                GREEN = code;
                 Save();
                 break;
         }

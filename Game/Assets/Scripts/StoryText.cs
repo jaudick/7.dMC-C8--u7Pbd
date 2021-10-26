@@ -18,6 +18,14 @@ public class StoryText : MonoBehaviour
         StartCoroutine(StoryType());
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("GreenController"))
+        {
+            FindObjectOfType<StartGame>().StartGameMethod();
+        }
+    }
+
     void NextTextBox()
     {
         index = 1;

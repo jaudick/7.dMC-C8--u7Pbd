@@ -69,6 +69,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
         getNextWall = true;
         wait = false;
         isTouchingWall = false;
+        isGrounded = true;
     }
 
     void Update()
@@ -351,7 +352,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
     private IEnumerator ResetJump()
     {
         canJumpAgain = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         canJumpAgain = true;
     }
 

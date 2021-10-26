@@ -8,6 +8,7 @@ public class KeyBindData
     public List<string> inputBindings;
     public bool holdWallRun;
     public bool scrollWheel;
+    public bool colorUI;
     public int sensitivity;
 
     public KeyBindData()
