@@ -8,7 +8,6 @@ public class UIColor : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(KeyBindingManager.instance.COLOR_UI);
         ui.SetActive(KeyBindingManager.instance.COLOR_UI);
     }
 }
