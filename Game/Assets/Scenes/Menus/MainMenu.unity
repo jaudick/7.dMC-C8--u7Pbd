@@ -576,6 +576,14 @@ PrefabInstance:
       propertyPath: menuOptionToGoTo
       value: 
       objectReference: {fileID: 2032332485, guid: dd2a25e33f4e52d459861b17fc87ca70, type: 3}
+    - target: {fileID: 2798008435120123880, guid: e1cee3b239ac31e43937167f406646f7, type: 3}
+      propertyPath: m_Name
+      value: Color UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132852038787445028, guid: e1cee3b239ac31e43937167f406646f7, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ColorUIToggle
+      objectReference: {fileID: 0}
     - target: {fileID: 5157611759914654849, guid: e1cee3b239ac31e43937167f406646f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

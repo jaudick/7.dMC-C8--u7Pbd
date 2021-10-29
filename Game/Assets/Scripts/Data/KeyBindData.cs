@@ -16,6 +16,7 @@ public class KeyBindData
         inputBindings = new List<string>();
         holdWallRun = false;
         scrollWheel = true;
+        colorUI = true;
         sensitivity = 5;
     }
     public List<string> GetInputs()

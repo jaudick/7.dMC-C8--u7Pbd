@@ -29,7 +29,7 @@ public class KeyBindingManager : MonoBehaviour
     public bool changeSensitivity;
 
     public static List<string> defaultKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse4", "Mouse3" };
-    public static List<bool> defaultPreferences = new List<bool> { false, true };
+    public static List<bool> defaultPreferences = new List<bool> { false, true, true };
     private int defaultSensitivity = 5;
     public static List<string> currentKeys = new List<string> { "Space", "LeftShift", "Q", "E", "Mouse0", "Mouse1", "Mouse4", "Mouse3" };
 

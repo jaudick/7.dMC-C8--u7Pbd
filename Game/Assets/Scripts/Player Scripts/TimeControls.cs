@@ -176,6 +176,6 @@ public class TimeControls : MonoBehaviour
 
     private void DebugTime(int time)
     {
-        Debug.Log("Current Time Zone = <color=cyan>" + time + "</color>");
+        //Debug.Log("Current Time Zone = <color=cyan>" + time + "</color>");
     }
 }
