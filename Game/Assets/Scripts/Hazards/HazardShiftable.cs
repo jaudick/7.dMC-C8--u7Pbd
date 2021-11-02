@@ -11,7 +11,7 @@ public class HazardShiftable : MonoBehaviour
     private bool checkMeOnStart = true;
     void Start()
     {
-        localTime = TimeCore.times[timeZone];
+        localTime = timeZone == -1 ? 1 : TimeCore.times[timeZone];
         checkMeOnStart = true;
     }
 
@@ -19,7 +19,7 @@ public class HazardShiftable : MonoBehaviour
     {
         if (TimeCore.check || checkMeOnStart)
         {
-            localTime = TimeCore.times[timeZone];
+            localTime = timeZone == -1 ? 1 : TimeCore.times[timeZone];
             if(localTime == 0)
             {
                 cylinder.SetActive(true);
