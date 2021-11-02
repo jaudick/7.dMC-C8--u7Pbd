@@ -10,13 +10,13 @@ public class Shiftable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        localTime = TimeCore.times[timeZone];
+        localTime = timeZone == -1 ? 1 : TimeCore.times[timeZone];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (TimeCore.check)
+        if (TimeCore.check && !(timeZone == -1))
         {
             localTime = TimeCore.times[timeZone];
             //attempt to stop all animations

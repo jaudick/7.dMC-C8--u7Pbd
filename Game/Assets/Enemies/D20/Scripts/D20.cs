@@ -24,7 +24,7 @@ public class D20 : Controller
 
     private void Start()
     {
-        localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
+        localTime = GetComponent<Shiftable>().timeZone == -1 ? 1 : TimeCore.times[GetComponent<Shiftable>().timeZone];
         setTime(localTime);
         StartCoroutine(Shoot());
     }

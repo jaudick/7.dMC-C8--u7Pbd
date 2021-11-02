@@ -46,8 +46,15 @@ public class HyperCube : Controller
         init = speed;
         particleHolder = FindObjectOfType<ParticleHolder>();
         rbody = GetComponent<Rigidbody>();
-        localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
-        setTime(localTime);
+        if (GetComponent<Shiftable>().timeZone == -1)
+        {
+            setTime(1);
+        }
+        else
+        {
+            localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
+            setTime(localTime);
+        }
         StartCoroutine(Spawn());
     }
 

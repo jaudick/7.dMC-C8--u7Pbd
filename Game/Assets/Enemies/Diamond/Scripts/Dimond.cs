@@ -33,7 +33,7 @@ public class Dimond : Controller
         position1 = player.transform.position;
         position2 = player.transform.position;
         predictedPosition = player.transform.position;
-        localTime = TimeCore.times[GetComponent<Shiftable>().timeZone];
+        localTime = GetComponent<Shiftable>().timeZone == -1 ? 1 : TimeCore.times[GetComponent<Shiftable>().timeZone];
         setTime(localTime);
         StartCoroutine(GetPositionPrediction());
         StartCoroutine(Shoot());

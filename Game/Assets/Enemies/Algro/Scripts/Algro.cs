@@ -35,6 +35,8 @@ public class Algro : Controller
     }
     void Start()
     {
+        if(GetComponent<Shiftable>().timeZone == -1)
+            localTime = 1;
         reload = 0;
     }
 

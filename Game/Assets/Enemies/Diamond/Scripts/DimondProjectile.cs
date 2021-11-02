@@ -25,7 +25,7 @@ public class DimondProjectile : Controller
         particleHolder = FindObjectOfType<ParticleHolder>();
         rbody = GetComponent<Rigidbody>();
         velocity = rbody.velocity;
-        setTime(TimeCore.times[GetComponent<Shiftable>().timeZone]);
+        setTime(GetComponent<Shiftable>().timeZone == -1 ? 1 : TimeCore.times[GetComponent<Shiftable>().timeZone]);
     }
 
     private void OnCollisionEnter(Collision collision)
