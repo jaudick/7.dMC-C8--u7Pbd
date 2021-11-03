@@ -26,9 +26,9 @@ public class EndBeam : MonoBehaviour
         {
             loading = true;
             GetComponent<AudioSource>().Play();
-            ChangeScene.sceneName = "MainMenu";
-
             int level = GetLevelInt();
+            ChangeScene.sceneName = level == 10 ? "Ending" : "Level" + (level+1).ToString() + "Story";
+
             SpeedRunSaveData.SaveDataToSystem(level, timer);
 
             animator.gameObject.SetActive(true);

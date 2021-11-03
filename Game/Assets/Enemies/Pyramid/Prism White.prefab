@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7543506823317197706, guid: 94a45d71bbe014c4fa313f7b6c96e054, type: 3}
       propertyPath: pyramidSpawn
       value: 
-      objectReference: {fileID: 6883013106909067325, guid: 4135eeb037c372f47adb2e525a5b2255, type: 3}
+      objectReference: {fileID: 6883013106909067325, guid: 87ba330772726e14293738a1579c6a43, type: 3}
     - target: {fileID: 7543506823317197708, guid: 94a45d71bbe014c4fa313f7b6c96e054, type: 3}
       propertyPath: active
       value: 
