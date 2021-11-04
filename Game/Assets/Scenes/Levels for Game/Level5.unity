@@ -2715,6 +2715,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dimond Init
       objectReference: {fileID: 0}
+    - target: {fileID: 6801689154948322427, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
+      propertyPath: bulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801689154948322427, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
+      propertyPath: durationBetweenShotsInSeconds
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
 --- !u!4 &588255537 stripped
@@ -5033,6 +5041,14 @@ PrefabInstance:
     - target: {fileID: 6801689154948322309, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
       propertyPath: m_Name
       value: Dimond Init (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801689154948322427, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
+      propertyPath: bulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801689154948322427, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
+      propertyPath: durationBetweenShotsInSeconds
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f223911abb64d048a016ade9ff587f4, type: 3}
@@ -18772,11 +18788,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1109621795397671637, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.42
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1109621795397671637, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 615.62
+      value: 617
       objectReference: {fileID: 0}
     - target: {fileID: 1109621795397671637, guid: ee5bf4f98b0453243bfd967df14ed6c4, type: 3}
       propertyPath: m_LocalRotation.w
