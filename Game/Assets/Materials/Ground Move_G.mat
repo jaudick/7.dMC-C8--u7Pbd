@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ground Move_M
-  m_Shader: {fileID: -6465566751694194690, guid: 122146e5017f1f044858958e168716a5, type: 3}
+  m_Name: Ground Move_G
+  m_Shader: {fileID: -6465566751694194690, guid: 2486ac7bfd6352e4d8afd34d340f64ee, type: 3}
   m_ShaderKeywords: _EMISSION _RECEIVE_SHADOWS_OFF _SPECULAR_SETUP
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0

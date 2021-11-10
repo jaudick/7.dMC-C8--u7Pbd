@@ -16,6 +16,9 @@ public class CheckPointManager : MonoBehaviour
     public bool isInvincible;
     private bool respawning;
 
+    public CheckPoint[] checkPoints;
+    public int currentCheckpointNum = 0;
+
     private void Awake()
     {
         instance = this;
@@ -62,5 +65,22 @@ public class CheckPointManager : MonoBehaviour
         }
         color.postExposure.value = 0;
         respawning = false;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.RightBracket) || Input.GetAxis("CheckpointController") > 0 && !respawning)
+        {
+            currentCheckpointNum += currentCheckpointNum >= checkPoints.Length - 1 ? 0 : 1;
+            lastCheckpoint = checkPoints[currentCheckpointNum];
+            StartCoroutine(RespawnCo());
+        }
+
+        else if(Input.GetKeyDown(KeyCode.LeftBracket) || Input.GetAxis("CheckpointController") < 0 && !respawning)
+        {
+            currentCheckpointNum -= currentCheckpointNum <= 0 ? 0 : 1;
+            lastCheckpoint = checkPoints[currentCheckpointNum];
+            StartCoroutine(RespawnCo());
+        }
     }
 }

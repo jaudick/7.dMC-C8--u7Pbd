@@ -32,6 +32,14 @@ public class CheckPoint : MonoBehaviour
                 audioSource.PlayOneShot(checkpointSound);
             }
             checkPointManager.lastCheckpoint = this;
+            for(int i = 0; i < checkPointManager.checkPoints.Length; i++)
+            { 
+                if(checkPointManager.checkPoints[i] == this)
+                {
+                    checkPointManager.currentCheckpointNum = i;
+                    break;
+                }
+            }
             activated = true;
             if(meshRenderer!=null) meshRenderer.material = activatedMaterial;
         }
