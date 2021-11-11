@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuOptions : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class MenuOptions : MonoBehaviour
 
     public void Hover()
     {
-        AudioMenu.audioMenu.PlayNavigate();
+        if(GetComponent<Button>().interactable)
+            AudioMenu.audioMenu.PlayNavigate();
     }
 
     public void Unpause()

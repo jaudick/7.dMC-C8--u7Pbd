@@ -69,14 +69,14 @@ public class CheckPointManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightBracket) || Input.GetAxis("CheckpointController") > 0 && !respawning)
+        if((Input.GetKeyDown(KeyCode.RightBracket) || Input.GetAxis("CheckpointController") > 0) && !respawning)
         {
             currentCheckpointNum += currentCheckpointNum >= checkPoints.Length - 1 ? 0 : 1;
             lastCheckpoint = checkPoints[currentCheckpointNum];
             StartCoroutine(RespawnCo());
         }
 
-        else if(Input.GetKeyDown(KeyCode.LeftBracket) || Input.GetAxis("CheckpointController") < 0 && !respawning)
+        else if((Input.GetKeyDown(KeyCode.LeftBracket) || Input.GetAxis("CheckpointController") < 0) && !respawning)
         {
             currentCheckpointNum -= currentCheckpointNum <= 0 ? 0 : 1;
             lastCheckpoint = checkPoints[currentCheckpointNum];

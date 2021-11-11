@@ -34,6 +34,8 @@ public class GameCanvas : MonoBehaviour
                 Unpause();
             }
         }
+        if (!paused)
+            Cursor.lockState = CursorLockMode.Locked;
     }
     public void Pause()
     {
