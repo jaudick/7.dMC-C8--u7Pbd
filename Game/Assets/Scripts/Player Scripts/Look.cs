@@ -21,8 +21,15 @@ public class Look : MonoBehaviour
             sensitivity = (float)KeyBindingManager.instance.SENSITIVITY * 35;
             KeyBindingManager.instance.changeSensitivity = false;
         }
+
+        if (KeyBindingManager.instance.changeFOV)
+        {
+            GetComponent<Camera>().fieldOfView = KeyBindingManager.instance.FOV;
+            KeyBindingManager.instance.changeFOV = false;
+        }
+
         //cursor locking
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.Confined;
         }

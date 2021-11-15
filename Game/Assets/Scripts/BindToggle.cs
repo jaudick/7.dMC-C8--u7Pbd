@@ -18,4 +18,9 @@ public class BindToggle : MonoBehaviour
     {
         KeyBindingManager.instance.SetColorUI(toggle);
     }
+
+    public void HeadbobToggle(bool toggle)
+    {
+        KeyBindingManager.instance.SetHeadbob(toggle);
+    }
 }

@@ -8,4 +8,9 @@ public class Sensitivity : MonoBehaviour
     {
         KeyBindingManager.instance.SetSensitivity((int) Mathf.RoundToInt(number));
     }
+
+    public void ChangeFOV(float number)
+    {
+        KeyBindingManager.instance.SetFOV((int)Mathf.RoundToInt(number));
+    }
 }

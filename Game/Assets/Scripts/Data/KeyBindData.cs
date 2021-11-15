@@ -9,7 +9,9 @@ public class KeyBindData
     public bool holdWallRun;
     public bool scrollWheel;
     public bool colorUI;
+    public bool headbob;
     public int sensitivity;
+    public int fov;
 
     public KeyBindData()
     {
@@ -17,7 +19,9 @@ public class KeyBindData
         holdWallRun = false;
         scrollWheel = true;
         colorUI = true;
+        headbob = true;
         sensitivity = 5;
+        fov = 118;
     }
     public List<string> GetInputs()
     {

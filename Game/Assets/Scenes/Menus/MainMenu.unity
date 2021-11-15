@@ -926,6 +926,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &100720493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7025643226221821260, guid: e1cee3b239ac31e43937167f406646f7, type: 3}
+  m_PrefabInstance: {fileID: 38090508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &100992238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,6 +2692,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362396727}
   m_CullTransparentMesh: 1
+--- !u!114 &388670258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8954793375285448389, guid: e1cee3b239ac31e43937167f406646f7, type: 3}
+  m_PrefabInstance: {fileID: 38090508}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &397166899
 GameObject:
   m_ObjectHideFlags: 0
@@ -10125,7 +10147,9 @@ MonoBehaviour:
   HOLD_WALL: 0
   SCROLL_WHEEL: 0
   COLOR_UI: 0
+  HEADBOB: 0
   SENSITIVITY: 0
+  FOV: 0
   keyButtons:
   - {fileID: 238489097}
   - {fileID: 1888466298}
@@ -10138,8 +10162,11 @@ MonoBehaviour:
   holdWallRun: {fileID: 1113592883}
   scrollWheel: {fileID: 1687191406}
   colorUIEnabled: {fileID: 887662660}
+  headbob: {fileID: 388670258}
   sensitivity: {fileID: 38090513}
+  fov: {fileID: 100720493}
   changeSensitivity: 0
+  changeFOV: 0
 --- !u!1 &2019554962
 GameObject:
   m_ObjectHideFlags: 0

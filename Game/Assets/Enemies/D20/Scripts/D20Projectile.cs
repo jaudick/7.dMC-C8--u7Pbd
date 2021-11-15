@@ -61,7 +61,7 @@ public class D20Projectile : Controller
 
     private void Update()
     {
-        if (CheckPointManager.destroyProjectiles)
+        if (CheckPointManager.destroyProjectiles && localTime > 0)
         {
             if (hitParticle != null) Instantiate(hitParticle);
             StartCoroutine(DestroyParticle());

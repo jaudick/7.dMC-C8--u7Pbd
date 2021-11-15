@@ -74,6 +74,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
 
     void Update()
     {
+        headCamera.SetFloat("HeadBob", KeyBindingManager.instance.HEADBOB == true ? 1 : 0);
         Collider[] walls = Physics.OverlapBox(transform.position, Vector3.one, Quaternion.identity, 1 << 10);
         if(walls.Length==1)
         {
@@ -85,7 +86,7 @@ public class PlayerMovementRigidbody : MonoBehaviour
         }
         if (!GameCanvas.paused)
         {
-            if(Input.GetKeyDown(KeyCode.F1) || Input.GetKeyDown(KeyCode.F2) || Input.GetKeyDown(KeyCode.F3) || Input.GetAxis("RespawnController") < 0)
+            if(Input.GetKeyDown(KeyCode.R) || Input.GetAxis("RespawnController") < 0)
             {
                 CheckPointManager.instance.Respawn();
             }
@@ -115,19 +116,19 @@ public class PlayerMovementRigidbody : MonoBehaviour
                     (KeyBindingManager.instance.HOLD_WALL && ((Input.GetKeyUp(KeyBindingManager.instance.JUMP) || (Input.GetAxis("JumpController") <= 0 && lastFrameWasHoldingRightTigger))) && canJumpAgain)))
                 {
                     lastWall = currentWall;
-                    float x = Input.GetAxisRaw("Horizontal");
-                    float z = Input.GetAxisRaw("Vertical");
+                    //float x = Input.GetAxisRaw("Horizontal");
+                    //float z = Input.GetAxisRaw("Vertical");
 
-                    if (Mathf.Abs(x) > 0 && (Mathf.Abs(x) > Mathf.Abs(z / 2)))
-                    {
+                    //if (Mathf.Abs(x) > 0 && (Mathf.Abs(x) > Mathf.Abs(z / 2)))
+                    //{
                         Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
                         rbody.velocity = jumpOffWallForwardForce / 50 * transform.forward + transform.up * jumpOffWallUpForce * 1.55f + jumpOffWallSideForce * 10f;
-                    }
-                    else
-                    {
-                        Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
-                        rbody.velocity = jumpOffWallForwardForce * transform.forward + transform.up * jumpOffWallUpForce + jumpOffWallSideForce * 2.5f;
-                    }
+                    //}
+                    //else
+                    //{
+                    //    Vector3 jumpOffWallSideForce = isWallRunningRight ? -transform.right : transform.right;
+                    //    rbody.velocity = jumpOffWallForwardForce * transform.forward + transform.up * jumpOffWallUpForce + jumpOffWallSideForce * 2.5f;
+                    //}
 
                     playerAudio.PlayJump();
                     wallRunRig.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -152,13 +153,14 @@ public class PlayerMovementRigidbody : MonoBehaviour
                 StartCoroutine(ResetJump());
             }
 
+            /*
             if ((isGrounded && (Input.GetKeyDown(KeyBindingManager.instance.SLIDE) || ((Input.GetAxis("SlideController") > 0) && !holdingSlideTriggerInAir)) && !isWallRunning && canSlide))
             {
                 capsuleCollider.height = 0.5f;
                 capsuleCollider.center = new Vector3(0, 0.25f, 0);
                 rbody.velocity = (transform.forward.normalized * slideForce / 2) + -transform.up * 5f;
                 StartCoroutine(Sliding());
-            }
+            }*/
 
             else if ((Input.GetKey(KeyBindingManager.instance.SLIDE) || Input.GetAxis("SlideController") > 0) && !isWallRunning && !isGrounded)
             {
