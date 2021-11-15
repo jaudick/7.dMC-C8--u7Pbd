@@ -48,6 +48,12 @@ public class SpawnedPyramid : Controller
 
     private void Update()
     {
+        if (CheckPointManager.destroyProjectiles)
+        {
+            if (hitParticle != null) Instantiate(hitParticle);
+            spawnCollider.VoidDestroyParticle();
+        }
+
         if (!frozen)
         {
             rbody.isKinematic = false;

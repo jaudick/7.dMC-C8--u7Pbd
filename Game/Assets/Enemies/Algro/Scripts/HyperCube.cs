@@ -61,6 +61,12 @@ public class HyperCube : Controller
     // Update is called once per frame
     void Update()
     {
+        if (CheckPointManager.destroyProjectiles)
+        {
+            if (hitParticle != null) Instantiate(hitParticle);
+            StartCoroutine(DestroyParticle());
+        }
+
         int tracking = isTracking ? 1 : 0;
         rbody.velocity *= localTime * tracking;
         if (!frozen)

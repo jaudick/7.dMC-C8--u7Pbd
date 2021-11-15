@@ -554,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -1444,7 +1444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -1673,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -1870,7 +1870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -2596,7 +2596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -2790,7 +2790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -3183,7 +3183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -3425,6 +3425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.68201494
@@ -3662,7 +3666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -4655,7 +4659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -5461,7 +5465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x
@@ -5999,7 +6003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2765869778599644378, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: bulletSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8765923309598889539, guid: b8790ed1614b42647a4cbec85847fcce, type: 3}
       propertyPath: m_LocalScale.x

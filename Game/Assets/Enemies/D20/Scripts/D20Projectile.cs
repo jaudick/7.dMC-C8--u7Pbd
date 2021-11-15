@@ -61,6 +61,12 @@ public class D20Projectile : Controller
 
     private void Update()
     {
+        if (CheckPointManager.destroyProjectiles)
+        {
+            if (hitParticle != null) Instantiate(hitParticle);
+            StartCoroutine(DestroyParticle());
+        }
+
         if (!frozen)
         {
             rbody.isKinematic = false;

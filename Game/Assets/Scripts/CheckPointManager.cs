@@ -18,11 +18,14 @@ public class CheckPointManager : MonoBehaviour
 
     public CheckPoint[] checkPoints;
     public int currentCheckpointNum = 0;
+    public static bool destroyProjectiles = false;
+    public bool didCheckpointChange = false;
 
     private void Awake()
     {
         instance = this;
         respawning = false;
+        didCheckpointChange = false;
         source = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerMovementRigidbody>();
         volume = FindObjectOfType<Volume>();
@@ -40,6 +43,7 @@ public class CheckPointManager : MonoBehaviour
     private IEnumerator RespawnCo()
     {
         respawning = true;
+        destroyProjectiles = true;
         float counter = 0;
         Vector3 originalPosition = player.transform.position;
         source.PlayOneShot(respawnSound, 0.7f);
@@ -49,6 +53,7 @@ public class CheckPointManager : MonoBehaviour
             counter += Time.deltaTime;
             color.postExposure.value += Time.deltaTime * 10;
             yield return new WaitForEndOfFrame();
+            destroyProjectiles = false;
         }
 
         counter = 0;
@@ -71,6 +76,7 @@ public class CheckPointManager : MonoBehaviour
     {
         if((Input.GetKeyDown(KeyCode.RightBracket) || Input.GetAxis("CheckpointController") > 0) && !respawning)
         {
+            didCheckpointChange = true;
             currentCheckpointNum += currentCheckpointNum >= checkPoints.Length - 1 ? 0 : 1;
             lastCheckpoint = checkPoints[currentCheckpointNum];
             StartCoroutine(RespawnCo());
@@ -78,6 +84,7 @@ public class CheckPointManager : MonoBehaviour
 
         else if((Input.GetKeyDown(KeyCode.LeftBracket) || Input.GetAxis("CheckpointController") < 0) && !respawning)
         {
+            didCheckpointChange = true;
             currentCheckpointNum -= currentCheckpointNum <= 0 ? 0 : 1;
             lastCheckpoint = checkPoints[currentCheckpointNum];
             StartCoroutine(RespawnCo());

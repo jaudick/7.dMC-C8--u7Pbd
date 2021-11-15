@@ -10,7 +10,7 @@ public class Look : MonoBehaviour
     private float xRotation = 0f;
     private void Start()
     {
-        sensitivity = (float) KeyBindingManager.instance.SENSITIVITY * 50;
+        sensitivity = (float) KeyBindingManager.instance.SENSITIVITY * 35;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -18,7 +18,7 @@ public class Look : MonoBehaviour
     {
         if(KeyBindingManager.instance.changeSensitivity)
         {
-            sensitivity = (float)KeyBindingManager.instance.SENSITIVITY * 50;
+            sensitivity = (float)KeyBindingManager.instance.SENSITIVITY * 35;
             KeyBindingManager.instance.changeSensitivity = false;
         }
         //cursor locking

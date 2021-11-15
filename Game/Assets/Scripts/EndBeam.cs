@@ -34,11 +34,14 @@ public class EndBeam : MonoBehaviour
             GetComponent<AudioSource>().Play();
             int level = GetLevelInt();
             ChangeScene.sceneName = level == 10 ? "Ending" : "Level" + (level+1).ToString() + "Story";
+
             if (LevelMenu.unlockedMode) ChangeScene.sceneName = "MainMenu";
 
-            if(!LevelMenu.unlockedMode) SpeedRunSaveData.SaveDataToSystem(level, timer);
+            if(!CheckPointManager.instance.didCheckpointChange) SpeedRunSaveData.SaveDataToSystem(level, timer);
+
             if(level+1 > currentLevelsUnlocked && !LevelMenu.unlockedMode)
                 LevelsUnlockedData.SaveDataToSystem(level+1);
+
             animator.gameObject.SetActive(true);
             animator.SetTrigger("Fade");
             

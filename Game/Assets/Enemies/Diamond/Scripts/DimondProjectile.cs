@@ -60,6 +60,12 @@ public class DimondProjectile : Controller
 
     private void Update()
     {
+        if (CheckPointManager.destroyProjectiles)
+        {
+            if (hitParticle != null) Instantiate(hitParticle);
+            StartCoroutine(DestroyParticle());
+        }
+
         if (!frozen)
         {
             transform.Rotate(0, 0, 200 * Time.deltaTime * localTime);
