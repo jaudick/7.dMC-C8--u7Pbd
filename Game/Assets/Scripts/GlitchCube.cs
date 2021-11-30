@@ -17,7 +17,7 @@ public class GlitchCube : MonoBehaviour
     {
         //cube.SetActive(false);
 
-        float time = Random.Range(0.25f, 1f);
+        float time = Random.Range(3f, 5f);
         float timeStarted = Time.time;
         float percentDone = 0;
         Vector3 newScale = new Vector3(scale.x * Random.Range(0.25f, 1), scale.y * Random.Range(0.25f, 1), scale.z * Random.Range(0.25f, 1));
@@ -28,12 +28,12 @@ public class GlitchCube : MonoBehaviour
 
         while (percentDone<1)
         {
-            percentDone = (Time.time - timeStarted) * time;
+            percentDone = (Time.time - timeStarted) / time;
             transform.localScale = Vector3.Lerp(currentScale, newScale, percentDone);
             transform.eulerAngles = Vector3.Lerp(currentRotation, newRotation, percentDone);
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForSeconds(Random.Range(0.1f, 1f));
+        //yield return new WaitForSeconds(Random.Range(0.1f, 1f));
         StartCoroutine(GlitchCubeMethod());
     }
 }
